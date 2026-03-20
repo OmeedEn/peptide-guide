@@ -8,8 +8,8 @@ export const metadata: Metadata = {
   title: 'PeptideGuide — Find Your Perfect Peptide',
   description: 'Discover which peptides are right for your health goals. Research-backed data on 18+ peptides with interactive recommendations.',
   icons: {
-    icon: '/favicon.svg',
-    apple: '/favicon.svg',
+    icon: '/peptide-guide/favicon.svg',
+    apple: '/peptide-guide/favicon.svg',
   },
 }
 
