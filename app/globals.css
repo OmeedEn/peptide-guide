@@ -1,0 +1,148 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap');
+
+:root {
+  --base-950: #050810;
+  --base-900: #0a0e1a;
+  --base-800: #0f1629;
+  --neon-teal: #00d4aa;
+  --neon-cyan: #0ea5e9;
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--base-950);
+  color: #e2e8f0;
+  font-family: 'DM Sans', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Safe area for notched phones */
+@supports (padding: env(safe-area-inset-bottom)) {
+  body {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--base-950); }
+::-webkit-scrollbar-thumb { background: rgba(0,212,170,0.3); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(0,212,170,0.5); }
+
+/* Glass card base */
+.glass-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  backdrop-filter: blur(12px);
+  border-radius: 16px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@media (hover: hover) {
+  .glass-card:hover {
+    background: rgba(255,255,255,0.06);
+    border-color: rgba(0,212,170,0.2);
+    box-shadow: 0 0 30px rgba(0,212,170,0.05);
+  }
+}
+
+/* Active state for touch devices */
+.glass-card:active {
+  background: rgba(255,255,255,0.06);
+  border-color: rgba(0,212,170,0.2);
+}
+
+/* Noise overlay */
+.noise-overlay::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Glow effects */
+.glow-teal {
+  box-shadow: 0 0 40px rgba(0,212,170,0.15), 0 0 80px rgba(0,212,170,0.05);
+}
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, #00d4aa 0%, #0ea5e9 50%, #6366f1 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Evidence bar animation */
+@keyframes fill-bar {
+  from { width: 0; }
+}
+
+.evidence-bar-fill {
+  animation: fill-bar 1s ease-out forwards;
+}
+
+/* Pulse animation for badges */
+@keyframes subtle-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+.pulse-badge {
+  animation: subtle-pulse 3s ease-in-out infinite;
+}
+
+/* Grid mesh background */
+.mesh-bg {
+  background:
+    radial-gradient(ellipse at 20% 50%, rgba(0,212,170,0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(14,165,233,0.06) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 80%, rgba(99,102,241,0.05) 0%, transparent 50%),
+    var(--base-950);
+}
+
+/* Molecular pattern */
+.molecular-bg {
+  background-image:
+    radial-gradient(circle at 25% 25%, rgba(0,212,170,0.04) 1px, transparent 1px),
+    radial-gradient(circle at 75% 75%, rgba(14,165,233,0.03) 1px, transparent 1px);
+  background-size: 60px 60px, 40px 40px;
+}
+
+/* Minimum touch target */
+button, a {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+/* Exception for inline links and tiny badges */
+.inline-link, span > a, p a {
+  min-height: unset;
+  min-width: unset;
+}
+
+/* Horizontal scroll helper for compare table on mobile */
+.mobile-scroll-hint {
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.mobile-scroll-hint::-webkit-scrollbar {
+  display: none;
+}
