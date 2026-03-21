@@ -1,0 +1,1347 @@
+{
+  "validationDate": "2026-03-21",
+  "validatedBy": "Claude Opus 4.6 - systematic literature review",
+  "methodology": "PubMed, Google Scholar, regulatory databases, WADA prohibited lists, FDA databases",
+  "peptides": [
+    {
+      "id": "selank",
+      "validatedBenefits": [
+        {
+          "claim": "Reduces anxiety without sedation or cognitive impairment",
+          "supported": true,
+          "citation": "Zozulya et al., Zh Nevrol Psikhiatr Im S S Korsakova, 2008",
+          "pmid": "18454096",
+          "notes": "Clinical study of 62 patients with GAD/neurasthenia. Selank (n=30) showed anxiolytic effects comparable to medazepam without sedation. Also had psychostimulant and antiasthenic effects. Single Russian-language study; not replicated in Western trials."
+        },
+        {
+          "claim": "Improves emotional stability and stress resilience",
+          "supported": true,
+          "citation": "Zozulya et al., Zh Nevrol Psikhiatr Im S S Korsakova, 2008",
+          "pmid": "18454096",
+          "notes": "Same GAD study showed improved enkephalin activity correlated with reduced anxiety. Functional connectomic study (52 healthy participants) showed effects on amygdala and prefrontal cortex connectivity."
+        },
+        {
+          "claim": "Enhances immune function",
+          "supported": true,
+          "citation": "Uchakina et al., Zh Nevrol Psikhiatr Im S S Korsakova, 2008",
+          "pmid": "18577961",
+          "notes": "Study showed immunomodulatory effects in patients with anxiety-asthenic disorders. Selank is a tuftsin analog, and tuftsin is a known immunomodulatory peptide. Evidence is limited to Russian-language publications."
+        },
+        {
+          "claim": "Nootropic effects (memory, learning)",
+          "supported": true,
+          "citation": "Seredenin et al., Bull Exp Biol Med, 2001",
+          "pmid": "11550013",
+          "notes": "Mechanism described via enkephalin-degrading enzyme inhibition. Nootropic claims mostly from animal data and the Russian clinical use context. No large Western RCTs on cognitive endpoints."
+        },
+        {
+          "claim": "Modulates GABA and serotonin pathways",
+          "supported": true,
+          "citation": "Kasian et al., Front Pharmacol, 2017",
+          "pmid": "28280467",
+          "notes": "In vitro study (IMR-32 cells) showed Selank affects expression of 45 genes involved in GABAergic neurotransmission. Acts as positive allosteric modulator of GABAA receptors. Also influences serotonin, dopamine, and noradrenaline metabolism."
+        },
+        {
+          "claim": "Helpful for withdrawal support",
+          "supported": false,
+          "citation": "",
+          "pmid": "",
+          "notes": "No published human clinical trial data specifically on withdrawal support found in PubMed. This claim appears anecdotal."
+        }
+      ],
+      "validatedSideEffects": [
+        {
+          "claim": "Generally very well tolerated",
+          "supported": true,
+          "citation": "Zozulya et al., 2008",
+          "pmid": "18454096",
+          "notes": "Clinical study reported no significant adverse effects. However, dedicated English-language safety studies are absent."
+        },
+        {
+          "claim": "Mild fatigue in some users",
+          "supported": true,
+          "citation": "Multiple clinical sources",
+          "pmid": "",
+          "notes": "Fatigue, headache, and dizziness mentioned in clinical literature but not frequently enough to establish as a defined side effect."
+        },
+        {
+          "claim": "Nasal irritation (intranasal route)",
+          "supported": true,
+          "citation": "Multiple clinical sources",
+          "pmid": "",
+          "notes": "Commonly reported with intranasal peptide administration. Expected with nasal spray delivery."
+        }
+      ],
+      "dosingValidation": {
+        "ourClaim": "250-500 mcg/day",
+        "publishedRange": "750 mcg-1000 mcg/day (standard Selank); 300-600 mcg/day (N-Acetyl Selank Amidate), administered in 2-3 divided intranasal doses",
+        "citation": "Russian prescribing guidelines and clinical protocols",
+        "accurate": false,
+        "notes": "Our stated range of 250-500 mcg/day is on the LOW side. Published Russian clinical protocols and multiple sources indicate 750-1000 mcg/day for standard Selank. However, some sources do cite lower starting doses. Recommend updating to 250-1000 mcg/day to cover the full range."
+      },
+      "evidenceLevelValidation": {
+        "ourLevel": "moderate",
+        "actualLevel": "low_moderate",
+        "reasoning": "While there are published clinical studies, they are almost exclusively Russian-language, small sample sizes (n=30-52), not replicated in Western trials, and the FDA has flagged immunogenicity concerns. 'Moderate' overstates the evidence quality for a Western audience."
+      },
+      "legalStatusUpdate": {
+        "accurate": true,
+        "notes": "Correctly states not FDA-approved, removed from Category 2 Sept 2024, registered in Russia. WADA status should be clarified: while not explicitly listed by name, Selank falls under S0 (Non-Approved Substances) on the WADA Prohibited List, making it effectively banned for athletes."
+      },
+      "keyCitations": [
+        {
+          "title": "Efficacy and possible mechanisms of action of a new peptide anxiolytic selank in the therapy of generalized anxiety disorders and neurasthenia",
+          "authors": "Zozulya et al.",
+          "journal": "Zh Nevrol Psikhiatr Im S S Korsakova",
+          "year": 2008,
+          "pmid": "18454096",
+          "doi": "",
+          "type": "clinical_trial"
+        },
+        {
+          "title": "Selank Administration Affects the Expression of Some Genes Involved in GABAergic Neurotransmission",
+          "authors": "Kasian et al.",
+          "journal": "Frontiers in Pharmacology",
+          "year": 2016,
+          "pmid": "26903869",
+          "doi": "10.3389/fphar.2016.00031",
+          "type": "animal_study"
+        },
+        {
+          "title": "GABA, Selank, and Olanzapine Affect the Expression of Genes Involved in GABAergic Neurotransmission in IMR-32 Cells",
+          "authors": "Kasian et al.",
+          "journal": "Frontiers in Pharmacology",
+          "year": 2017,
+          "pmid": "28280467",
+          "doi": "10.3389/fphar.2017.00089",
+          "type": "animal_study"
+        },
+        {
+          "title": "Immunomodulatory effects of selank in patients with anxiety-asthenic disorders",
+          "authors": "Uchakina et al.",
+          "journal": "Zh Nevrol Psikhiatr Im S S Korsakova",
+          "year": 2008,
+          "pmid": "18577961",
+          "doi": "",
+          "type": "clinical_trial"
+        },
+        {
+          "title": "Functional Connectomic Approach to Studying Selank and Semax Effects",
+          "authors": "Volkova et al.",
+          "journal": "Dokl Biol Sci",
+          "year": 2020,
+          "pmid": "32342318",
+          "doi": "",
+          "type": "clinical_trial"
+        }
+      ],
+      "corrections": [
+        "Dosing range 250-500 mcg/day is lower than most published protocols (750-1000 mcg/day for standard Selank). Consider updating to 250-1000 mcg/day.",
+        "WADA status should note that Selank is effectively banned under S0 (Non-Approved Substances) even though not listed by name. Our wadaBanned: false is potentially misleading for athletes.",
+        "Evidence level should be low_moderate rather than moderate given the lack of Western RCTs."
+      ],
+      "missingInfo": [
+        "FDA immunogenicity warning for compounded Selank products should be mentioned",
+        "The comparison study vs phenazepam (PMID: 25176261) showing comparable anxiolytic efficacy",
+        "The functional connectivity fMRI study in 52 healthy participants showing amygdala/prefrontal effects"
+      ]
+    },
+    {
+      "id": "semax",
+      "validatedBenefits": [
+        {
+          "claim": "Boosts focus, learning, and memory",
+          "supported": true,
+          "citation": "Aseev et al., Bull Exp Biol Med, 2007; Alzheimer's Drug Discovery Foundation report",
+          "pmid": "",
+          "notes": "In a human volunteer study, intranasal Semax sharpened attention and short-term memory, most noticeably under fatigue. In one pilot study of 24 healthy subjects, intranasal 1% semax (1.2 mg total) increased resting fMRI signal in the default mode network. Evidence is limited but supportive."
+        },
+        {
+          "claim": "Upregulates BDNF (brain-derived neurotrophic factor)",
+          "supported": true,
+          "citation": "Dolotov et al., Brain Res, 2006",
+          "pmid": "16996037",
+          "notes": "Demonstrated in rats: single application caused 1.4-fold BDNF protein increase, 3-fold exon III BDNF mRNA increase in hippocampus. In humans (stroke patients), semax increased plasma BDNF levels (PMID: 29798983). Well-supported mechanism."
+        },
+        {
+          "claim": "Modulates dopamine and serotonin pathways",
+          "supported": true,
+          "citation": "Eremin et al., Neurochem Res, 2005",
+          "pmid": "16362768",
+          "notes": "Demonstrated in rodents: Semax activates dopaminergic and serotoninergic brain systems. Mechanism well-described in animal models."
+        },
+        {
+          "claim": "Neuroprotective (stroke recovery, TBI)",
+          "supported": true,
+          "citation": "Gusev et al., Zh Nevrol Psikhiatr Im S S Korsakova, 2018",
+          "pmid": "29798983",
+          "notes": "Study of 110 ischemic stroke patients. Two 10-day courses of 6000 mcg/day semax increased BDNF levels and improved motor performance and functional independence (Barthel index). This is the strongest human evidence for Semax."
+        },
+        {
+          "claim": "May help with ADHD symptoms",
+          "supported": false,
+          "citation": "",
+          "pmid": "",
+          "notes": "No published clinical trial data on ADHD specifically found. This claim appears extrapolated from dopamine modulation data and anecdotal reports."
+        },
+        {
+          "claim": "Supports nerve regeneration",
+          "supported": true,
+          "citation": "Multiple preclinical studies",
+          "pmid": "",
+          "notes": "Supported by BDNF upregulation mechanism and neurotrophic factor activation data, primarily from animal studies. The stroke recovery data in humans indirectly supports this."
+        }
+      ],
+      "validatedSideEffects": [
+        {
+          "claim": "Generally well tolerated",
+          "supported": true,
+          "citation": "Multiple clinical sources",
+          "pmid": "",
+          "notes": "Consistent across Russian clinical use and limited Western research. Low incidence of side effects."
+        },
+        {
+          "claim": "Nasal dryness/irritation",
+          "supported": true,
+          "citation": "Clinical practice reports",
+          "pmid": "",
+          "notes": "Expected with intranasal delivery. Commonly reported."
+        },
+        {
+          "claim": "Rare headache",
+          "supported": true,
+          "citation": "Clinical practice reports",
+          "pmid": "",
+          "notes": "Mild and transient. Reported in multiple clinical summaries."
+        },
+        {
+          "claim": "Potential overstimulation at high doses",
+          "supported": true,
+          "citation": "Clinical practice reports",
+          "pmid": "",
+          "notes": "Restlessness and irritability reported with higher doses. Consistent with dopaminergic activation mechanism."
+        }
+      ],
+      "dosingValidation": {
+        "ourClaim": "200-600 mcg/day (0.1% solution)",
+        "publishedRange": "100-300 mcg/dose, 1-3 times daily for nootropic use (0.1% solution = 2 drops per nostril); 6000 mcg/day (1% solution) for stroke recovery",
+        "citation": "Russian prescribing guidelines; Gusev et al., 2018 (PMID: 29798983)",
+        "accurate": true,
+        "notes": "Our range of 200-600 mcg/day aligns with nootropic dosing. Correctly distinguishes 0.1% (nootropic) from 1% (neurological conditions)."
+      },
+      "evidenceLevelValidation": {
+        "ourLevel": "moderate",
+        "actualLevel": "moderate",
+        "reasoning": "The 110-patient stroke study provides meaningful human evidence. Decades of Russian clinical use. BDNF mechanism well-characterized. However, no Western RCTs for nootropic claims. 'Moderate' is appropriate."
+      },
+      "legalStatusUpdate": {
+        "accurate": true,
+        "notes": "Correctly states not FDA-approved, registered nootropic in Russia, research chemical in US. Like Selank, Semax falls under WADA S0 (Non-Approved Substances). Our wadaBanned: false could be misleading for athletes."
+      },
+      "keyCitations": [
+        {
+          "title": "Semax, an analog of ACTH(4-10) with cognitive effects, regulates BDNF and trkB expression in the rat hippocampus",
+          "authors": "Dolotov et al.",
+          "journal": "Brain Research",
+          "year": 2006,
+          "pmid": "16996037",
+          "doi": "10.1016/j.brainres.2006.07.015",
+          "type": "animal_study"
+        },
+        {
+          "title": "The efficacy of semax in the treatment of patients at different stages of ischemic stroke",
+          "authors": "Gusev et al.",
+          "journal": "Zh Nevrol Psikhiatr Im S S Korsakova",
+          "year": 2018,
+          "pmid": "29798983",
+          "doi": "",
+          "type": "clinical_trial"
+        },
+        {
+          "title": "Semax, an ACTH(4-10) analogue with nootropic properties, activates dopaminergic and serotoninergic brain systems in rodents",
+          "authors": "Eremin et al.",
+          "journal": "Neurochemical Research",
+          "year": 2005,
+          "pmid": "16362768",
+          "doi": "10.1007/s11064-005-8826-8",
+          "type": "animal_study"
+        },
+        {
+          "title": "A nootropic adrenocorticotropin analog 4-10-semax (15 years experience in its design and study)",
+          "authors": "Ashmarin et al.",
+          "journal": "Zh Vyssh Nerv Deiat Im I P Pavlova",
+          "year": 1997,
+          "pmid": "9173745",
+          "doi": "",
+          "type": "review"
+        },
+        {
+          "title": "Semax and Pro-Gly-Pro Activate the Transcription of Neurotrophins and Their Receptor Genes after Cerebral Ischemia",
+          "authors": "Filippenkov et al.",
+          "journal": "Int J Mol Sci",
+          "year": 2024,
+          "pmid": "",
+          "doi": "",
+          "type": "animal_study"
+        }
+      ],
+      "corrections": [
+        "WADA status should note that Semax falls under S0 (Non-Approved Substances) even though wadaBanned is set to false. Potentially misleading for athletes.",
+        "ADHD benefit claim has no published clinical evidence and should be flagged as speculative/anecdotal."
+      ],
+      "missingInfo": [
+        "The 110-patient stroke study (PMID: 29798983) is the strongest human evidence and should be cited in evidenceNotes",
+        "The 24-subject fMRI study showing default mode network effects in healthy subjects",
+        "The 15+ year track record as a registered pharmaceutical in Russia (registered since ~2011)"
+      ]
+    },
+    {
+      "id": "dsip",
+      "validatedBenefits": [
+        {
+          "claim": "Promotes delta-wave (deep) sleep",
+          "supported": true,
+          "citation": "Schneider-Helmert & Schoenenberger, Eur Neurol, 1983",
+          "pmid": "6895513",
+          "notes": "First human study (6 volunteers, double-blind crossover): IV DSIP (25 nmol/kg) increased sleep by 59% in 130-min post-treatment window. Delayed effects included reduced stage 1 sleep and better sleep efficiency. However, the name 'delta sleep-inducing' is somewhat misleading as effects are modest."
+        },
+        {
+          "claim": "Modulates sleep/wake cycles without sedation",
+          "supported": true,
+          "citation": "Schneider-Helmert & Schoenenberger, 1983",
+          "pmid": "6895513",
+          "notes": "Described as increasing 'pressure to sleep' rather than acting as a sedative. Subjects reported feeling of sleep pressure but were not forcibly sedated."
+        },
+        {
+          "claim": "Reduces stress and cortisol",
+          "supported": false,
+          "citation": "Gaillard & Schoenenberger, Clin Endocrinol, 1995",
+          "pmid": "7777652",
+          "notes": "A study specifically tested this and found DSIP does NOT affect CRH- and meal-induced ACTH and cortisol secretion. This claim is NOT supported by the evidence."
+        },
+        {
+          "claim": "Analgesic (pain-reducing) effects",
+          "supported": true,
+          "citation": "Kastin et al., Pharmacol Biochem Behav, 1984 (review)",
+          "pmid": "6145137",
+          "notes": "Analgesic properties noted in review literature, primarily from animal data. Limited human evidence for this specific claim."
+        },
+        {
+          "claim": "Enhances recovery during sleep",
+          "supported": false,
+          "citation": "",
+          "pmid": "",
+          "notes": "No direct evidence found for enhanced recovery during sleep. This claim appears extrapolated from the sleep-promoting effects."
+        },
+        {
+          "claim": "Normalizes disturbed sleep patterns",
+          "supported": false,
+          "citation": "Bes et al., Neuropsychobiology, 1992",
+          "pmid": "1299794",
+          "notes": "The double-blind study of 16 chronic insomniacs found ONLY weak, statistically borderline improvements in sleep efficiency and latency. Authors explicitly concluded 'short-term treatment of chronic insomnia with DSIP is not likely to be of major therapeutic benefit.' This claim overstates the evidence."
+        }
+      ],
+      "validatedSideEffects": [
+        {
+          "claim": "Fatigue if dose too high",
+          "supported": true,
+          "citation": "Clinical reports",
+          "pmid": "",
+          "notes": "Reported in multiple clinical summaries. Logical given sleep-promoting mechanism."
+        },
+        {
+          "claim": "Injection site irritation",
+          "supported": true,
+          "citation": "Clinical reports",
+          "pmid": "",
+          "notes": "Standard for subcutaneous peptide injections."
+        },
+        {
+          "claim": "Daytime grogginess",
+          "supported": true,
+          "citation": "Clinical reports",
+          "pmid": "",
+          "notes": "Reported anecdotally but consistent with mechanism."
+        },
+        {
+          "claim": "Headache (rare)",
+          "supported": true,
+          "citation": "Clinical reports",
+          "pmid": "",
+          "notes": "Rarely reported in clinical literature."
+        }
+      ],
+      "dosingValidation": {
+        "ourClaim": "100-300 mcg before bedtime",
+        "publishedRange": "25 nmol/kg IV (approximately 250 mcg for 70kg adult) in clinical studies; subcutaneous dosing not formally studied",
+        "citation": "Schneider-Helmert & Schoenenberger, 1983 (PMID: 6895513)",
+        "accurate": true,
+        "notes": "Our range aligns with the clinical study dose converted to mcg, though the original studies used IV infusion, not subcutaneous injection. Subcutaneous dosing is extrapolated, not clinically validated."
+      },
+      "evidenceLevelValidation": {
+        "ourLevel": "low_moderate",
+        "actualLevel": "low_moderate",
+        "reasoning": "Appropriate. Human studies exist from 1980s-90s but are small, old, and showed mixed/weak results. The largest insomnia trial found no major therapeutic benefit. Mechanism described but not translated to robust clinical outcomes."
+      },
+      "legalStatusUpdate": {
+        "accurate": true,
+        "notes": "Correctly states not FDA-approved. WADA status (wadaBanned: false) should be reviewed - DSIP likely falls under S0 (Non-Approved Substances) as it has no regulatory approval anywhere."
+      },
+      "keyCitations": [
+        {
+          "title": "Acute and delayed effects of DSIP (delta sleep-inducing peptide) on human sleep behavior",
+          "authors": "Schneider-Helmert & Schoenenberger",
+          "journal": "European Neurology",
+          "year": 1983,
+          "pmid": "6895513",
+          "doi": "",
+          "type": "clinical_trial"
+        },
+        {
+          "title": "Effects of delta sleep-inducing peptide on sleep of chronic insomniac patients. A double-blind study",
+          "authors": "Bes et al.",
+          "journal": "Neuropsychobiology",
+          "year": 1992,
+          "pmid": "1299794",
+          "doi": "",
+          "type": "clinical_trial"
+        },
+        {
+          "title": "Delta-sleep-inducing peptide (DSIP): a review",
+          "authors": "Kastin et al.",
+          "journal": "Pharmacol Biochem Behav",
+          "year": 1984,
+          "pmid": "6145137",
+          "doi": "",
+          "type": "review"
+        },
+        {
+          "title": "Delta-sleep-inducing peptide does not affect CRH and meal-induced ACTH and cortisol secretion",
+          "authors": "Gaillard & Schoenenberger",
+          "journal": "Clinical Endocrinology",
+          "year": 1995,
+          "pmid": "7777652",
+          "doi": "",
+          "type": "clinical_trial"
+        },
+        {
+          "title": "Delta sleep-inducing peptide (review)",
+          "authors": "Graf & Kastin",
+          "journal": "European Journal of Anaesthesiology",
+          "year": 2001,
+          "pmid": "",
+          "doi": "",
+          "type": "review"
+        }
+      ],
+      "corrections": [
+        "CRITICAL: 'Reduces stress and cortisol' is contradicted by published evidence (PMID: 7777652). A study specifically found DSIP does NOT affect ACTH/cortisol secretion. This claim should be removed or flagged.",
+        "'Normalizes disturbed sleep patterns' significantly overstates the evidence. The largest insomnia study concluded DSIP is 'not likely to be of major therapeutic benefit.' Should be reworded.",
+        "'Enhances recovery during sleep' has no direct evidence and should be removed or clearly labeled as speculative.",
+        "WADA status should be reviewed - DSIP likely falls under S0 (Non-Approved Substances)."
+      ],
+      "missingInfo": [
+        "The 1992 double-blind insomnia study finding of 'not likely to be of major therapeutic benefit' should be mentioned in evidenceNotes for balance",
+        "FDA immunogenicity warning for compounded DSIP products",
+        "Note that all clinical studies used IV infusion, not subcutaneous injection - the SC route is not formally validated"
+      ]
+    },
+    {
+      "id": "kisspeptin",
+      "validatedBenefits": [
+        {
+          "claim": "Stimulates natural LH and FSH production",
+          "supported": true,
+          "citation": "George et al., J Clin Endocrinol Metab, 2011",
+          "pmid": "21632807",
+          "notes": "Well-demonstrated in multiple human studies. IV kisspeptin-10 significantly elevated LH at all tested doses. FSH increased at higher doses (1.0 and 3.0 nmol/kg). Strong evidence from RCTs."
+        },
+        {
+          "claim": "Increases testosterone via HPG axis",
+          "supported": true,
+          "citation": "George et al., J Clin Endocrinol Metab, 2011",
+          "pmid": "21632807",
+          "notes": "Serum testosterone significantly increased after IV kisspeptin-10 (0.3 or 1.0 nmol/kg). Continuous infusion increases testosterone, LH pulse frequency, and pulse size."
+        },
+        {
+          "claim": "Maintains fertility during TRT (HCG alternative)",
+          "supported": false,
+          "citation": "",
+          "pmid": "",
+          "notes": "No published clinical trial specifically tested kisspeptin as an HCG alternative during TRT. This is a theoretical/extrapolated claim based on its ability to stimulate LH/FSH. Plausible but unproven in that specific clinical context."
+        },
+        {
+          "claim": "Dose-dependent egg maturation (IVF)",
+          "supported": true,
+          "citation": "Jayasena et al., J Clin Invest, 2014",
+          "pmid": "24355923",
+          "notes": "Clinical study of 53 subfertile women. Kisspeptin-54 triggered egg maturation with minimum effective dose of 6.4 nmol/kg. Acceptable rates of egg maturation (75-85% metaphase II oocytes) at higher doses. Potential to reduce OHSS risk vs hCG."
+        },
+        {
+          "claim": "Prevents testicular atrophy during TRT",
+          "supported": false,
+          "citation": "",
+          "pmid": "",
+          "notes": "No published study directly testing this claim. Extrapolated from LH-stimulating effects. The very short half-life (28 min) of kisspeptin raises questions about sustained gonadotropic stimulation needed for this purpose."
+        },
+        {
+          "claim": "Enhances sexual desire/arousal",
+          "supported": true,
+          "citation": "Comninos et al., J Clin Endocrinol Metab, 2025",
+          "pmid": "39880372",
+          "notes": "Recent 2025 review confirms kisspeptin's role in neuroendocrine regulation of reproductive behavior. However, a separate 2025 study (PMID: 40036336) found kisspeptin administration stimulates reproductive hormones but does NOT affect anxiety in humans. Sexual arousal enhancement is supported by brain imaging studies."
+        }
+      ],
+      "validatedSideEffects": [
+        {
+          "claim": "Flushing and warmth (common, resolves quickly)",
+          "supported": true,
+          "citation": "Jayasena et al., J Clin Invest, 2014",
+          "pmid": "24355923",
+          "notes": "Most frequently reported effect across all clinical trials. Short-lived and self-resolving."
+        },
+        {
+          "claim": "Very well tolerated in human studies",
+          "supported": true,
+          "citation": "Multiple clinical trials",
+          "pmid": "",
+          "notes": "Across all published human kisspeptin trials, no serious adverse events reported. No changes in blood pressure, heart rate, or renal function."
+        }
+      ],
+      "dosingValidation": {
+        "ourClaim": "100-200 mcg, 2-3 times per week",
+        "publishedRange": "IV bolus: 0.3-3.0 nmol/kg kisspeptin-10; SC: 6.4-12.8 nmol/kg kisspeptin-54 (IVF trigger); Intranasal route also being studied",
+        "citation": "George et al., 2011 (PMID: 21632807); Jayasena et al., 2014",
+        "accurate": false,
+        "notes": "Clinical studies used weight-based IV/SC dosing in nmol/kg, not fixed mcg doses. The 100-200 mcg, 2-3 times per week dosing appears to come from wellness clinic protocols rather than published research. The half-life is only 28 minutes, which raises questions about the 2-3 times/week protocol. A recent 2025 study also explored intranasal delivery."
+      },
+      "evidenceLevelValidation": {
+        "ourLevel": "moderate",
+        "actualLevel": "moderate_high",
+        "reasoning": "Multiple well-designed human RCTs, published in high-impact journals (JCEM, JCI). Dose-dependent effects clearly demonstrated. IVF application is Phase 2 level. Master regulator role in HPG axis well-established. Evidence is stronger than 'moderate' suggests."
+      },
+      "legalStatusUpdate": {
+        "accurate": true,
+        "notes": "Correctly states not FDA-approved, used in clinical research. TAK-448 (kisspeptin analogue) is in Phase 2 trials. WADA status (wadaBanned: false) appears correct - kisspeptin is not specifically listed on the WADA prohibited list, though athletes should verify."
+      },
+      "keyCitations": [
+        {
+          "title": "Kisspeptin-10 Is a Potent Stimulator of LH and Increases Pulse Frequency in Men",
+          "authors": "George et al.",
+          "journal": "Journal of Clinical Endocrinology & Metabolism",
+          "year": 2011,
+          "pmid": "21632807",
+          "doi": "10.1210/jc.2011-0089",
+          "type": "clinical_trial"
+        },
+        {
+          "title": "Kisspeptin-54 triggers egg maturation in women undergoing in vitro fertilization",
+          "authors": "Jayasena et al.",
+          "journal": "Journal of Clinical Investigation",
+          "year": 2014,
+          "pmid": "24355923",
+          "doi": "10.1172/JCI75730",
+          "type": "clinical_trial"
+        },
+        {
+          "title": "The Effects of Kisspeptin-10 on Reproductive Hormone Release Show Sexual Dimorphism in Humans",
+          "authors": "Dhillo et al.",
+          "journal": "Journal of Clinical Endocrinology & Metabolism",
+          "year": 2011,
+          "pmid": "22049170",
+          "doi": "",
+          "type": "clinical_trial"
+        },
+        {
+          "title": "Neuroendocrine Regulation of Reproductive Behavior and Emotional Control by Kisspeptin",
+          "authors": "Comninos et al.",
+          "journal": "Journal of Clinical Endocrinology & Metabolism",
+          "year": 2025,
+          "pmid": "39880372",
+          "doi": "",
+          "type": "review"
+        },
+        {
+          "title": "Kisspeptins Regulating Fertility: Potential Future Therapeutic Approach in Infertility Treatment",
+          "authors": "Multiple authors",
+          "journal": "Endocrinology Reviews",
+          "year": 2025,
+          "pmid": "40429279",
+          "doi": "",
+          "type": "review"
+        },
+        {
+          "title": "Intranasal kisspeptin administration rapidly stimulates gonadotropin release in humans",
+          "authors": "Multiple authors",
+          "journal": "EBioMedicine",
+          "year": 2025,
+          "pmid": "",
+          "doi": "",
+          "type": "clinical_trial"
+        }
+      ],
+      "corrections": [
+        "'Maintains fertility during TRT (HCG alternative)' is not directly supported by published research. Should be labeled as theoretical/extrapolated.",
+        "'Prevents testicular atrophy during TRT' is similarly unproven. Should be labeled as theoretical.",
+        "Dosing of 100-200 mcg 2-3x/week does not match published clinical trial protocols which use weight-based nmol/kg dosing. Should note this is from wellness clinics, not published studies.",
+        "Evidence level should be moderate_high based on multiple well-designed human RCTs in high-impact journals.",
+        "The very short half-life (28 min) should be mentioned as a significant limitation for chronic/maintenance use."
+      ],
+      "missingInfo": [
+        "Half-life of only 28 minutes is a critical pharmacological limitation that should be mentioned",
+        "Intranasal delivery route is being studied (2025 publication) and could be a significant development",
+        "Kisspeptin's role as a PCOS biomarker is an emerging area of research",
+        "IVF-specific benefit of potentially reducing OHSS risk compared to hCG triggers"
+      ]
+    },
+    {
+      "id": "aod-9604",
+      "validatedBenefits": [
+        {
+          "claim": "Stimulates fat cell metabolism (lipolysis)",
+          "supported": true,
+          "citation": "Heffernan et al., Endocrinology, 2001",
+          "pmid": "11713213",
+          "notes": "Demonstrated in obese mice and beta-3-AR knockout mice. AOD-9604 stimulated lipolysis and inhibited lipogenesis. Animal data is supportive."
+        },
+        {
+          "claim": "Inhibits new fat formation (lipogenesis)",
+          "supported": true,
+          "citation": "Heffernan et al., Endocrinology, 2001",
+          "pmid": "11713213",
+          "notes": "Shown in animal models. The dual mechanism (pro-lipolysis, anti-lipogenesis) was the basis for clinical development."
+        },
+        {
+          "claim": "Preserves muscle tissue during fat loss",
+          "supported": false,
+          "citation": "",
+          "pmid": "",
+          "notes": "No published evidence specifically demonstrating muscle preservation with AOD-9604. This claim appears extrapolated from the fact that AOD-9604 does not affect IGF-1/growth, but that is not the same as actively preserving muscle."
+        },
+        {
+          "claim": "Maintains normal glucose homeostasis",
+          "supported": true,
+          "citation": "Phase II clinical trial data; Moré et al., JOFEM",
+          "pmid": "",
+          "notes": "Clinical data shows AOD-9604 does not impair insulin sensitivity or worsen blood sugar regulation. The Phase II trial showed improvement in glucose tolerance profiles."
+        },
+        {
+          "claim": "No effect on blood sugar or growth",
+          "supported": true,
+          "citation": "Phase II clinical trial data",
+          "pmid": "",
+          "notes": "Well-established that AOD-9604 does not stimulate IGF-1, does not affect blood glucose, and does not cause growth effects. This is the primary safety differentiator from full HGH."
+        }
+      ],
+      "validatedSideEffects": [
+        {
+          "claim": "Injection site reactions",
+          "supported": true,
+          "citation": "Phase II clinical trials",
+          "pmid": "",
+          "notes": "Most frequently reported side effect across clinical trials."
+        },
+        {
+          "claim": "Headache",
+          "supported": true,
+          "citation": "Phase II clinical trials",
+          "pmid": "",
+          "notes": "Occasionally reported in clinical trials."
+        },
+        {
+          "claim": "Mild nausea",
+          "supported": true,
+          "citation": "Phase II clinical trials",
+          "pmid": "",
+          "notes": "Mild GI symptoms reported in some participants."
+        }
+      ],
+      "dosingValidation": {
+        "ourClaim": "250-500 mcg daily",
+        "publishedRange": "Oral: 1 mg/day showed best results in Phase II (weight-based dosing up to 30 mg tested); Injectable SC dosing is not from clinical trials",
+        "citation": "Phase II trial data (Metabolic Pharmaceuticals)",
+        "accurate": false,
+        "notes": "The Phase II trial used ORAL dosing (1-30 mg), not injectable. The 250-500 mcg injectable dose cited in our data comes from wellness clinic protocols, not published research. The most effective clinical dose was 1 mg oral daily. Injectable SC dosing at 250-500 mcg has no formal clinical validation."
+      },
+      "evidenceLevelValidation": {
+        "ourLevel": "low_moderate",
+        "actualLevel": "low_moderate",
+        "reasoning": "Appropriate. Six clinical trials with ~900 participants, but the largest Phase IIb trial (536 subjects, 24 weeks) FAILED to show statistical significance. Development was terminated in 2007. The evidence level is correctly rated as low_moderate."
+      },
+      "legalStatusUpdate": {
+        "accurate": true,
+        "notes": "Correctly states not FDA-approved, Phase IIb trial failed 2007, removed from Category 2 Sept 2024. WADA banned status is correct (true). AOD-9604 falls under WADA S0 category and WADA has explicitly confirmed it is prohibited."
+      },
+      "keyCitations": [
+        {
+          "title": "The effects of human GH and its lipolytic fragment (AOD9604) on lipid metabolism following chronic treatment in obese mice and beta(3)-AR knock-out mice",
+          "authors": "Heffernan et al.",
+          "journal": "Endocrinology",
+          "year": 2001,
+          "pmid": "11713213",
+          "doi": "",
+          "type": "animal_study"
+        },
+        {
+          "title": "The effect of AOD9604 on weight loss in obese adults: Results of a randomized, double-blind, placebo-controlled, multicenter study",
+          "authors": "Metabolic Pharmaceuticals",
+          "journal": "Obesity Research",
+          "year": 2007,
+          "pmid": "",
+          "doi": "",
+          "type": "clinical_trial"
+        },
+        {
+          "title": "Safety and Metabolism of AOD9604, a Novel Nutraceutical Ingredient for Improved Metabolic Health",
+          "authors": "Moré et al.",
+          "journal": "Journal of Endocrinology and Metabolism",
+          "year": 2014,
+          "pmid": "",
+          "doi": "",
+          "type": "clinical_trial"
+        },
+        {
+          "title": "Obesity Pharmacotherapy: Current Perspectives and Future Directions",
+          "authors": "Adan et al.",
+          "journal": "Pharmaceuticals (Basel)",
+          "year": 2013,
+          "pmid": "",
+          "doi": "",
+          "type": "review"
+        }
+      ],
+      "corrections": [
+        "'Preserves muscle tissue during fat loss' has no published evidence. Should be removed or clearly labeled as unproven.",
+        "Dosing of 250-500 mcg SC daily is from wellness protocols, not published research. Clinical trials used oral dosing (1-30 mg). This discrepancy should be noted.",
+        "Description already correctly notes the Phase IIb trial failure, which is good and honest."
+      ],
+      "missingInfo": [
+        "The Phase II 1mg oral dose was the most effective (2.8 kg vs 0.8 kg placebo over 12 weeks) - this specific data point is useful context",
+        "AOD-9604 has GRAS (Generally Recognized As Safe) status as a food ingredient in Australia/New Zealand, which is distinct from pharmaceutical use",
+        "A 2024 PCAC meeting presentation (FDA-2024-N-4777-0009) attempted to save AOD-9604's compounding status"
+      ]
+    },
+    {
+      "id": "mots-c",
+      "validatedBenefits": [
+        {
+          "claim": "Exercise mimetic (mimics benefits of physical exercise)",
+          "supported": true,
+          "citation": "Reynolds et al., Nature Communications, 2021",
+          "pmid": "33441542",
+          "notes": "Published in Nature Communications. MOTS-c is exercise-induced (11.9-fold increase in skeletal muscle after exercise) and when administered exogenously, enhances physical capacity in aged mice. The 'exercise mimetic' label is from the published literature."
+        },
+        {
+          "claim": "Stimulates glucose utilization and fat oxidation",
+          "supported": true,
+          "citation": "Lee et al., Cell Metabolism, 2015",
+          "pmid": "25738459",
+          "notes": "Original discovery paper. MOTS-c promotes metabolic homeostasis, reduces obesity and insulin resistance in mice. Mechanism via AMPK activation and inhibition of folate cycle/purine biosynthesis."
+        },
+        {
+          "claim": "Improves insulin sensitivity (AMPK pathway)",
+          "supported": true,
+          "citation": "Lee et al., Cell Metabolism, 2015; Kim et al., Physiol Reports, 2019",
+          "pmid": "25738459",
+          "notes": "Well-established in mouse models. MOTS-c prevented age-dependent and high-fat-diet-induced insulin resistance. Primary mechanism is AMPK activation in skeletal muscle. Called an 'equal opportunity insulin sensitizer' (PMC6462348)."
+        },
+        {
+          "claim": "Reduces inflammation",
+          "supported": true,
+          "citation": "Zhai et al., Front Endocrinol, 2023",
+          "pmid": "",
+          "notes": "Review article documents anti-inflammatory properties. Primarily from animal and in vitro data."
+        },
+        {
+          "claim": "Improves exercise capacity",
+          "supported": true,
+          "citation": "Reynolds et al., Nature Communications, 2021",
+          "pmid": "33441542",
+          "notes": "Demonstrated in aged mice. MOTS-c treatment improved physical capacity and muscle homeostasis. No human exercise capacity trials."
+        },
+        {
+          "claim": "Promotes stress resistance",
+          "supported": true,
+          "citation": "Zhai et al., Front Endocrinol, 2023",
+          "pmid": "",
+          "notes": "Documented in review literature. MOTS-c effects related to stress, metabolism, and aging. Primarily animal/cell data."
+        }
+      ],
+      "validatedSideEffects": [
+        {
+          "claim": "Generally well tolerated",
+          "supported": false,
+          "citation": "USADA, 2024",
+          "pmid": "",
+          "notes": "CANNOT be confirmed. There are NO completed clinical trials in humans. USADA explicitly states 'it is unknown under what conditions (if any) it is safe to use MOTS-c.' Anecdotal reports include heart palpitations, insomnia, and fever."
+        },
+        {
+          "claim": "Injection site irritation",
+          "supported": true,
+          "citation": "Anecdotal reports",
+          "pmid": "",
+          "notes": "Commonly reported in anecdotal user reports, standard for SC peptide injection."
+        },
+        {
+          "claim": "Mild fatigue initially",
+          "supported": true,
+          "citation": "Anecdotal reports",
+          "pmid": "",
+          "notes": "Reported anecdotally. No clinical trial confirmation."
+        },
+        {
+          "claim": "Rare muscle cramping",
+          "supported": true,
+          "citation": "Anecdotal reports",
+          "pmid": "",
+          "notes": "Reported anecdotally. Consistent with metabolic effects on skeletal muscle."
+        }
+      ],
+      "dosingValidation": {
+        "ourClaim": "5-15 mg/week, split 2-3 injections",
+        "publishedRange": "No established human dosing. Animal studies: 0.5-15 mg/kg (weight-based, not fixed dose). Human dosing protocols are entirely from wellness clinics.",
+        "citation": "No clinical trial human dosing data exists",
+        "accurate": false,
+        "notes": "CRITICAL: There are no completed human clinical trials for MOTS-c. All human dosing is extrapolated from animal studies and wellness clinic protocols. Our stated dosing has no clinical validation."
+      },
+      "evidenceLevelValidation": {
+        "ourLevel": "moderate",
+        "actualLevel": "low_moderate",
+        "reasoning": "While the mechanistic data is published in high-impact journals (Cell Metabolism, Nature Communications), there are NO completed human clinical trials. All therapeutic claims are from animal/cell data. 'Moderate' overstates the clinical evidence. The correlation studies in humans (serum MOTS-c levels vs muscle strength) are observational, not interventional."
+      },
+      "legalStatusUpdate": {
+        "accurate": true,
+        "notes": "Correctly states not FDA-approved. WADA banned status is correct (true) - MOTS-c was explicitly added to the 2024 WADA Prohibited List under S4 (Metabolic Modulators) as an AMPK activator."
+      },
+      "keyCitations": [
+        {
+          "title": "The mitochondrial-derived peptide MOTS-c promotes metabolic homeostasis and reduces obesity and insulin resistance",
+          "authors": "Lee et al.",
+          "journal": "Cell Metabolism",
+          "year": 2015,
+          "pmid": "25738459",
+          "doi": "10.1016/j.cmet.2015.02.009",
+          "type": "animal_study"
+        },
+        {
+          "title": "MOTS-c is an exercise-induced mitochondrial-encoded regulator of age-dependent physical decline and muscle homeostasis",
+          "authors": "Reynolds et al.",
+          "journal": "Nature Communications",
+          "year": 2021,
+          "pmid": "33441542",
+          "doi": "10.1038/s41467-020-20790-0",
+          "type": "animal_study"
+        },
+        {
+          "title": "MOTS-c: A promising mitochondrial-derived peptide for therapeutic exploitation",
+          "authors": "Zhai et al.",
+          "journal": "Frontiers in Endocrinology",
+          "year": 2023,
+          "pmid": "",
+          "doi": "10.3389/fendo.2023.1120533",
+          "type": "review"
+        },
+        {
+          "title": "The mitochondrial-derived peptide MOTS-c is a regulator of plasma metabolites and enhances insulin sensitivity",
+          "authors": "Kim et al.",
+          "journal": "Physiological Reports",
+          "year": 2019,
+          "pmid": "",
+          "doi": "10.14814/phy2.14171",
+          "type": "animal_study"
+        },
+        {
+          "title": "Mitochondria-derived peptide MOTS-c restores mitochondrial respiration in type 2 diabetic heart",
+          "authors": "Multiple authors",
+          "journal": "Frontiers in Physiology",
+          "year": 2025,
+          "pmid": "",
+          "doi": "10.3389/fphys.2025.1602271",
+          "type": "animal_study"
+        }
+      ],
+      "corrections": [
+        "CRITICAL: Evidence level should be low_moderate, not moderate. There are NO completed human clinical trials for MOTS-c.",
+        "'Generally well tolerated' side effect claim cannot be verified - no clinical trial safety data exists. USADA warns safety is unknown.",
+        "EvidenceNotes cite 'Nature Communications (2020)' - the actual publication date is January 2021 (PMID: 33441542). Should be corrected.",
+        "Dosing has no clinical validation and should be clearly noted as extrapolated from animal data.",
+        "Missing serious anecdotal side effects: heart palpitations, insomnia, and fever have been reported by users."
+      ],
+      "missingInfo": [
+        "USADA explicitly warns 'it is unknown under what conditions (if any) it is safe to use MOTS-c' - this should be prominently noted",
+        "MOTS-c was only discovered in 2015, making it a very new research compound",
+        "The primary site of action is skeletal muscle (vs metformin which acts on liver)",
+        "Endogenous MOTS-c increases 11.9-fold in skeletal muscle and 1.6-fold in circulation during exercise"
+      ]
+    },
+    {
+      "id": "ss-31",
+      "validatedBenefits": [
+        {
+          "claim": "Restores mitochondrial ATP production",
+          "supported": true,
+          "citation": "Szeto et al., IJMS, 2025; TAZPOWER trial",
+          "pmid": "",
+          "notes": "Well-established mechanism. Elamipretide binds cardiolipin on the inner mitochondrial membrane, stabilizing cristae structure and enhancing ATP production. Confirmed in multiple preclinical and clinical studies."
+        },
+        {
+          "claim": "Reverses age-related mitochondrial decline",
+          "supported": true,
+          "citation": "Whitson et al., eLife, 2020; Campbell et al., PMC, 2024",
+          "pmid": "",
+          "notes": "Mouse studies show late-life elamipretide treatment reverses cardiac dysfunction and improves skeletal muscle function. 2024 study confirmed improvement in cardiac and skeletal muscle function during aging. No human aging trials yet."
+        },
+        {
+          "claim": "Increases muscle mass and fatigue resistance",
+          "supported": true,
+          "citation": "TAZPOWER trial (Barth syndrome); Campbell et al., 2024",
+          "pmid": "",
+          "notes": "TAZPOWER trial showed 45% improvement in knee extensor muscle strength in Barth syndrome patients. Mouse aging studies showed improved fatigue resistance. FDA approval was based on muscle strength improvement."
+        },
+        {
+          "claim": "Reduces oxidative stress across organs",
+          "supported": true,
+          "citation": "Szeto et al., IJMS, 2025",
+          "pmid": "",
+          "notes": "Comprehensive review confirms elamipretide reduces reactive oxygen species by stabilizing mitochondrial electron transport chain. Demonstrated across cardiac, renal, and skeletal muscle tissues."
+        },
+        {
+          "claim": "Cardioprotective properties",
+          "supported": true,
+          "citation": "Butler et al., JACC Heart Fail, 2020; Sabbah et al., Circ Heart Fail, 2017",
+          "pmid": "32068002",
+          "notes": "PROGRESS-HF Phase 2 trial showed decreased LV volumes at highest dose. However, the primary endpoint (LVESV change at week 4) was NOT met. Cardioprotective potential exists but clinical benefit for heart failure is inconclusive."
+        },
+        {
+          "claim": "Supports kidney and neurological function",
+          "supported": true,
+          "citation": "Stealth BioTherapeutics Phase II data",
+          "pmid": "",
+          "notes": "Renal study showed elamipretide protected against transient hypoxia developing in placebo group. Neurological support primarily from animal data and the general mitochondrial mechanism."
+        }
+      ],
+      "validatedSideEffects": [
+        {
+          "claim": "Injection site reactions",
+          "supported": true,
+          "citation": "FDA Prescribing Information (FORZINITY), 2025",
+          "pmid": "",
+          "notes": "Most common adverse reaction per FDA label. Can be treated with oral antihistamines or topical corticosteroids."
+        },
+        {
+          "claim": "Generally well tolerated in trials",
+          "supported": true,
+          "citation": "Multiple Phase II trials; FDA review",
+          "pmid": "",
+          "notes": "Confirmed across multiple clinical trials lasting up to 24 weeks. The FDA advisory committee voted 10-6 in favor of approval, validating acceptable safety profile."
+        }
+      ],
+      "dosingValidation": {
+        "ourClaim": "5-40 mg/day",
+        "publishedRange": "40 mg SC once daily (FDA-approved dose for Barth syndrome); IV: 0.01-0.25 mg/kg/h over 4 hours (clinical trial dose-escalation)",
+        "citation": "FDA Prescribing Information (FORZINITY), September 2025",
+        "accurate": true,
+        "notes": "Our range of 5-40 mg/day encompasses the FDA-approved dose (40 mg/day). The FDA-approved dose is specifically 40 mg SC daily for patients >=30 kg. The lower end (5 mg) reflects earlier dose-escalation studies."
+      },
+      "evidenceLevelValidation": {
+        "ourLevel": "high",
+        "actualLevel": "high",
+        "reasoning": "Appropriate. FDA-approved (accelerated approval) for Barth syndrome with full clinical trial package. Multiple Phase II trials for other indications. 8+ years of follow-up data from original trial participants. The PROGRESS-HF trial for heart failure did NOT meet primary endpoint, but overall evidence level is high given FDA approval."
+      },
+      "legalStatusUpdate": {
+        "accurate": true,
+        "notes": "Correctly states FDA-approved for Barth syndrome (Sept 2025). Brand name is FORZINITY (elamipretide HCl). Available by prescription for Barth syndrome. Off-label use from research suppliers exists. WADA status should be noted: elamipretide likely falls under S4 (Metabolic Modulators) or S0 (Non-Approved Substances for off-label uses)."
+      },
+      "keyCitations": [
+        {
+          "title": "Elamipretide: A Review of Its Structure, Mechanism of Action, and Therapeutic Potential",
+          "authors": "Szeto et al.",
+          "journal": "International Journal of Molecular Sciences",
+          "year": 2025,
+          "pmid": "",
+          "doi": "10.3390/ijms26030944",
+          "type": "review"
+        },
+        {
+          "title": "Effects of Elamipretide on Left Ventricular Function in Patients With Heart Failure With Reduced Ejection Fraction: The PROGRESS-HF Phase 2 Trial",
+          "authors": "Butler et al.",
+          "journal": "JACC Heart Failure",
+          "year": 2020,
+          "pmid": "32068002",
+          "doi": "",
+          "type": "clinical_trial"
+        },
+        {
+          "title": "Novel Mitochondria-Targeting Peptide in Heart Failure Treatment: A Randomized, Placebo-Controlled Trial of Elamipretide",
+          "authors": "Sabbah et al.",
+          "journal": "Circulation: Heart Failure",
+          "year": 2017,
+          "pmid": "29217757",
+          "doi": "10.1161/circheartfailure.117.004389",
+          "type": "clinical_trial"
+        },
+        {
+          "title": "Randomized dose-escalation trial of elamipretide in adults with primary mitochondrial myopathy",
+          "authors": "Karaa et al.",
+          "journal": "Neurology",
+          "year": 2018,
+          "pmid": "",
+          "doi": "10.1212/WNL.0000000000005255",
+          "type": "clinical_trial"
+        },
+        {
+          "title": "Late-life restoration of mitochondrial function reverses cardiac dysfunction in old mice",
+          "authors": "Whitson et al.",
+          "journal": "eLife",
+          "year": 2020,
+          "pmid": "",
+          "doi": "10.7554/eLife.55513",
+          "type": "animal_study"
+        },
+        {
+          "title": "The mitochondrial-targeted peptide therapeutic elamipretide improves cardiac and skeletal muscle function during aging",
+          "authors": "Campbell et al.",
+          "journal": "GeroScience",
+          "year": 2024,
+          "pmid": "",
+          "doi": "",
+          "type": "animal_study"
+        },
+        {
+          "title": "FDA Prescribing Information: FORZINITY (elamipretide) injection",
+          "authors": "FDA/Stealth BioTherapeutics",
+          "journal": "FDA Drug Label",
+          "year": 2025,
+          "pmid": "",
+          "doi": "",
+          "type": "clinical_trial"
+        }
+      ],
+      "corrections": [
+        "PROGRESS-HF heart failure trial did NOT meet its primary endpoint (LVESV change). Cardioprotective claims should note this limitation.",
+        "WADA status should be clarified - elamipretide is likely prohibited under S4 or S0 for athletes.",
+        "Brand name FORZINITY should be added to aliases"
+      ],
+      "missingInfo": [
+        "Brand name FORZINITY should be in aliases list",
+        "The FDA advisory committee voted 10-6 in favor - close vote indicating some debate about evidence",
+        "More than half of original TAZPOWER trial patients continue treatment 8+ years later",
+        "Dosage modification required for adults with renal impairment per FDA label",
+        "The MMPOWER-3 trial for primary mitochondrial myopathy did NOT meet its primary endpoint"
+      ]
+    },
+    {
+      "id": "melanotan-ii",
+      "validatedBenefits": [
+        {
+          "claim": "Induces tanning within ~5 doses without UV",
+          "supported": true,
+          "citation": "DermNet NZ; Phase I trial data",
+          "pmid": "",
+          "notes": "Melanotan II stimulates melanocyte activity and melanin production. Tanning effect is well-documented. However, UV exposure typically enhances the effect."
+        },
+        {
+          "claim": "Increases sexual arousal and libido",
+          "supported": true,
+          "citation": "Phase I clinical trial data",
+          "pmid": "",
+          "notes": "Spontaneous erections reported in males 1-5 hours after administration. This is a well-documented effect due to melanocortin receptor activation. PT-141 (bremelanotide) was derived from Melanotan II specifically for this purpose."
+        },
+        {
+          "claim": "May provide some UV protection via melanin",
+          "supported": true,
+          "citation": "Theoretical/mechanistic",
+          "pmid": "",
+          "notes": "Increased melanin does provide some degree of UV protection. However, this should NOT be interpreted as cancer protection, as melanocyte stimulation itself carries risks."
+        }
+      ],
+      "validatedSideEffects": [
+        {
+          "claim": "Nausea and vomiting (common)",
+          "supported": true,
+          "citation": "Phase I clinical trial",
+          "pmid": "",
+          "notes": "Nausea reported at doses as low as 0.025 mg/kg in Phase I trial. Very common side effect."
+        },
+        {
+          "claim": "Facial flushing",
+          "supported": true,
+          "citation": "Clinical reports",
+          "pmid": "",
+          "notes": "Warmth and redness typically lasting 1-2 hours. Well-documented."
+        },
+        {
+          "claim": "Increased moles and freckles",
+          "supported": true,
+          "citation": "DermNet NZ; multiple case reports",
+          "pmid": "",
+          "notes": "Deepening of existing moles, new moles, and atypical melanocytic naevi are well-documented effects."
+        },
+        {
+          "claim": "SERIOUS: Potential melanoma/skin cancer risk",
+          "supported": true,
+          "citation": "Multiple case reports; DermNet NZ",
+          "pmid": "24355990",
+          "notes": "At least 5 case reports of melanomas during or after Melanotan II use. A 2025 case report described oral mucosal malignant melanoma potentially linked to Melanotan II nasal spray. While direct causation is not proven, melanocyte stimulation raises significant concern. Development was abandoned partly due to safety concerns."
+        },
+        {
+          "claim": "SERIOUS: Renal infarction (potentially fatal)",
+          "supported": true,
+          "citation": "Peters & Hadimeri, CEN Case Reports, 2020",
+          "pmid": "31953620",
+          "notes": "Case report of renal infarction attributed to Melanotan II. Additionally, rhabdomyolysis and renal dysfunction have been documented (PMID: 23121206). Thrombotic mechanism and direct toxic effects on renal parenchyma considered."
+        },
+        {
+          "claim": "SERIOUS: Brain swelling reported",
+          "supported": true,
+          "citation": "Case reports in literature",
+          "pmid": "",
+          "notes": "Reported in clinical literature but rare. The non-selective melanocortin agonism contributes to widespread systemic effects."
+        }
+      ],
+      "dosingValidation": {
+        "ourClaim": "250-500 mcg initially, maintenance 500 mcg/week",
+        "publishedRange": "Phase I trial: 0.025 mg/kg (nausea threshold); No approved therapeutic dosing exists; Underground protocols: 250-500 mcg loading, then maintenance",
+        "citation": "Phase I trial data; DermNet NZ",
+        "accurate": true,
+        "notes": "The stated dosing matches commonly used underground protocols. There is no FDA-approved dosing. Phase I trial dosing was 0.025 mg/kg, which is approximately 1.75 mg for a 70kg adult - higher than the typical underground dose."
+      },
+      "evidenceLevelValidation": {
+        "ourLevel": "moderate",
+        "actualLevel": "moderate",
+        "reasoning": "Appropriate. Phase I trial data exists. Multiple case reports document both efficacy and serious adverse events. Development was abandoned due to safety concerns, not lack of efficacy. The tanning and libido effects are well-established."
+      },
+      "legalStatusUpdate": {
+        "accurate": true,
+        "notes": "Correctly states not FDA-approved and illegal to purchase in US and UK. The nuance is that it is not a DEA-controlled substance but is an unapproved drug whose sale for human consumption violates FDA regulations. Vendors can sell 'for research purposes only.' UK bans medicinal products containing MT-II. WADA banned status (true) is correct. TGA in Australia also warns against use."
+      },
+      "keyCitations": [
+        {
+          "title": "Melanoma associated with the use of melanotan-II",
+          "authors": "Hjuler et al.",
+          "journal": "Dermatology",
+          "year": 2014,
+          "pmid": "24355990",
+          "doi": "",
+          "type": "case_study"
+        },
+        {
+          "title": "Melanotan II: a possible cause of renal infarction: review of the literature and case report",
+          "authors": "Peters & Hadimeri",
+          "journal": "CEN Case Reports",
+          "year": 2020,
+          "pmid": "31953620",
+          "doi": "10.1007/s13730-020-00447-z",
+          "type": "case_study"
+        },
+        {
+          "title": "Melanotan II injection resulting in systemic toxicity and rhabdomyolysis",
+          "authors": "Nelson et al.",
+          "journal": "Clinical Toxicology",
+          "year": 2012,
+          "pmid": "23121206",
+          "doi": "",
+          "type": "case_study"
+        },
+        {
+          "title": "Melanotan II nasal spray: a possible risk factor for oral mucosal malignant melanoma?",
+          "authors": "Multiple authors",
+          "journal": "Journal of Oral Pathology & Medicine",
+          "year": 2025,
+          "pmid": "",
+          "doi": "",
+          "type": "case_study"
+        },
+        {
+          "title": "An overview of benefits and risks of chronic melanocortin-1 receptor activation",
+          "authors": "Multiple authors",
+          "journal": "PMC review",
+          "year": 2024,
+          "pmid": "",
+          "doi": "",
+          "type": "review"
+        }
+      ],
+      "corrections": [
+        "No major factual errors found. The description and risk assessment are appropriately severe.",
+        "Minor: could add priapism (prolonged erection) as a known side effect in males, reported in Phase I trial",
+        "Could note that development was abandoned due to SAFETY concerns specifically, not efficacy"
+      ],
+      "missingInfo": [
+        "Priapism (prolonged erections) is a documented side effect in males from Phase I trial",
+        "Spontaneous erections with yawning/stretching complex (1-5 hours post-dose) should be noted",
+        "TGA (Australia) warning against use should be mentioned alongside US/UK bans",
+        "2025 case report of oral mucosal malignant melanoma linked to MT-II nasal spray is important new safety data",
+        "Rhabdomyolysis case report (PMID: 23121206) should be added to serious side effects"
+      ]
+    },
+    {
+      "id": "follistatin",
+      "validatedBenefits": [
+        {
+          "claim": "Inhibits myostatin (muscle growth limiter)",
+          "supported": true,
+          "citation": "Rodino-Klapac et al., Mol Ther, 2009; Kota et al., Hum Gene Ther, 2009",
+          "pmid": "19208403",
+          "notes": "Well-established mechanism. Follistatin is a potent myostatin antagonist. Also antagonizes activin. This is the core mechanism supported by extensive preclinical data."
+        },
+        {
+          "claim": "Promotes muscle growth through multiple pathways",
+          "supported": true,
+          "citation": "Lee, PLoS ONE, 2007 (animal data)",
+          "pmid": "",
+          "notes": "Follistatin increases muscle growth even in myostatin-knockout mice, demonstrating multiple pathways beyond myostatin inhibition alone. Primarily animal and gene therapy data."
+        },
+        {
+          "claim": "Durable muscle size/strength increases (animal data)",
+          "supported": true,
+          "citation": "Kota et al., Hum Gene Ther, 2009",
+          "pmid": "",
+          "notes": "AAV1-FS344 in macaque monkeys induced pronounced and durable increases in muscle size and strength. Long-term expression of the transgene without abnormal changes in organ morphology or function. Gene therapy approach, not peptide injection."
+        },
+        {
+          "claim": "May counteract muscle wasting",
+          "supported": true,
+          "citation": "Mendell et al., Mol Ther, 2015; Al-Zaidy et al., J Neuromuscul Dis, 2015",
+          "pmid": "25322757",
+          "notes": "Phase 1/2a gene therapy trial in 6 Becker Muscular Dystrophy patients. Patients improved 58-125 meters on 6-minute walk test. Fibrosis reduced to 35-43% of baseline. This is gene therapy, NOT injectable peptide."
+        }
+      ],
+      "validatedSideEffects": [
+        {
+          "claim": "Injection site reactions",
+          "supported": true,
+          "citation": "General peptide injection data",
+          "pmid": "",
+          "notes": "Standard for SC injections. Note: clinical trials used gene therapy (AAV vector), not SC peptide injection."
+        },
+        {
+          "claim": "Limited human safety data",
+          "supported": true,
+          "citation": "Only 6 patients in Phase 1/2a gene therapy trial",
+          "pmid": "",
+          "notes": "Correctly identifies the critical gap. Only human data is from gene therapy in 6 BMD patients, not exogenous peptide injection."
+        },
+        {
+          "claim": "Potential reproductive effects",
+          "supported": true,
+          "citation": "Mechanistic concern; follistatin modulates activin in HPG axis",
+          "pmid": "",
+          "notes": "FS-344 produces both systemic (FS-315, myostatin binding) and gonadal (FS-288, activin binding) effects. Cannot selectively get myostatin inhibition without activin modulation. FSH suppression is a theoretical concern. Kota 2009 primate study found no permanent reproductive effects."
+        },
+        {
+          "claim": "Theoretical tendon/ligament strain",
+          "supported": true,
+          "citation": "Theoretical/mechanistic",
+          "pmid": "",
+          "notes": "Theoretical concern: rapid muscle growth without proportional tendon/ligament strengthening. No published evidence directly confirming this."
+        }
+      ],
+      "dosingValidation": {
+        "ourClaim": "100-200 mcg, 2-3 times per week",
+        "publishedRange": "No published human dosing data for SC peptide injection. Gene therapy: direct intramuscular AAV1.CMV.FS344 injection. Underground protocols: 100-200 mcg, never exceed 200 mcg/day.",
+        "citation": "No clinical trial data for SC peptide dosing",
+        "accurate": false,
+        "notes": "CRITICAL: There is NO formal human study on exogenous SC peptide injection dosing. All clinical evidence is from gene therapy (AAV vector delivery). The 100-200 mcg dose comes entirely from underground/wellness protocols. Also: 17 supplements marketed as containing follistatin were tested - only 9 actually contained it."
+      },
+      "evidenceLevelValidation": {
+        "ourLevel": "low",
+        "actualLevel": "low",
+        "reasoning": "Correctly rated. While gene therapy data is strong (Phase 1/2a trial in BMD), there is ZERO published human research on exogenous peptide injection. The gap between gene therapy evidence and injectable peptide use is enormous."
+      },
+      "legalStatusUpdate": {
+        "accurate": true,
+        "notes": "Correctly states not FDA-approved. WADA banned (true) is correct - Follistatin 344 has been on the WADA Prohibited List since 2019, classified under S4.3 (Metabolic Modulators)."
+      },
+      "keyCitations": [
+        {
+          "title": "A Phase 1/2a Follistatin Gene Therapy Trial for Becker Muscular Dystrophy",
+          "authors": "Mendell et al.",
+          "journal": "Molecular Therapy",
+          "year": 2015,
+          "pmid": "25322757",
+          "doi": "",
+          "type": "clinical_trial"
+        },
+        {
+          "title": "Follistatin Gene Therapy Improves Ambulation in Becker Muscular Dystrophy",
+          "authors": "Al-Zaidy et al.",
+          "journal": "Journal of Neuromuscular Diseases",
+          "year": 2015,
+          "pmid": "",
+          "doi": "",
+          "type": "clinical_trial"
+        },
+        {
+          "title": "Follistatin Gene Delivery Enhances Muscle Growth and Strength in Nonhuman Primates",
+          "authors": "Kota et al.",
+          "journal": "Human Gene Therapy",
+          "year": 2009,
+          "pmid": "",
+          "doi": "",
+          "type": "animal_study"
+        },
+        {
+          "title": "Inhibition of myostatin with emphasis on follistatin as a therapy for muscle disease",
+          "authors": "Rodino-Klapac et al.",
+          "journal": "Curr Opin Rheumatol",
+          "year": 2009,
+          "pmid": "19208403",
+          "doi": "",
+          "type": "review"
+        },
+        {
+          "title": "Detection of black market follistatin 344",
+          "authors": "Multiple authors",
+          "journal": "Drug Testing and Analysis",
+          "year": 2019,
+          "pmid": "31758732",
+          "doi": "",
+          "type": "review"
+        }
+      ],
+      "corrections": [
+        "Dosing description should prominently note that NO human clinical data exists for SC peptide injection. All dosing is from underground protocols.",
+        "The existing notes correctly state 'No formal human studies on SC peptide injection. Most evidence from gene therapy.' - this is accurate and should remain.",
+        "Minor: LDL cholesterol increase (~8 mg/dl in ~1/3 of patients) reported in gene therapy should be noted as a potential metabolic effect"
+      ],
+      "missingInfo": [
+        "The BMD gene therapy trial results (58-125 meter improvement on 6MWT, fibrosis reduced to 35-43% baseline) are important context",
+        "17 follistatin supplements tested, only 9 contained actual follistatin (product quality concern from PMID: 31758732)",
+        "FS-344 undergoes post-translational modification to FS-315 (serum-based) which has 10-fold lower activin affinity than FS-288 - this is relevant to the reproductive effects discussion",
+        "WADA ban since 2019 under S4.3 should be specified in legal notes",
+        "Potential LDL cholesterol increase should be added to side effects"
+      ]
+    }
+  ],
+  "summaryOfCriticalFindings": {
+    "benefitClaimsContradictedByEvidence": [
+      "DSIP 'Reduces stress and cortisol' - directly contradicted by PMID 7777652 showing DSIP does NOT affect ACTH/cortisol",
+      "DSIP 'Normalizes disturbed sleep patterns' - largest insomnia study concluded NOT likely of major therapeutic benefit",
+      "Kisspeptin 'Maintains fertility during TRT' - no published clinical trial supports this specific use case",
+      "AOD-9604 'Preserves muscle tissue during fat loss' - no published evidence"
+    ],
+    "evidenceLevelCorrections": [
+      "Selank: moderate -> low_moderate (no Western RCTs)",
+      "MOTS-c: moderate -> low_moderate (no completed human clinical trials)",
+      "Kisspeptin: moderate -> moderate_high (multiple well-designed human RCTs in high-impact journals)"
+    ],
+    "dosingConcerns": [
+      "MOTS-c: ALL human dosing is extrapolated from animal studies, no clinical validation",
+      "Follistatin 344: ALL human dosing is from underground protocols, zero clinical data for SC injection",
+      "AOD-9604: Clinical trials used oral dosing (1-30 mg), not injectable SC (250-500 mcg)",
+      "Kisspeptin: Clinical trials use weight-based nmol/kg dosing, not fixed mcg doses",
+      "Selank: Our range (250-500 mcg/day) is below most published protocols (750-1000 mcg/day)"
+    ],
+    "wadaStatusCorrections": [
+      "Selank (wadaBanned: false) - effectively banned under S0 Non-Approved Substances",
+      "Semax (wadaBanned: false) - effectively banned under S0 Non-Approved Substances",
+      "DSIP (wadaBanned: false) - likely banned under S0 Non-Approved Substances"
+    ],
+    "newSafetySignals": [
+      "Melanotan II: 2025 case report of oral mucosal malignant melanoma linked to nasal spray use",
+      "MOTS-c: USADA explicitly warns safety is unknown, anecdotal reports of heart palpitations and insomnia",
+      "SS-31: PROGRESS-HF and MMPOWER-3 trials did NOT meet primary endpoints despite FDA approval for Barth syndrome"
+    ]
+  }
+}
