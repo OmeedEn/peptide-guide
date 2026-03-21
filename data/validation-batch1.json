@@ -1,0 +1,1336 @@
+{
+  "validationMeta": {
+    "generatedAt": "2026-03-21",
+    "methodology": "Web searches of PubMed, Google Scholar, FDA databases, WADA prohibited lists, and medical reference sites. Prioritized systematic reviews, RCTs, and meta-analyses.",
+    "disclaimer": "This validation reflects published literature available as of March 2026. It is not medical advice."
+  },
+  "peptides": [
+    {
+      "id": "bpc-157",
+      "validatedBenefits": [
+        {
+          "claim": "Accelerates healing of tendons, ligaments, muscles, and bones",
+          "supported": true,
+          "citation": "Vasireddi N et al., Orthopaedic Journal of Sports Medicine, 2025",
+          "pmid": "40756949",
+          "notes": "Systematic review of 36 studies confirmed healing benefits but 35/36 were preclinical (animal). Only 1 human study included. Strong animal evidence, very weak human evidence."
+        },
+        {
+          "claim": "Promotes angiogenesis (new blood vessel formation)",
+          "supported": true,
+          "citation": "Seiwerth S et al., Pharmaceuticals, 2025",
+          "pmid": "",
+          "notes": "Well-documented in animal models. Mechanism described in literature/patent review. No human confirmation."
+        },
+        {
+          "claim": "Enhances collagen synthesis and fibroblast activity",
+          "supported": true,
+          "citation": "Vasireddi N et al., Orthopaedic Journal of Sports Medicine, 2025",
+          "pmid": "40756949",
+          "notes": "Demonstrated in animal wound healing models. Not confirmed in human clinical trials."
+        },
+        {
+          "claim": "Protects and heals gut lining",
+          "supported": true,
+          "citation": "ACG 2025 Abstract S808 - Oral Peptide BPC-157 as adjunct to GI healing",
+          "pmid": "",
+          "notes": "Original isolation from gastric juice. Extensive animal GI data. One 2024 human pilot (12 patients with interstitial cystitis) showed 80-100% symptom resolution."
+        },
+        {
+          "claim": "Anti-inflammatory properties",
+          "supported": true,
+          "citation": "Seiwerth S et al., Pharmaceuticals, 2025",
+          "pmid": "",
+          "notes": "Demonstrated in multiple animal models. Pleiotropic activity described. No human RCT confirmation."
+        },
+        {
+          "claim": "May support nerve regeneration",
+          "supported": true,
+          "citation": "Seiwerth S et al., Curr Neuropharmacol, 2024",
+          "pmid": "",
+          "notes": "Animal studies show neurotransmitter modulation and nerve repair. 'May support' language is appropriately cautious."
+        }
+      ],
+      "validatedSideEffects": [
+        {
+          "claim": "Nausea (mild)",
+          "supported": true,
+          "citation": "Examine.com BPC-157 monograph; user/clinical reports",
+          "pmid": "",
+          "notes": "Reported anecdotally. IV pilot study (Lee & Burgess 2025) in 2 healthy adults showed NO adverse events at doses up to 20mg IV."
+        },
+        {
+          "claim": "Lightheadedness",
+          "supported": true,
+          "citation": "Clinical practice reports",
+          "pmid": "",
+          "notes": "Reported anecdotally. No systematic safety data exists — the systematic review found NO clinical safety data."
+        },
+        {
+          "claim": "Injection site irritation",
+          "supported": true,
+          "citation": "General peptide injection literature",
+          "pmid": "",
+          "notes": "Common to all subcutaneous peptide injections. Not specific to BPC-157."
+        },
+        {
+          "claim": "Rare allergic reactions",
+          "supported": true,
+          "citation": "Theoretical based on peptide class",
+          "pmid": "",
+          "notes": "Plausible but not documented in published literature. Contamination from unregulated manufacturing is a real concern."
+        }
+      ],
+      "dosingValidation": {
+        "ourClaim": "250-500 mcg 1-2x daily",
+        "publishedRange": "200-500 mcg/day in clinical practice; preclinical studies use 10 mcg/kg or 10 ng/kg body weight. Some practitioners use up to 1000 mcg/day.",
+        "citation": "Vasireddi N et al., 2025; Examine.com monograph",
+        "accurate": true
+      },
+      "evidenceLevelValidation": {
+        "ourLevel": "moderate",
+        "actualLevel": "low_moderate",
+        "reasoning": "The 2025 systematic review found only 1 human study out of 36 total. Only 3 published human studies exist (all small pilots, no RCTs). 'Moderate' overstates the human evidence. Animal evidence is extensive but cannot substitute for human trials."
+      },
+      "legalStatusUpdate": {
+        "accurate": false,
+        "notes": "CORRECTION NEEDED: BPC-157 IS WADA-banned. Since 2022, it has been prohibited under WADA S0 (Non-Approved Substances) at all times, with no TUE available. Our data says wadaBanned: false — this is WRONG and must be fixed."
+      },
+      "keyCitations": [
+        {
+          "title": "Emerging Use of BPC-157 in Orthopaedic Sports Medicine: A Systematic Review",
+          "authors": "Vasireddi N et al.",
+          "journal": "Orthopaedic Journal of Sports Medicine",
+          "year": 2025,
+          "pmid": "40756949",
+          "doi": "10.1177/15563316251355551",
+          "type": "review"
+        },
+        {
+          "title": "Safety of Intravenous Infusion of BPC157 in Humans: A Pilot Study",
+          "authors": "Lee M, Burgess J",
+          "journal": "Unknown (PubMed indexed)",
+          "year": 2025,
+          "pmid": "40131143",
+          "doi": "",
+          "type": "clinical_trial"
+        },
+        {
+          "title": "Multifunctionality and Possible Medical Application of the BPC 157 Peptide — Literature and Patent Review",
+          "authors": "Seiwerth S et al.",
+          "journal": "Pharmaceuticals",
+          "year": 2025,
+          "pmid": "",
+          "doi": "",
+          "type": "review"
+        },
+        {
+          "title": "Regeneration or Risk? A Narrative Review of BPC-157 for Musculoskeletal Healing",
+          "authors": "Various",
+          "journal": "PMC (indexed)",
+          "year": 2025,
+          "pmid": "",
+          "doi": "",
+          "type": "review"
+        }
+      ],
+      "corrections": [
+        "CRITICAL: wadaBanned must be changed from false to true. BPC-157 has been WADA-prohibited since 2022 under S0.",
+        "evidenceLevel should be downgraded from 'moderate' to 'low_moderate'. Only 3 small human pilot studies exist with no RCTs.",
+        "evidenceNotes should note that the 2025 systematic review found 35/36 studies were preclinical."
+      ],
+      "missingInfo": [
+        "Should mention WADA S0 ban explicitly in legal status",
+        "Should note contamination risk from unregulated manufacturing",
+        "The 2024 interstitial cystitis pilot (12 patients, 80-100% symptom resolution) is worth mentioning",
+        "The knee pain pilot (7/12 patients improved >6 months) is worth mentioning"
+      ]
+    },
+    {
+      "id": "tb-500",
+      "validatedBenefits": [
+        {
+          "claim": "Promotes progenitor cell differentiation",
+          "supported": true,
+          "citation": "Goldstein AL et al., Ann N Y Acad Sci, 2012",
+          "pmid": "",
+          "notes": "Thymosin Beta-4 is well established as promoting cell migration and differentiation in preclinical studies."
+        },
+        {
+          "claim": "Supports angiogenesis and vascular growth",
+          "supported": true,
+          "citation": "Malinda KM et al., J Invest Dermatol, 1999",
+          "pmid": "10469335",
+          "notes": "Wound healing study showed 42% increased reepithelialization at day 4 and 61% at day 7. Increased blood vessel formation confirmed."
+        },
+        {
+          "claim": "Reduces inflammation systemically",
+          "supported": true,
+          "citation": "PMC review article (PMC8228050)",
+          "pmid": "",
+          "notes": "Anti-inflammatory properties documented in multiple preclinical studies."
+        },
+        {
+          "claim": "Enhances connective tissue and joint repair",
+          "supported": true,
+          "citation": "Phase 2 trials for chronic wounds (NCT00832091)",
+          "pmid": "",
+          "notes": "Phase 2 trials for venous stasis ulcers and pressure ulcers showed accelerated healing. Ophthalmic trial (72 subjects) showed corneal healing."
+        },
+        {
+          "claim": "Improves flexibility, reduces adhesion",
+          "supported": true,
+          "citation": "Veterinary medicine literature",
+          "pmid": "",
+          "notes": "Well-documented in equine veterinary medicine. Limited human data."
+        },
+        {
+          "claim": "Synergistic with BPC-157 (Wolverine Stack)",
+          "supported": false,
+          "citation": "No published research",
+          "pmid": "",
+          "notes": "No published research supports a synergistic effect between TB-500 and BPC-157. This is a community/marketing claim with no scientific basis. The 'Wolverine Stack' name is purely colloquial."
+        }
+      ],
+      "validatedSideEffects": [
+        {
+          "claim": "Injection site redness/swelling",
+          "supported": true,
+          "citation": "Clinical trial reports and practice literature",
+          "pmid": "",
+          "notes": "Common to subcutaneous peptide injections. Documented in Phase 2 trials."
+        },
+        {
+          "claim": "Rare fatigue or dizziness",
+          "supported": true,
+          "citation": "Clinical practice reports",
+          "pmid": "",
+          "notes": "Reported in user and practice reports. Temporary lethargy noted."
+        },
+        {
+          "claim": "Potential blood pressure changes",
+          "supported": true,
+          "citation": "Pharmacological mechanism literature",
+          "pmid": "",
+          "notes": "Plausible given vascular effects. Not well-documented in clinical trials."
+        }
+      ],
+      "dosingValidation": {
+        "ourClaim": "2-2.5 mg twice/week (loading), then once/week",
+        "publishedRange": "No standardized human dosing protocol exists. Clinical trials used topical application for wounds, not systemic injection at these doses. Community dosing protocols are not evidence-based.",
+        "citation": "ClinicalTrials.gov NCT00832091",
+        "accurate": false
+      },
+      "evidenceLevelValidation": {
+        "ourLevel": "moderate",
+        "actualLevel": "low_moderate",
+        "reasoning": "Phase 2 human trials exist for topical wound healing and ophthalmic use, but TB-500 as a systemic injectable for musculoskeletal repair has very limited human data. Important distinction: TB-4 (full protein) was used in trials, not the TB-500 fragment specifically."
+      },
+      "legalStatusUpdate": {
+        "accurate": true,
+        "notes": "Correctly listed as WADA-banned. TB-4 and derivatives are explicitly listed under WADA S2.3 (Growth Factors and Growth Factor Modulators). Not FDA-approved."
+      },
+      "keyCitations": [
+        {
+          "title": "Thymosin beta4 accelerates wound healing",
+          "authors": "Malinda KM et al.",
+          "journal": "J Invest Dermatol",
+          "year": 1999,
+          "pmid": "10469335",
+          "doi": "",
+          "type": "animal_study"
+        },
+        {
+          "title": "Study of Thymosin Beta 4 in Patients With Venous Stasis Ulcers",
+          "authors": "RegeneRx Biopharmaceuticals",
+          "journal": "ClinicalTrials.gov NCT00832091",
+          "year": 2009,
+          "pmid": "",
+          "doi": "",
+          "type": "clinical_trial"
+        },
+        {
+          "title": "Utilizing Developmentally Essential Secreted Peptides Such as Thymosin Beta-4 to Remind the Adult Organs of Their Embryonic State",
+          "authors": "Various",
+          "journal": "PMC (2021)",
+          "year": 2021,
+          "pmid": "",
+          "doi": "",
+          "type": "review"
+        },
+        {
+          "title": "Progress on the Function and Application of Thymosin Beta-4",
+          "authors": "Various",
+          "journal": "PMC (2022)",
+          "year": 2022,
+          "pmid": "",
+          "doi": "",
+          "type": "review"
+        }
+      ],
+      "corrections": [
+        "The 'Wolverine Stack' synergy claim has no published scientific support and should be clearly labeled as anecdotal/community-derived.",
+        "evidenceLevel should be downgraded to 'low_moderate' — clinical trials used TB-4 (full protein), not TB-500 (fragment).",
+        "Dosing protocol is community-derived, not evidence-based. Should be clearly noted.",
+        "MISSING SAFETY CONCERN: Anti-apoptotic activity may promote tumor metastasis — this is a notable theoretical risk that should be mentioned."
+      ],
+      "missingInfo": [
+        "Should note the important distinction between TB-4 (full protein, used in clinical trials) and TB-500 (synthetic fragment, used in practice)",
+        "Should mention the ophthalmic RCT (72 subjects) showing 27% discomfort reduction",
+        "Should add the theoretical cancer risk from anti-apoptotic activity",
+        "Should note extensive equine veterinary use as context"
+      ]
+    },
+    {
+      "id": "cjc-1295",
+      "validatedBenefits": [
+        {
+          "claim": "Increases growth hormone levels 2-10x",
+          "supported": true,
+          "citation": "Teichman SL et al., J Clin Endocrinol Metab, 2006",
+          "pmid": "16352683",
+          "notes": "RCT confirmed dose-dependent increases in mean plasma GH concentrations by 2- to 10-fold for 6+ days after single injection."
+        },
+        {
+          "claim": "Increases IGF-1 levels 1.5-3x",
+          "supported": true,
+          "citation": "Teichman SL et al., J Clin Endocrinol Metab, 2006",
+          "pmid": "16352683",
+          "notes": "Confirmed: mean plasma IGF-I concentrations increased 1.5- to 3-fold for 9-11 days. IGF-1 remained elevated for up to 28 days with multiple doses."
+        },
+        {
+          "claim": "Promotes muscle growth and protein synthesis",
+          "supported": true,
+          "citation": "Indirect — via GH/IGF-1 elevation mechanism",
+          "pmid": "",
+          "notes": "Logical downstream effect of GH/IGF-1 elevation. Not directly measured in CJC-1295 trials."
+        },
+        {
+          "claim": "Enhances fat metabolism (lipolysis)",
+          "supported": true,
+          "citation": "Indirect — via GH elevation mechanism",
+          "pmid": "",
+          "notes": "GH is well-established to promote lipolysis. Not directly studied as outcome in CJC-1295 trials."
+        },
+        {
+          "claim": "Improves sleep quality and recovery",
+          "supported": false,
+          "citation": "No published data",
+          "pmid": "",
+          "notes": "No published clinical data supports sleep improvement from CJC-1295 specifically. This is an extrapolation from GH biology, not a demonstrated effect."
+        },
+        {
+          "claim": "Anti-aging effects via sustained GH elevation",
+          "supported": false,
+          "citation": "No published data",
+          "pmid": "",
+          "notes": "No anti-aging outcomes were measured in CJC-1295 trials. GH replacement therapy's anti-aging claims are themselves controversial."
+        }
+      ],
+      "validatedSideEffects": [
+        {
+          "claim": "Injection site reactions",
+          "supported": true,
+          "citation": "Teichman SL et al., J Clin Endocrinol Metab, 2006",
+          "pmid": "16352683",
+          "notes": "Confirmed in clinical trial."
+        },
+        {
+          "claim": "Water retention",
+          "supported": true,
+          "citation": "GH-class side effect; clinical reports",
+          "pmid": "",
+          "notes": "Well-known side effect of GH elevation."
+        },
+        {
+          "claim": "Headache",
+          "supported": true,
+          "citation": "Clinical trial reports",
+          "pmid": "",
+          "notes": "Reported in trials."
+        },
+        {
+          "claim": "Tingling in extremities",
+          "supported": true,
+          "citation": "GH-class side effect literature",
+          "pmid": "",
+          "notes": "Known GH elevation side effect (paresthesia). Dose-dependent."
+        }
+      ],
+      "dosingValidation": {
+        "ourClaim": "100-300 mcg per injection",
+        "publishedRange": "30-60 mcg/kg were found safe and well-tolerated in the clinical trial. For a 75kg adult, this equals 2,250-4,500 mcg. The 100-300 mcg dosing is from community/clinical practice, not the original trial.",
+        "citation": "Teichman SL et al., J Clin Endocrinol Metab, 2006 (PMID: 16352683)",
+        "accurate": false
+      },
+      "evidenceLevelValidation": {
+        "ourLevel": "moderate",
+        "actualLevel": "moderate",
+        "reasoning": "Has actual human RCT data (ascending dose trials in healthy adults, 28 and 49 days). The evidence level is appropriate — real human trial data exists but the program was discontinued after a participant death (likely unrelated). No long-term safety data."
+      },
+      "legalStatusUpdate": {
+        "accurate": true,
+        "notes": "Correctly noted as removed from Category 2 Sept 2024. After PCAC review in Dec 2024, FDA recommended against inclusion in 503A Bulks. Compounding remains suspended. WADA-banned status is correct."
+      },
+      "keyCitations": [
+        {
+          "title": "Prolonged stimulation of growth hormone (GH) and insulin-like growth factor I secretion by CJC-1295, a long-acting analog of GH-releasing hormone, in healthy adults",
+          "authors": "Teichman SL et al.",
+          "journal": "J Clin Endocrinol Metab",
+          "year": 2006,
+          "pmid": "16352683",
+          "doi": "",
+          "type": "clinical_trial"
+        },
+        {
+          "title": "Pulsatile secretion of growth hormone (GH) persists during continuous stimulation by CJC-1295",
+          "authors": "Ionescu M, Bhatt DL et al.",
+          "journal": "J Clin Endocrinol Metab",
+          "year": 2006,
+          "pmid": "17018654",
+          "doi": "",
+          "type": "clinical_trial"
+        },
+        {
+          "title": "Activation of the GH/IGF-1 axis by CJC-1295 results in serum protein profile changes in normal adult subjects",
+          "authors": "Various",
+          "journal": "Growth Horm IGF Res",
+          "year": 2009,
+          "pmid": "",
+          "doi": "",
+          "type": "clinical_trial"
+        }
+      ],
+      "corrections": [
+        "Dosing notes: The 'With DAC: ~8 day half-life' is roughly correct (sustained GH elevation for 6+ days). 'Without DAC: ~30 min' is correct for Mod GRF(1-29).",
+        "Sleep and anti-aging claims should be qualified as extrapolated from GH biology, not demonstrated in CJC-1295 studies.",
+        "Should mention the participant death during trials (believed unrelated - coronary artery disease) for transparency.",
+        "Availability note should be updated: after PCAC review, FDA recommended against 503A inclusion. Compounding remains in limbo."
+      ],
+      "missingInfo": [
+        "Should distinguish more clearly between CJC-1295 with DAC vs Mod GRF(1-29) without DAC — these are quite different molecules",
+        "Should mention the clinical trial discontinuation and participant death",
+        "Should note that community dosing (100-300 mcg) differs significantly from trial dosing (30-60 mcg/kg)"
+      ]
+    },
+    {
+      "id": "ipamorelin",
+      "validatedBenefits": [
+        {
+          "claim": "Selective GH release without cortisol/prolactin spikes",
+          "supported": true,
+          "citation": "Raun K et al., Endocrinology, 1998",
+          "pmid": "9849822",
+          "notes": "Confirmed: 'the first selective growth hormone secretagogue' — no significant effects on prolactin, cortisol, FSH, LH, or TSH."
+        },
+        {
+          "claim": "Promotes lean muscle growth",
+          "supported": true,
+          "citation": "Indirect — via GH elevation",
+          "pmid": "",
+          "notes": "Reasonable extrapolation from GH biology. Not directly measured as primary outcome in ipamorelin trials."
+        },
+        {
+          "claim": "Accelerates fat loss while preserving muscle",
+          "supported": true,
+          "citation": "Indirect — via GH elevation",
+          "pmid": "",
+          "notes": "GH promotes lipolysis. Direct fat loss outcome not measured in ipamorelin trials."
+        },
+        {
+          "claim": "Improves deep sleep quality",
+          "supported": false,
+          "citation": "No published data",
+          "pmid": "",
+          "notes": "No published clinical data on sleep quality from ipamorelin. Extrapolation from GH biology."
+        },
+        {
+          "claim": "Enhances recovery and wound healing",
+          "supported": false,
+          "citation": "No published data",
+          "pmid": "",
+          "notes": "Not studied. Theoretical via GH/IGF-1 pathway."
+        },
+        {
+          "claim": "Does not significantly increase appetite",
+          "supported": true,
+          "citation": "Raun K et al., Endocrinology, 1998",
+          "pmid": "9849822",
+          "notes": "Confirmed: Unlike other ghrelin mimetics, ipamorelin is selective and does not strongly stimulate appetite, though some users report mild increase."
+        }
+      ],
+      "validatedSideEffects": [
+        {
+          "claim": "Mild headache (first 1-2 weeks)",
+          "supported": true,
+          "citation": "Clinical practice reports",
+          "pmid": "",
+          "notes": "Commonly reported. Transient."
+        },
+        {
+          "claim": "Initial fatigue",
+          "supported": true,
+          "citation": "Clinical practice reports",
+          "pmid": "",
+          "notes": "Reported anecdotally. May relate to GH timing effects."
+        },
+        {
+          "claim": "Injection site irritation",
+          "supported": true,
+          "citation": "Common to all SC injections",
+          "pmid": "",
+          "notes": "Standard."
+        },
+        {
+          "claim": "Mild water retention",
+          "supported": true,
+          "citation": "GH-class side effect",
+          "pmid": "",
+          "notes": "Expected with GH elevation."
+        }
+      ],
+      "dosingValidation": {
+        "ourClaim": "200-300 mcg, 1-3 times daily",
+        "publishedRange": "100-300 mcg per injection, 1-3 times daily is the community consensus. Original research used varying doses. Most common practice: 100-200 mcg before bed.",
+        "citation": "Community practice protocols; DrugBank DB12370",
+        "accurate": true
+      },
+      "evidenceLevelValidation": {
+        "ourLevel": "moderate",
+        "actualLevel": "low_moderate",
+        "reasoning": "The original 1998 paper established selectivity. However, ipamorelin has never been approved for any therapeutic use in any jurisdiction. Human safety data is limited to early-phase research. 'Moderate' slightly overstates the evidence."
+      },
+      "legalStatusUpdate": {
+        "accurate": true,
+        "notes": "Correctly noted as removed from Category 2 Sept 2024. PCAC reviewed Oct 29, 2024. FDA recommended against 503A inclusion. Compounding in limbo. WADA-banned status correct."
+      },
+      "keyCitations": [
+        {
+          "title": "Ipamorelin, the first selective growth hormone secretagogue",
+          "authors": "Raun K et al.",
+          "journal": "Eur J Endocrinol",
+          "year": 1998,
+          "pmid": "9849822",
+          "doi": "",
+          "type": "clinical_trial"
+        }
+      ],
+      "corrections": [
+        "Sleep quality and wound healing claims should be qualified as theoretical (extrapolated from GH biology, not studied with ipamorelin).",
+        "evidenceLevel could be argued down to 'low_moderate' given no drug has ever been approved based on ipamorelin data.",
+        "Availability note should reflect that post-PCAC review, FDA recommended against compounding inclusion."
+      ],
+      "missingInfo": [
+        "Should note that ipamorelin is not approved for therapeutic use in ANY jurisdiction",
+        "Should mention that most clinical data is from the original 1998 characterization study",
+        "Could mention the common CJC-1295/Ipamorelin combination protocol and note it lacks formal clinical study"
+      ]
+    },
+    {
+      "id": "semaglutide",
+      "validatedBenefits": [
+        {
+          "claim": "Significant sustained weight loss (13-15% body weight)",
+          "supported": true,
+          "citation": "Wilding JPH et al., N Engl J Med (STEP 1), 2021; Qin X et al., Diabetes Obes Metab, 2024",
+          "pmid": "",
+          "notes": "Meta-analysis confirmed -13.1% mean difference vs placebo. STEP 5 showed -15.2% at 104 weeks. STEP UP trial (2025) showed 21% weight loss with investigational 7.2mg dose. Our claim of 13-15% is ACCURATE for the 2.4mg dose."
+        },
+        {
+          "claim": "Improved blood sugar control",
+          "supported": true,
+          "citation": "SUSTAIN trial program; FDA label",
+          "pmid": "",
+          "notes": "Core FDA-approved indication for type 2 diabetes. Extensively proven."
+        },
+        {
+          "claim": "Reduced cardiovascular risk",
+          "supported": true,
+          "citation": "SELECT trial; ICER Report 2025",
+          "pmid": "",
+          "notes": "Confirmed: HR 0.80 (95% CI 0.72-0.90) for MACE; HR 0.81 for all-cause mortality in patients with obesity and established CVD."
+        },
+        {
+          "claim": "Appetite suppression and reduced cravings",
+          "supported": true,
+          "citation": "STEP trial program",
+          "pmid": "",
+          "notes": "Well-established GLP-1 mechanism. Core mechanism of action."
+        },
+        {
+          "claim": "Improved insulin sensitivity",
+          "supported": true,
+          "citation": "FDA label; SUSTAIN trials",
+          "pmid": "",
+          "notes": "Confirmed in T2D trials."
+        },
+        {
+          "claim": "Oral formulation available (25mg pill, Jan 2026)",
+          "supported": true,
+          "citation": "FDA approval Dec 22, 2025; OASIS 4 trial",
+          "pmid": "",
+          "notes": "CONFIRMED: FDA approved 25mg oral Wegovy on Dec 22, 2025. Available Jan 2026 at $149/month. Based on OASIS 4 trial showing ~17% weight loss at 64 weeks."
+        }
+      ],
+      "validatedSideEffects": [
+        {
+          "claim": "Nausea (common initially)",
+          "supported": true,
+          "citation": "STEP trials; Safety review (PMC8294388)",
+          "pmid": "",
+          "notes": "Confirmed: 2.05% to 19.95% depending on study. GI adverse events 82.2% vs 53.9% placebo, mostly mild-to-moderate."
+        },
+        {
+          "claim": "Vomiting and diarrhea",
+          "supported": true,
+          "citation": "STEP trials; Frontiers in Endocrinology safety review",
+          "pmid": "",
+          "notes": "Confirmed: Diarrhea 1.4% to 13%. Common GI side effects."
+        },
+        {
+          "claim": "Constipation",
+          "supported": true,
+          "citation": "FDA label; STEP trials",
+          "pmid": "",
+          "notes": "Confirmed."
+        },
+        {
+          "claim": "Potential muscle mass loss with fat",
+          "supported": true,
+          "citation": "SEMALEAN study 2025; STEP 1 body composition analysis",
+          "pmid": "41068996",
+          "notes": "CONFIRMED AND IMPORTANT: ~40% of weight lost may be lean mass. SEMALEAN showed initial -3kg lean mass decline, but handgrip strength improved. Older adults and women at higher risk. Protein intake may be protective."
+        },
+        {
+          "claim": "Rare: pancreatitis risk",
+          "supported": true,
+          "citation": "Meta-analysis (PMID: 37531876)",
+          "pmid": "37531876",
+          "notes": "Incidence was 0.47% in one comparison. Low but real risk. Label warning maintained."
+        },
+        {
+          "claim": "Rare: thyroid C-cell tumor concern",
+          "supported": true,
+          "citation": "Systematic review (PMC11050669); Vilsboll et al., Diabetes Obes Metab, 2026",
+          "pmid": "",
+          "notes": "Based on rodent data. Human meta-analysis found thyroid cancer OR 2.04 vs placebo (not statistically significant). Incidence <1% in both groups. A 2026 assessment also found no significant increase. Boxed warning maintained out of caution."
+        }
+      ],
+      "dosingValidation": {
+        "ourClaim": "0.25mg weekly escalating to 2.4mg weekly",
+        "publishedRange": "0.25mg escalating to 2.4mg weekly (Wegovy label). Dose escalation over 16-20 weeks. New 7.2mg dose under investigation (STEP UP trial).",
+        "citation": "FDA-approved Wegovy prescribing information",
+        "accurate": true
+      },
+      "evidenceLevelValidation": {
+        "ourLevel": "very_high",
+        "actualLevel": "very_high",
+        "reasoning": "Multiple Phase III RCTs (STEP 1-5, SUSTAIN), meta-analyses, real-world data, FDA approval for multiple indications (T2D, obesity, CV risk reduction, MASH), WHO guideline (Dec 2025). This is as high as evidence gets."
+      },
+      "legalStatusUpdate": {
+        "accurate": true,
+        "notes": "All correct. Additionally: Wegovy approved for MASH (Aug 2025, accelerated approval for noncirrhotic MASH with F2-F3 fibrosis). Oral Wegovy 25mg approved Dec 2025. Rybelsus got CV indication Oct 2025."
+      },
+      "keyCitations": [
+        {
+          "title": "Efficacy and safety of semaglutide 2.4 mg for weight loss: updated systematic review and meta-analysis including STEP 5",
+          "authors": "Qin X et al.",
+          "journal": "Diabetes Obes Metab",
+          "year": 2024,
+          "pmid": "",
+          "doi": "10.1111/dom.15386",
+          "type": "meta_analysis"
+        },
+        {
+          "title": "Once-weekly semaglutide 7.2 mg in adults with obesity (STEP UP)",
+          "authors": "Various",
+          "journal": "Lancet Diabetes Endocrinol",
+          "year": 2025,
+          "pmid": "",
+          "doi": "",
+          "type": "clinical_trial"
+        },
+        {
+          "title": "Semaglutide and cancer: A systematic review and meta-analysis",
+          "authors": "Various",
+          "journal": "Diabetes Metab Res Rev",
+          "year": 2023,
+          "pmid": "37531876",
+          "doi": "",
+          "type": "meta_analysis"
+        },
+        {
+          "title": "Impact of Semaglutide on fat mass, lean mass and muscle function (SEMALEAN study)",
+          "authors": "Various",
+          "journal": "PMC (2025)",
+          "year": 2025,
+          "pmid": "41068996",
+          "doi": "",
+          "type": "clinical_trial"
+        },
+        {
+          "title": "Assessment of Thyroid Carcinogenic Risk and Safety Profile of GLP1-RA Semaglutide",
+          "authors": "Various",
+          "journal": "PMC (2024)",
+          "year": 2024,
+          "pmid": "",
+          "doi": "",
+          "type": "review"
+        },
+        {
+          "title": "Semaglutide and Tirzepatide for Obesity: Effectiveness and Value",
+          "authors": "ICER",
+          "journal": "ICER Final Report",
+          "year": 2025,
+          "pmid": "",
+          "doi": "",
+          "type": "review"
+        }
+      ],
+      "corrections": [
+        "evidenceNotes: 'Wegovy approved for MASH (Aug 2025)' is CONFIRMED ACCURATE.",
+        "The oral 25mg pill availability claim checks out — approved Dec 22, 2025, available Jan 2026.",
+        "Should add biliary disease risk to side effects (identified in safety review).",
+        "Muscle loss side effect should be expanded — ~40% of weight lost can be lean mass per 2025 data."
+      ],
+      "missingInfo": [
+        "Should mention SELECT trial cardiovascular outcome data (HR 0.80 for MACE)",
+        "Should mention the STEP UP investigational 7.2mg dose showing 21% weight loss",
+        "Should add biliary disease as a side effect",
+        "Should note that protein intake may help preserve lean mass during treatment",
+        "Should mention Rybelsus CV risk reduction approval (Oct 2025)"
+      ]
+    },
+    {
+      "id": "tirzepatide",
+      "validatedBenefits": [
+        {
+          "claim": "Superior weight loss vs semaglutide (up to 20%+)",
+          "supported": true,
+          "citation": "SURMOUNT-5, NEJM 2025 (PMID: 40353578)",
+          "pmid": "40353578",
+          "notes": "CONFIRMED: NEJM head-to-head trial — tirzepatide -20.2% vs semaglutide -13.7% at week 72 (P<0.001). 751 participants. Published May 2025."
+        },
+        {
+          "claim": "Dual mechanism (GIP + GLP-1) for enhanced efficacy",
+          "supported": true,
+          "citation": "FDA label; mechanism well-established",
+          "pmid": "",
+          "notes": "Confirmed. First-in-class dual GIP/GLP-1 agonist."
+        },
+        {
+          "claim": "Greater waist circumference reduction",
+          "supported": true,
+          "citation": "SURMOUNT-5, NEJM 2025",
+          "pmid": "40353578",
+          "notes": "Confirmed: -18.4 cm vs -13.0 cm for semaglutide (P<0.001)."
+        },
+        {
+          "claim": "Improved blood sugar control",
+          "supported": true,
+          "citation": "SURPASS trial program; FDA Mounjaro label",
+          "pmid": "",
+          "notes": "Core FDA-approved indication for type 2 diabetes."
+        },
+        {
+          "claim": "Reduced cardiovascular risk markers",
+          "supported": true,
+          "citation": "SURMOUNT trials",
+          "pmid": "",
+          "notes": "Improvements in CV risk markers observed. Dedicated CV outcome trial data is still emerging."
+        },
+        {
+          "claim": "Strong appetite suppression",
+          "supported": true,
+          "citation": "SURMOUNT trial program",
+          "pmid": "",
+          "notes": "Well-established GLP-1/GIP mechanism."
+        }
+      ],
+      "validatedSideEffects": [
+        {
+          "claim": "Nausea (common, dose-dependent)",
+          "supported": true,
+          "citation": "SURMOUNT-1, NEJM 2022",
+          "pmid": "",
+          "notes": "Confirmed: GI adverse events were most common, occurring during dose escalation. Notably, GI discontinuation was LOWER with tirzepatide (2.7%) vs semaglutide (5.6%) in head-to-head."
+        },
+        {
+          "claim": "Diarrhea",
+          "supported": true,
+          "citation": "SURMOUNT-1; FDA label",
+          "pmid": "",
+          "notes": "Confirmed. Common GI side effect."
+        },
+        {
+          "claim": "Constipation",
+          "supported": true,
+          "citation": "SURMOUNT-1; FDA label",
+          "pmid": "",
+          "notes": "Confirmed."
+        },
+        {
+          "claim": "Vomiting",
+          "supported": true,
+          "citation": "SURMOUNT-1; FDA label",
+          "pmid": "",
+          "notes": "Confirmed."
+        },
+        {
+          "claim": "Rare: pancreatitis, gallbladder issues",
+          "supported": true,
+          "citation": "FDA label; SURMOUNT safety data",
+          "pmid": "",
+          "notes": "Confirmed. Serious adverse events 5.1-6.9% across dose groups (similar to placebo 6.8%). Gallbladder events and pancreatitis in label warnings."
+        }
+      ],
+      "dosingValidation": {
+        "ourClaim": "2.5mg weekly escalating to 15mg weekly",
+        "publishedRange": "2.5 mg starting dose, increased by 2.5 mg every 4 weeks. Target doses: 5 mg, 10 mg, or 15 mg weekly.",
+        "citation": "FDA-approved Zepbound/Mounjaro prescribing information; SURMOUNT-1",
+        "accurate": true
+      },
+      "evidenceLevelValidation": {
+        "ourLevel": "very_high",
+        "actualLevel": "very_high",
+        "reasoning": "Multiple Phase III RCTs (SURMOUNT 1-5, SURPASS), head-to-head vs semaglutide in NEJM, FDA approval for T2D and obesity. Evidence is robust."
+      },
+      "legalStatusUpdate": {
+        "accurate": false,
+        "notes": "CORRECTION: Our data says 'Oral version expected late 2026' but NO oral tirzepatide formulation is in development. Tirzepatide's molecular weight (4813 Da) makes oral delivery technically infeasible. Eli Lilly is developing orforglipron (small molecule oral GLP-1) instead, expected ~April 2026. This is a DIFFERENT drug."
+      },
+      "keyCitations": [
+        {
+          "title": "Tirzepatide as Compared with Semaglutide for the Treatment of Obesity",
+          "authors": "Various",
+          "journal": "N Engl J Med",
+          "year": 2025,
+          "pmid": "40353578",
+          "doi": "10.1056/NEJMoa2416394",
+          "type": "clinical_trial"
+        },
+        {
+          "title": "Tirzepatide Once Weekly for the Treatment of Obesity (SURMOUNT-1)",
+          "authors": "Jastreboff AM et al.",
+          "journal": "N Engl J Med",
+          "year": 2022,
+          "pmid": "",
+          "doi": "10.1056/NEJMoa2206038",
+          "type": "clinical_trial"
+        },
+        {
+          "title": "Gastrointestinal tolerability and weight reduction associated with tirzepatide in SURMOUNT 1-4 trials",
+          "authors": "Rubino D et al.",
+          "journal": "Diabetes Obes Metab",
+          "year": 2025,
+          "pmid": "",
+          "doi": "10.1111/dom.16176",
+          "type": "clinical_trial"
+        },
+        {
+          "title": "Continued Treatment With Tirzepatide for Maintenance of Weight Reduction (SURMOUNT-4)",
+          "authors": "Various",
+          "journal": "JAMA",
+          "year": 2024,
+          "pmid": "",
+          "doi": "",
+          "type": "clinical_trial"
+        },
+        {
+          "title": "Comparative Efficacy of Tirzepatide vs. Semaglutide: Systematic Review and Meta-Analysis",
+          "authors": "Various",
+          "journal": "PMC (2025)",
+          "year": 2025,
+          "pmid": "",
+          "doi": "",
+          "type": "meta_analysis"
+        }
+      ],
+      "corrections": [
+        "CRITICAL: Remove claim about 'Oral version expected late 2026'. No oral tirzepatide exists or is in development. Molecular weight makes it infeasible.",
+        "The NEJM head-to-head trial reference in evidenceNotes is confirmed accurate (SURMOUNT-5, published May 2025).",
+        "Should add hair loss as a side effect (reported in >=5% of patients per FDA label)."
+      ],
+      "missingInfo": [
+        "Should mention hair loss (alopecia) as a documented side effect (>=5% in trials)",
+        "Should note that GI discontinuation rate was actually LOWER than semaglutide in head-to-head (2.7% vs 5.6%)",
+        "Should mention the SURMOUNT-4 maintenance trial results",
+        "Remove the oral formulation claim or clarify that Lilly is developing orforglipron (different molecule) instead"
+      ]
+    },
+    {
+      "id": "pt-141",
+      "validatedBenefits": [
+        {
+          "claim": "Increases sexual desire and arousal",
+          "supported": true,
+          "citation": "RECONNECT Phase 3 trials; FDA approval package",
+          "pmid": "",
+          "notes": "Confirmed in two parallel Phase 3 RCTs (RECONNECT studies) and 52-week open-label extension with 684 patients."
+        },
+        {
+          "claim": "Works on brain pathways (MC3R/MC4R)",
+          "supported": true,
+          "citation": "DrugBank DB11653; ScienceDirect mechanism review",
+          "pmid": "",
+          "notes": "Confirmed: non-selective melanocortin receptor agonist (MC1-MC5 except MC2), primarily MC3R/MC4R."
+        },
+        {
+          "claim": "FDA-approved for HSDD in premenopausal women",
+          "supported": true,
+          "citation": "FDA approval June 21, 2019",
+          "pmid": "",
+          "notes": "Confirmed. Approved as Vyleesi for acquired, generalized HSDD in premenopausal women."
+        },
+        {
+          "claim": "Synergistic with PDE5 inhibitors for ED",
+          "supported": false,
+          "citation": "No published synergy data",
+          "pmid": "",
+          "notes": "Early research explored male ED but the drug was never approved for this. 'Synergistic with PDE5 inhibitors' is a clinical practice claim without published evidence of formal synergy studies."
+        },
+        {
+          "claim": "Fast onset (~30 minutes)",
+          "supported": false,
+          "citation": "FDA label says >=45 minutes",
+          "pmid": "",
+          "notes": "CORRECTION: FDA label recommends administration at least 45 minutes before anticipated sexual activity, not 30 minutes. Our claim understates the onset time."
+        },
+        {
+          "claim": "Effective for psychological and physiological arousal",
+          "supported": true,
+          "citation": "RECONNECT trials; FDA label",
+          "pmid": "",
+          "notes": "The central mechanism (brain MC3R/MC4R) supports both psychological desire and physiological arousal."
+        }
+      ],
+      "validatedSideEffects": [
+        {
+          "claim": "Nausea (40% of users)",
+          "supported": true,
+          "citation": "RECONNECT extension study (PMC6819023)",
+          "pmid": "",
+          "notes": "CONFIRMED: 40.0-40.4% nausea rate. However, only 8.1% discontinued due to nausea. May last 2+ hours."
+        },
+        {
+          "claim": "Flushing and facial redness",
+          "supported": true,
+          "citation": "RECONNECT extension study",
+          "pmid": "",
+          "notes": "Confirmed: Flushing reported at 20.6%. Well-documented."
+        },
+        {
+          "claim": "Headache",
+          "supported": true,
+          "citation": "RECONNECT extension study",
+          "pmid": "",
+          "notes": "Confirmed: Headache at 12.0%."
+        },
+        {
+          "claim": "Skin darkening with repeated use",
+          "supported": true,
+          "citation": "FDA label; melanocortin mechanism",
+          "pmid": "",
+          "notes": "Expected given MC1R activity (melanogenesis). Documented in label. Hyperpigmentation possible with chronic use."
+        }
+      ],
+      "dosingValidation": {
+        "ourClaim": "1.75mg per dose",
+        "publishedRange": "1.75 mg subcutaneously, at least 45 minutes before anticipated activity. Max 1 dose/24 hours, max 8 doses/month.",
+        "citation": "FDA-approved Vyleesi prescribing information",
+        "accurate": true
+      },
+      "evidenceLevelValidation": {
+        "ourLevel": "high",
+        "actualLevel": "high",
+        "reasoning": "FDA-approved with full clinical trial package including two Phase 3 RCTs and a 52-week extension study. The 'high' rating is appropriate."
+      },
+      "legalStatusUpdate": {
+        "accurate": false,
+        "notes": "NEEDS VERIFICATION: Our data says wadaBanned: true. However, bremelanotide/PT-141 does not clearly appear on WADA's prohibited list based on available searches. Melanocortin agonists are not explicitly listed in WADA S2. This needs to be verified against the actual 2025/2026 WADA Prohibited List document. Melanotan II IS banned (it's an S0 substance), but Vyleesi as an FDA-approved drug may have different status."
+      },
+      "keyCitations": [
+        {
+          "title": "Long-Term Safety and Efficacy of Bremelanotide for Hypoactive Sexual Desire Disorder",
+          "authors": "Various",
+          "journal": "Obstet Gynecol",
+          "year": 2019,
+          "pmid": "",
+          "doi": "",
+          "type": "clinical_trial"
+        },
+        {
+          "title": "Bremelanotide: First Approval",
+          "authors": "Dhillon S, Keam SJ",
+          "journal": "Drugs",
+          "year": 2019,
+          "pmid": "31429064",
+          "doi": "",
+          "type": "review"
+        },
+        {
+          "title": "PT-141: a melanocortin agonist for the treatment of sexual dysfunction",
+          "authors": "Molinoff PB et al.",
+          "journal": "Ann N Y Acad Sci",
+          "year": 2003,
+          "pmid": "12851303",
+          "doi": "",
+          "type": "review"
+        }
+      ],
+      "corrections": [
+        "CORRECTION: Onset time should be '~45 minutes' not '~30 minutes' per FDA label.",
+        "The 'Synergistic with PDE5 inhibitors' claim lacks published evidence and should be removed or clearly labeled as anecdotal.",
+        "The off-label men's dose note is fine but should emphasize this is not FDA-approved for men.",
+        "wadaBanned status needs verification — unclear if bremelanotide specifically is on WADA list (melanotan II is, but that's different)."
+      ],
+      "missingInfo": [
+        "Should mention the high nausea rate more prominently (40%) as it's a major tolerability issue",
+        "Should note flushing rate (20.6%) and headache rate (12.0%) with specific percentages",
+        "Should mention that ondansetron (anti-nausea medication) can help manage nausea side effect",
+        "Should note the 52-week extension study with 684 patients for long-term safety data"
+      ]
+    },
+    {
+      "id": "ghk-cu",
+      "validatedBenefits": [
+        {
+          "claim": "Up to 9x increase in collagen production",
+          "supported": false,
+          "citation": "Not found in published literature",
+          "pmid": "",
+          "notes": "COULD NOT VERIFY: No published study was found showing a 9x (900%) increase in collagen from GHK-Cu alone. A 2023 study (Jiang et al., J Cosmet Dermatol) found 25.4x collagen IV increase with GHK-Cu + hyaluronic acid COMBINATION, not GHK-Cu alone. Pickart's research showed collagen increases in 70% of women vs 50% for vitamin C cream, but no 9x figure was identified."
+        },
+        {
+          "claim": "Up to 60% reduction in inflammatory markers",
+          "supported": true,
+          "citation": "Pickart L, PMC4508379; gene expression studies",
+          "pmid": "",
+          "notes": "GHK-Cu gene expression studies show significant anti-inflammatory gene modulation. The 60% figure needs specific citation verification."
+        },
+        {
+          "claim": "Reduces wrinkles and improves skin density",
+          "supported": true,
+          "citation": "Clinical study on wrinkle parameters",
+          "pmid": "",
+          "notes": "Confirmed: Randomized, double-blind trial showed 31.6% wrinkle volume reduction vs Matrixyl 3000, and 55.8% vs control serum. 32.8% wrinkle depth reduction."
+        },
+        {
+          "claim": "Promotes wound healing and tissue remodeling",
+          "supported": true,
+          "citation": "Multiple animal studies; PMC6073405",
+          "pmid": "",
+          "notes": "Well-documented in multiple animal models. Accelerated wound healing and increased blood vessel formation confirmed in rabbits. Improved diabetic/ischemic wound healing in rats."
+        },
+        {
+          "claim": "Stimulates hair growth",
+          "supported": true,
+          "citation": "Published reviews on GHK-Cu hair effects",
+          "pmid": "",
+          "notes": "Documented in literature. GHK-Cu is used in hair restoration products. Evidence quality is moderate."
+        },
+        {
+          "claim": "Antioxidant and anti-inflammatory",
+          "supported": true,
+          "citation": "Pickart L et al., Int J Mol Sci, 2018 (PMC6073405)",
+          "pmid": "",
+          "notes": "Confirmed through gene expression and functional studies."
+        }
+      ],
+      "validatedSideEffects": [
+        {
+          "claim": "Skin irritation at higher concentrations",
+          "supported": true,
+          "citation": "Cosmetic use reports; product safety data",
+          "pmid": "",
+          "notes": "Confirmed for topical use at higher concentrations."
+        },
+        {
+          "claim": "Injection site burning/cramping",
+          "supported": true,
+          "citation": "Clinical practice reports",
+          "pmid": "",
+          "notes": "Reported with subcutaneous injection."
+        },
+        {
+          "claim": "Rare copper overload with excessive use",
+          "supported": true,
+          "citation": "Pharmacological literature; Wilson's disease contraindication",
+          "pmid": "",
+          "notes": "Theoretically possible. Wilson's disease patients specifically contraindicated. Lethal dose estimated at ~330 mg/kg (>300x effective dose)."
+        }
+      ],
+      "dosingValidation": {
+        "ourClaim": "Topical: 1-2% cream daily; Injectable: 200-500 mcg daily",
+        "publishedRange": "Topical: 1-2% is standard in cosmetics. Injectable: ~2mg per injection, 2-3 times/week is more common in practice than 200-500 mcg daily.",
+        "citation": "Practice protocols; cosmetic industry standard",
+        "accurate": false
+      },
+      "evidenceLevelValidation": {
+        "ourLevel": "moderate_high",
+        "actualLevel": "moderate",
+        "reasoning": "Topical use has decades of cosmetic safety data and some clinical trials (wrinkle reduction). However, injectable use has very limited human data — FDA flagged injectable GHK-Cu as high-risk due to sparse human data. 'Moderate_high' overstates injectable evidence."
+      },
+      "legalStatusUpdate": {
+        "accurate": true,
+        "notes": "Correctly noted as legal cosmetic ingredient but not FDA-approved as drug. FDA has flagged injectable form as high-risk category due to limited human safety data."
+      },
+      "keyCitations": [
+        {
+          "title": "Regenerative and Protective Actions of the GHK-Cu Peptide in the Light of the New Gene Data",
+          "authors": "Pickart L et al.",
+          "journal": "Int J Mol Sci",
+          "year": 2018,
+          "pmid": "",
+          "doi": "",
+          "type": "review"
+        },
+        {
+          "title": "GHK Peptide as a Natural Modulator of Multiple Cellular Pathways in Skin Regeneration",
+          "authors": "Pickart L et al.",
+          "journal": "Biomed Res Int",
+          "year": 2015,
+          "pmid": "",
+          "doi": "",
+          "type": "review"
+        },
+        {
+          "title": "Skin Regenerative and Anti-Cancer Actions of Copper Peptides",
+          "authors": "Pickart L, Margolina A",
+          "journal": "Cosmetics",
+          "year": 2018,
+          "pmid": "",
+          "doi": "",
+          "type": "review"
+        },
+        {
+          "title": "Synergy of GHK-Cu and hyaluronic acid on collagen IV upregulation",
+          "authors": "Jiang et al.",
+          "journal": "J Cosmet Dermatol",
+          "year": 2023,
+          "pmid": "",
+          "doi": "10.1111/jocd.15763",
+          "type": "clinical_trial"
+        },
+        {
+          "title": "Exploring the Role of Tripeptides in Wound Healing and Skin Regeneration: A Comprehensive Review",
+          "authors": "Various",
+          "journal": "Int J Med Sci",
+          "year": 2025,
+          "pmid": "",
+          "doi": "",
+          "type": "review"
+        }
+      ],
+      "corrections": [
+        "CORRECTION: The '9x increase in collagen production' claim could not be verified. No published study shows this figure for GHK-Cu alone. Should be removed or replaced with verified data (e.g., 'significant collagen increase in 70% of subjects').",
+        "Injectable dosing of 200-500 mcg daily may be low — practice protocols suggest ~2mg, 2-3x/week.",
+        "evidenceLevel should be downgraded from 'moderate_high' to 'moderate'. Injectable evidence is limited; topical has better data.",
+        "Should add anxiolytic/blood pressure lowering effect as a potential concern at high doses."
+      ],
+      "missingInfo": [
+        "Should mention that Loren Pickart isolated GHK-Cu from human plasma in 1973 (historical context)",
+        "Should mention the double-blind wrinkle reduction trial with specific percentages (55.8% wrinkle volume reduction)",
+        "Should note that FDA flagged injectable GHK-Cu as high-risk category",
+        "Should add Wilson's disease as a specific contraindication",
+        "Should mention the blood-pressure-lowering anxiolytic effect (caution at high doses)"
+      ]
+    },
+    {
+      "id": "epithalon",
+      "validatedBenefits": [
+        {
+          "claim": "Dose-dependent telomere extension via telomerase",
+          "supported": true,
+          "citation": "Khavinson VK et al., Bull Exp Biol Med, 2003; PMC12411320 (2025)",
+          "pmid": "12937682",
+          "notes": "Confirmed in human somatic cells (33.3% average telomere elongation). 2025 paper confirmed dose-dependent effects in human cell lines via hTERT upregulation. However, ALL studies are from Khavinson's group with no independent replication."
+        },
+        {
+          "claim": "Increased melatonin synthesis (160% vs placebo)",
+          "supported": false,
+          "citation": "Khavinson VK et al., 2004 (PMID: 15452611)",
+          "pmid": "15452611",
+          "notes": "COULD NOT VERIFY 160% figure. The 2004 study showed melatonin increased in subjects with initially LOW pineal activity, but actually decreased in those with normal function. No '160% vs placebo' figure found in available literature. This specific number needs better citation."
+        },
+        {
+          "claim": "Extended lifespan in animal models",
+          "supported": true,
+          "citation": "Khavinson VK et al., Biogerontology, 2003",
+          "pmid": "",
+          "notes": "Reported in mouse studies from Khavinson's group. No independent replication."
+        },
+        {
+          "claim": "Enhanced thymus and immune function",
+          "supported": true,
+          "citation": "Khavinson VK et al., multiple publications",
+          "pmid": "",
+          "notes": "Reported to improve immunological parameters in rats and mice. All from Khavinson's lab."
+        },
+        {
+          "claim": "Improved sleep and circadian rhythm",
+          "supported": true,
+          "citation": "Via melatonin modulation mechanism",
+          "pmid": "",
+          "notes": "Plausible via melatonin synthesis effects, though the melatonin data is complex (increased in some, decreased in others)."
+        },
+        {
+          "claim": "Antioxidant properties",
+          "supported": true,
+          "citation": "Khavinson VK et al.; PMC11943447",
+          "pmid": "",
+          "notes": "Reported in multiple publications. Described as having antioxidant, neuroprotective, and antimutagenic effects."
+        }
+      ],
+      "validatedSideEffects": [
+        {
+          "claim": "Generally well tolerated",
+          "supported": true,
+          "citation": "Available literature from Khavinson group",
+          "pmid": "",
+          "notes": "No significant adverse effects reported in published studies, though study quality and independence are concerns."
+        },
+        {
+          "claim": "Injection site reactions",
+          "supported": true,
+          "citation": "Common to all SC peptide injections",
+          "pmid": "",
+          "notes": "Standard for subcutaneous injection."
+        },
+        {
+          "claim": "Potential drowsiness",
+          "supported": true,
+          "citation": "Via melatonin mechanism",
+          "pmid": "",
+          "notes": "Plausible given melatonin modulation. Nighttime administration recommended."
+        }
+      ],
+      "dosingValidation": {
+        "ourClaim": "5-10 mg/day for 10-20 days",
+        "publishedRange": "Common protocols suggest 5 mg/day for 10-20 days, cycled 2-3 times per year. Some protocols use up to 10 mg. These are community/practice protocols, not derived from formal clinical trials.",
+        "citation": "Community protocols; Khavinson research dosing",
+        "accurate": true
+      },
+      "evidenceLevelValidation": {
+        "ourLevel": "moderate",
+        "actualLevel": "low",
+        "reasoning": "CRITICAL CONCERN: Every preclinical and clinical study on epitalon has been conducted by Dr. Khavinson's group in Russia with NO independent confirmation. The 2025 cell line study is a step forward but still needs independent replication. No Western clinical trials. No FDA or EMA review. The total lack of independent verification is a major red flag that pushes evidence level to 'low'."
+      },
+      "legalStatusUpdate": {
+        "accurate": true,
+        "notes": "Correctly listed as not FDA-approved, available from research suppliers. Not WADA-banned (correct)."
+      },
+      "keyCitations": [
+        {
+          "title": "Epithalon peptide induces telomerase activity and telomere elongation in human somatic cells",
+          "authors": "Khavinson VK et al.",
+          "journal": "Bull Exp Biol Med",
+          "year": 2003,
+          "pmid": "12937682",
+          "doi": "",
+          "type": "clinical_trial"
+        },
+        {
+          "title": "Epitalon increases telomere length in human cell lines through telomerase upregulation or ALT activity",
+          "authors": "Various",
+          "journal": "PMC (2025)",
+          "year": 2025,
+          "pmid": "40908429",
+          "doi": "",
+          "type": "clinical_trial"
+        },
+        {
+          "title": "Overview of Epitalon — Highly Bioactive Pineal Tetrapeptide with Promising Properties",
+          "authors": "Various",
+          "journal": "Int J Mol Sci",
+          "year": 2025,
+          "pmid": "40141333",
+          "doi": "",
+          "type": "review"
+        },
+        {
+          "title": "Effect of peptide preparation epithalamin on circadian rhythm of epiphyseal melatonin-producing function in elderly people",
+          "authors": "Khavinson VK et al.",
+          "journal": "Bull Exp Biol Med",
+          "year": 2004,
+          "pmid": "15452611",
+          "doi": "",
+          "type": "clinical_trial"
+        },
+        {
+          "title": "Effect of Epitalon on biomarkers of aging, life span and spontaneous tumor incidence in female Swiss-derived SHR mice",
+          "authors": "Khavinson VK et al.",
+          "journal": "Biogerontology",
+          "year": 2003,
+          "pmid": "",
+          "doi": "",
+          "type": "animal_study"
+        }
+      ],
+      "corrections": [
+        "CRITICAL: evidenceLevel should be downgraded from 'moderate' to 'low'. ALL published research comes from a single lab (Khavinson group) with zero independent replication.",
+        "The '160% vs placebo' melatonin claim could not be verified and should be removed or replaced with the actual finding (melatonin increased in those with low baseline, decreased in those with normal baseline).",
+        "evidenceNotes should prominently note the lack of independent replication.",
+        "The '2025 paper confirmed dose-dependent effects in human cell lines' is accurate (PMC12411320) but should note it's cell line work, not a human clinical trial."
+      ],
+      "missingInfo": [
+        "CRITICAL: Must prominently note that all research originates from a single lab (Khavinson/St. Petersburg Institute of Bioregulation and Gerontology) with no independent Western replication",
+        "Should mention the retinitis pigmentosa study (90% positive effect, from Khavinson group)",
+        "Should note that the melatonin effect was bidirectional (up in low-baseline subjects, down in normal subjects)",
+        "Should add that the 2025 cell line study showed ALT (alternative lengthening of telomeres) pathway activation in some cells — this has implications for cancer research"
+      ]
+    }
+  ],
+  "summaryOfCriticalCorrections": [
+    {
+      "priority": "CRITICAL",
+      "peptide": "bpc-157",
+      "issue": "wadaBanned is set to FALSE but BPC-157 has been WADA-prohibited since 2022 under S0"
+    },
+    {
+      "priority": "CRITICAL",
+      "peptide": "tirzepatide",
+      "issue": "'Oral version expected late 2026' is FALSE. No oral tirzepatide is in development. Eli Lilly is developing orforglipron (different molecule) instead."
+    },
+    {
+      "priority": "CRITICAL",
+      "peptide": "epithalon",
+      "issue": "evidenceLevel 'moderate' is too high. ALL research from single lab with no independent replication. Should be 'low'."
+    },
+    {
+      "priority": "HIGH",
+      "peptide": "ghk-cu",
+      "issue": "'9x increase in collagen production' claim could not be verified in published literature"
+    },
+    {
+      "priority": "HIGH",
+      "peptide": "pt-141",
+      "issue": "Onset time listed as '~30 minutes' but FDA label says '>=45 minutes'"
+    },
+    {
+      "priority": "HIGH",
+      "peptide": "epithalon",
+      "issue": "'160% melatonin increase vs placebo' could not be verified. Actual finding was bidirectional."
+    },
+    {
+      "priority": "MEDIUM",
+      "peptide": "bpc-157",
+      "issue": "evidenceLevel 'moderate' may be too high — only 3 small pilot studies, no RCTs"
+    },
+    {
+      "priority": "MEDIUM",
+      "peptide": "tb-500",
+      "issue": "'Wolverine Stack' synergy claim has no published scientific support"
+    },
+    {
+      "priority": "MEDIUM",
+      "peptide": "ghk-cu",
+      "issue": "evidenceLevel 'moderate_high' overstates injectable evidence — should be 'moderate'"
+    },
+    {
+      "priority": "LOW",
+      "peptide": "pt-141",
+      "issue": "wadaBanned status needs verification — bremelanotide may not actually be on WADA list"
+    }
+  ]
+}

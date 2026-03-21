@@ -16,6 +16,7 @@ export interface Peptide {
   evidenceLevel: 'low' | 'low_moderate' | 'moderate' | 'moderate_high' | 'high' | 'very_high'
   evidenceNotes: string
   administrationMethods: ('injection' | 'nasal' | 'oral' | 'topical')[]
+  citations: { title: string; authors: string; journal: string; year: number; pmid?: string; type: string }[]
 }
 
 export const peptides: Peptide[] = [
@@ -44,11 +45,16 @@ export const peptides: Peptide[] = [
     ],
     riskLevel: 'low',
     dosing: { typical: '250-500 mcg 1-2x daily', method: 'Subcutaneous injection (near injury site)', cycle: '4-8 weeks on, few weeks off', notes: 'Also available as oral capsules with reduced bioavailability' },
-    legalStatus: { fda: 'Not FDA-approved for human use', availability: 'Research chemical; some compounding pharmacies', wadaBanned: false },
+    legalStatus: { fda: 'Not FDA-approved for human use', availability: 'Research chemical; some compounding pharmacies', wadaBanned: true },
     fdaApproved: false,
-    evidenceLevel: 'moderate',
-    evidenceNotes: 'Extensive animal studies. Very limited human clinical trials. A 2025 pilot study showed IV BPC-157 was well tolerated in healthy adults.',
+    evidenceLevel: 'low_moderate',
+    evidenceNotes: 'Extensive animal studies showing strong healing effects. Only 3 small human pilot studies (no RCTs). WADA prohibited since Jan 2022 under S0 (Non-Approved Substances). Most human evidence is preclinical.',
     administrationMethods: ['injection', 'oral'],
+    citations: [
+      { title: 'BPC 157: A Review of its Regenerative and Protective Properties', authors: 'Gwyer D et al.', journal: 'Current Pharmaceutical Design', year: 2025, pmid: '39895597', type: 'review' },
+      { title: 'Stable gastric pentadecapeptide BPC 157 in trials for inflammatory bowel disease', authors: 'Seiwerth S et al.', journal: 'Annals of Medicine', year: 2021, pmid: '34779685', type: 'review' },
+      { title: 'Safety and pharmacokinetics of BPC-157 in healthy volunteers', authors: 'Jakobsen JC et al.', journal: 'Clinical trial (NCT05765045)', year: 2025, type: 'clinical_trial' },
+    ],
   },
   {
     id: 'tb-500',
@@ -76,9 +82,13 @@ export const peptides: Peptide[] = [
     dosing: { typical: '2-2.5 mg twice/week (loading), then once/week', method: 'Subcutaneous or intramuscular injection', cycle: '4-8 weeks', notes: 'Often combined with BPC-157 for synergistic effects' },
     legalStatus: { fda: 'Not FDA-approved', availability: 'Research chemical', wadaBanned: true },
     fdaApproved: false,
-    evidenceLevel: 'moderate',
-    evidenceNotes: 'Well-studied in animal models. Used extensively in veterinary medicine. Limited human clinical data.',
+    evidenceLevel: 'low_moderate',
+    evidenceNotes: 'Well-studied in animal models. Used in veterinary medicine. Note: most trials used full Thymosin Beta-4 protein, not the TB-500 fragment. Limited direct human evidence for TB-500 specifically.',
     administrationMethods: ['injection'],
+    citations: [
+      { title: 'Thymosin beta-4: a multi-functional regenerative peptide', authors: 'Goldstein AL et al.', journal: 'Expert Opinion on Biological Therapy', year: 2012, pmid: '22849349', type: 'review' },
+      { title: 'Thymosin beta 4 promotes wound healing in animal models', authors: 'Malinda KM et al.', journal: 'Annals of the New York Academy of Sciences', year: 2007, pmid: '17986577', type: 'animal_study' },
+    ],
   },
   {
     id: 'cjc-1295',
@@ -110,6 +120,7 @@ export const peptides: Peptide[] = [
     evidenceLevel: 'moderate',
     evidenceNotes: 'Human clinical trial showed dose-dependent GH/IGF-1 increases without serious adverse reactions.',
     administrationMethods: ['injection'],
+    citations: [],
   },
   {
     id: 'ipamorelin',
@@ -138,9 +149,12 @@ export const peptides: Peptide[] = [
     dosing: { typical: '200-300 mcg, 1-3 times daily', method: 'Subcutaneous injection', cycle: '8-12 weeks on, 4 weeks off', notes: 'Typically at night. Best combined with CJC-1295 for 3-5x GH increase.' },
     legalStatus: { fda: 'Not FDA-approved', availability: 'Removed from Category 2 Sept 2024; some compounding pharmacies', wadaBanned: true },
     fdaApproved: false,
-    evidenceLevel: 'moderate',
-    evidenceNotes: 'Well-tolerated in clinical settings. Mild transient side effects in first couple weeks.',
+    evidenceLevel: 'low_moderate',
+    evidenceNotes: 'Limited to a single 1998 characterization study. Well-tolerated anecdotally but lacks modern RCTs. Most evidence is extrapolated from the GHS receptor mechanism.',
     administrationMethods: ['injection'],
+    citations: [
+      { title: 'Ipamorelin, the first selective growth hormone secretagogue', authors: 'Raun K et al.', journal: 'European Journal of Endocrinology', year: 1998, pmid: '9916862', type: 'clinical_trial' },
+    ],
   },
   {
     id: 'semaglutide',
@@ -174,6 +188,7 @@ export const peptides: Peptide[] = [
     evidenceLevel: 'very_high',
     evidenceNotes: 'Extensive Phase III clinical trials. WHO global guideline on GLP-1s for obesity (Dec 2025). Wegovy approved for MASH (Aug 2025).',
     administrationMethods: ['injection', 'oral'],
+    citations: [],
   },
   {
     id: 'tirzepatide',
@@ -200,12 +215,13 @@ export const peptides: Peptide[] = [
       { text: 'Rare: pancreatitis, gallbladder issues', severity: 'serious' },
     ],
     riskLevel: 'moderate',
-    dosing: { typical: '2.5mg weekly escalating to 15mg weekly', method: 'Weekly subcutaneous injection', cycle: 'Ongoing under physician supervision', notes: 'Dose escalation over weeks. Oral version expected late 2026.' },
+    dosing: { typical: '2.5mg weekly escalating to 15mg weekly', method: 'Weekly subcutaneous injection', cycle: 'Ongoing under physician supervision', notes: 'Dose escalation over weeks. No oral tirzepatide in development (molecule too large). Eli Lilly developing orforglipron, a separate oral GLP-1.' },
     legalStatus: { fda: 'FDA-APPROVED (Mounjaro, Zepbound)', availability: 'Prescription at standard pharmacies', wadaBanned: false },
     fdaApproved: true,
     evidenceLevel: 'very_high',
     evidenceNotes: 'NEJM head-to-head trial vs semaglutide showing superiority at week 72.',
     administrationMethods: ['injection'],
+    citations: [],
   },
   {
     id: 'pt-141',
@@ -221,7 +237,7 @@ export const peptides: Peptide[] = [
       'Works on brain pathways (MC3R/MC4R)',
       'FDA-approved for HSDD in premenopausal women',
       'Synergistic with PDE5 inhibitors for ED',
-      'Fast onset (~30 minutes)',
+      'Onset within 45 minutes (per FDA label)',
       'Effective for psychological and physiological arousal',
     ],
     sideEffects: [
@@ -231,12 +247,13 @@ export const peptides: Peptide[] = [
       { text: 'Skin darkening with repeated use', severity: 'moderate' },
     ],
     riskLevel: 'moderate',
-    dosing: { typical: '1.75mg per dose', method: 'Subcutaneous injection', cycle: 'As-needed, max once/24hrs, max 8 doses/month', notes: 'Works within 30-45 minutes. Off-label men\'s dose: 1-2mg.' },
+    dosing: { typical: '1.75mg per dose', method: 'Subcutaneous injection', cycle: 'As-needed, max once/24hrs, max 8 doses/month', notes: 'Administer at least 45 min before activity (per FDA label). Off-label men\'s dose: 1-2mg.' },
     legalStatus: { fda: 'FDA-APPROVED (Vyleesi for HSDD)', availability: 'Prescription; also off-label through clinics', wadaBanned: true },
     fdaApproved: true,
     evidenceLevel: 'high',
     evidenceNotes: 'FDA-approved with full clinical trial package. Extensive human data.',
     administrationMethods: ['injection'],
+    citations: [],
   },
   {
     id: 'selank',
@@ -267,6 +284,7 @@ export const peptides: Peptide[] = [
     evidenceLevel: 'moderate',
     evidenceNotes: 'Decades of research and clinical use in Russia. Multiple published studies. Not studied in large-scale Western trials.',
     administrationMethods: ['nasal', 'injection'],
+    citations: [],
   },
   {
     id: 'semax',
@@ -298,6 +316,7 @@ export const peptides: Peptide[] = [
     evidenceLevel: 'moderate',
     evidenceNotes: 'Decades of Russian clinical use. Published studies on BDNF upregulation. Limited Western clinical trial data.',
     administrationMethods: ['nasal'],
+    citations: [],
   },
   {
     id: 'ghk-cu',
@@ -309,7 +328,7 @@ export const peptides: Peptide[] = [
     trendingRank: 6,
     description: 'A naturally occurring copper-binding tripeptide found in human plasma. Concentration declines with age. Widely used in topical cosmetics for decades with excellent safety.',
     benefits: [
-      'Up to 9x increase in collagen production',
+      'Significant increase in collagen production (preclinical data)',
       'Up to 60% reduction in inflammatory markers',
       'Reduces wrinkles and improves skin density',
       'Promotes wound healing and tissue remodeling',
@@ -325,9 +344,13 @@ export const peptides: Peptide[] = [
     dosing: { typical: 'Topical: 1-2% cream daily; Injectable: 200-500 mcg daily', method: 'Topical cream/serum, subcutaneous injection, or microneedling', cycle: 'Topical: ongoing; Injectable: 4-6 week cycles', notes: 'Decades of safe topical use in cosmetics.' },
     legalStatus: { fda: 'Not FDA-approved as drug; legal as cosmetic ingredient', availability: 'Widely available in skincare; injectable from compounding pharmacies', wadaBanned: false },
     fdaApproved: false,
-    evidenceLevel: 'moderate_high',
-    evidenceNotes: 'Extensive published research. Decades of safe cosmetic use. Clinical studies on wrinkle reduction.',
+    evidenceLevel: 'moderate',
+    evidenceNotes: 'Extensive published research on topical use with decades of safe cosmetic history. Injectable human evidence is more limited. Collagen increase claims are from preclinical models, not verified in human RCTs.',
     administrationMethods: ['topical', 'injection'],
+    citations: [
+      { title: 'GHK-Cu may prevent oxidative stress in skin by regulating copper and modifying expression of numerous antioxidant genes', authors: 'Pickart L et al.', journal: 'Cosmetics', year: 2015, type: 'review' },
+      { title: 'The human tripeptide GHK-Cu in prevention of oxidative stress and degenerative conditions of aging', authors: 'Pickart L et al.', journal: 'Oxidative Medicine and Cellular Longevity', year: 2012, pmid: '22577490', type: 'review' },
+    ],
   },
   {
     id: 'epithalon',
@@ -340,7 +363,7 @@ export const peptides: Peptide[] = [
     description: 'A synthetic tetrapeptide based on the pineal gland polypeptide Epithalamin. The flagship anti-aging peptide that activates telomerase to extend telomeres.',
     benefits: [
       'Dose-dependent telomere extension via telomerase',
-      'Increased melatonin synthesis (160% vs placebo)',
+      'May normalize melatonin production (bidirectional effect)',
       'Extended lifespan in animal models',
       'Enhanced thymus and immune function',
       'Improved sleep and circadian rhythm',
@@ -355,9 +378,12 @@ export const peptides: Peptide[] = [
     dosing: { typical: '5-10 mg/day for 10-20 days', method: 'Subcutaneous injection', cycle: '10-20 day cycles, 2-3 times per year', notes: 'Oral route ineffective. Short periodic cycles, not continuous.' },
     legalStatus: { fda: 'Not FDA-approved', availability: 'Research peptide suppliers', wadaBanned: false },
     fdaApproved: false,
-    evidenceLevel: 'moderate',
-    evidenceNotes: 'Human studies show telomere extension and melatonin increase. 2025 paper confirmed dose-dependent effects in human cell lines.',
+    evidenceLevel: 'low',
+    evidenceNotes: 'All published human data originates from a single research group (Khavinson, St. Petersburg). No independent Western replication. Telomere and melatonin claims lack independent verification. Promising preclinical concept but very limited evidence base.',
     administrationMethods: ['injection'],
+    citations: [
+      { title: 'Peptide regulation of aging: 35-year research experience', authors: 'Khavinson VK', journal: 'Bulletin of Experimental Biology and Medicine', year: 2020, pmid: '32651895', type: 'review' },
+    ],
   },
   {
     id: 'dsip',
@@ -389,6 +415,7 @@ export const peptides: Peptide[] = [
     evidenceLevel: 'low_moderate',
     evidenceNotes: 'Older human studies from 1980s-90s. Mechanism well-described. Long-term safety not established.',
     administrationMethods: ['injection'],
+    citations: [],
   },
   {
     id: 'kisspeptin',
@@ -418,6 +445,7 @@ export const peptides: Peptide[] = [
     evidenceLevel: 'moderate',
     evidenceNotes: 'Human studies confirm LH/FSH/testosterone increases. IVF studies show dose-dependent egg maturation.',
     administrationMethods: ['injection'],
+    citations: [],
   },
   {
     id: 'aod-9604',
@@ -447,6 +475,7 @@ export const peptides: Peptide[] = [
     evidenceLevel: 'low_moderate',
     evidenceNotes: '6 human clinical trials, 900+ participants. Largest Phase IIb FAILED statistical significance. Development terminated. Popular despite weak evidence.',
     administrationMethods: ['injection'],
+    citations: [],
   },
   {
     id: 'mots-c',
@@ -478,6 +507,7 @@ export const peptides: Peptide[] = [
     evidenceLevel: 'moderate',
     evidenceNotes: 'Published in Nature Communications (2020). Strong mechanistic data via AMPK pathway. Growing research interest.',
     administrationMethods: ['injection'],
+    citations: [],
   },
   {
     id: 'ss-31',
@@ -507,6 +537,7 @@ export const peptides: Peptide[] = [
     evidenceLevel: 'high',
     evidenceNotes: 'FDA-approved with full clinical trial data. Extensive published research on mitochondrial mechanism.',
     administrationMethods: ['injection'],
+    citations: [],
   },
   {
     id: 'melanotan-ii',
@@ -537,6 +568,7 @@ export const peptides: Peptide[] = [
     evidenceLevel: 'moderate',
     evidenceNotes: 'Development abandoned due to safety concerns. Health agencies globally advise against use.',
     administrationMethods: ['injection'],
+    citations: [],
   },
   {
     id: 'follistatin',
@@ -566,6 +598,7 @@ export const peptides: Peptide[] = [
     evidenceLevel: 'low',
     evidenceNotes: 'Strong animal gene therapy data. NO formal human research on exogenous peptide injection. High gap between promise and evidence.',
     administrationMethods: ['injection'],
+    citations: [],
   },
 ]
 
