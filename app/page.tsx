@@ -4,11 +4,13 @@ import { motion } from 'framer-motion'
 import Link from 'next/link'
 import {
   ArrowRight, TrendingUp, CheckCircle2, Layers, Search, Beaker,
-  ClipboardList, Sparkles, FileText, Lock, Download,
+  ClipboardList, Sparkles, FileText, Lock, Download, ShoppingBag,
+  Star, Shield, Store,
 } from 'lucide-react'
 import { categories } from '@/data/categories'
 import { peptides } from '@/data/peptides'
 import { stacks } from '@/data/stacks'
+import { suppliers } from '@/data/suppliers'
 import CategoryIcon from '@/components/CategoryIcon'
 import RiskBadge from '@/components/RiskBadge'
 import SocialProof from '@/components/SocialProof'
@@ -185,6 +187,79 @@ export default function HomePage() {
         </motion.div>
       </section>
 
+      {/* Shop from Trusted Suppliers */}
+      <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10 sm:py-16">
+        <motion.div initial="initial" whileInView="animate" viewport={{ once: true }} variants={stagger}>
+          <motion.div variants={fadeUp} className="text-center mb-6 sm:mb-8">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-neon-teal/10 border border-neon-teal/20 mb-4">
+              <ShoppingBag className="h-3.5 w-3.5 text-neon-teal" />
+              <span className="text-[11px] sm:text-xs font-medium text-neon-teal">Marketplace</span>
+            </div>
+            <h2 className="font-display text-2xl sm:text-3xl font-bold text-white mb-2 sm:mb-3">Shop from Trusted Suppliers</h2>
+            <p className="text-sm sm:text-base text-slate-400 max-w-lg mx-auto">Verified suppliers with third-party testing and certificates of analysis</p>
+          </motion.div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
+            {suppliers.filter(s => s.featured).slice(0, 3).map((supplier) => (
+              <motion.div key={supplier.id} variants={fadeUp}>
+                <Link href={`/suppliers/${supplier.id}`} className="glass-card p-5 sm:p-6 block group h-full">
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-neon-teal/20 to-neon-cyan/20 border border-neon-teal/20 flex items-center justify-center text-lg shrink-0">
+                      {supplier.logo}
+                    </div>
+                    <div className="min-w-0">
+                      <div className="flex items-center gap-1.5 flex-wrap">
+                        <h3 className="font-display text-base font-bold text-white group-hover:text-neon-teal transition-colors truncate">{supplier.name}</h3>
+                        {supplier.verified && (
+                          <Shield className="h-3.5 w-3.5 text-emerald-400 shrink-0" />
+                        )}
+                      </div>
+                      <div className="flex items-center gap-1">
+                        {Array.from({ length: 5 }).map((_, i) => (
+                          <Star
+                            key={i}
+                            className={`h-3 w-3 ${
+                              i < Math.floor(supplier.rating)
+                                ? 'text-amber-400 fill-amber-400'
+                                : i < supplier.rating
+                                ? 'text-amber-400 fill-amber-400/50'
+                                : 'text-slate-600'
+                            }`}
+                          />
+                        ))}
+                        <span className="text-[10px] text-slate-500 ml-1">{supplier.rating} ({supplier.reviewCount})</span>
+                      </div>
+                    </div>
+                  </div>
+                  <p className="text-xs sm:text-sm text-slate-400 mb-3 leading-relaxed line-clamp-2">{supplier.description}</p>
+                  <div className="flex flex-wrap gap-1.5 mb-3">
+                    {supplier.specialties.map((spec) => (
+                      <span key={spec} className="px-2 py-0.5 rounded-md text-[10px] font-medium bg-white/5 text-slate-300 border border-white/10">
+                        {spec}
+                      </span>
+                    ))}
+                  </div>
+                  <span className="flex items-center gap-1 text-xs text-neon-teal group-hover:text-neon-cyan transition-colors">
+                    View Products <ArrowRight className="h-3 w-3" />
+                  </span>
+                </Link>
+              </motion.div>
+            ))}
+          </div>
+
+          <motion.div variants={fadeUp} className="text-center mt-6">
+            <Link
+              href="/suppliers"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white/5 border border-white/10 text-sm font-medium text-slate-300 hover:border-neon-teal/30 hover:text-white transition-all"
+            >
+              <Store className="h-4 w-4" />
+              Browse All Suppliers
+              <ArrowRight className="h-3.5 w-3.5" />
+            </Link>
+          </motion.div>
+        </motion.div>
+      </section>
+
       {/* How It Works */}
       <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14 sm:py-20">
         <motion.div initial="initial" whileInView="animate" viewport={{ once: true }} variants={stagger}>
@@ -325,6 +400,18 @@ export default function HomePage() {
                 </Link>
                 <p className="text-center text-[10px] text-slate-600 mt-3">Quiz is free. Only pay if you want the full report.</p>
               </div>
+            </div>
+
+            {/* For Suppliers CTA */}
+            <div className="text-center mt-6">
+              <Link
+                href="/sell"
+                className="inline-flex items-center gap-1.5 text-xs text-slate-500 hover:text-neon-teal transition-colors"
+              >
+                <Store className="h-3.5 w-3.5" />
+                Are you a peptide supplier? List your products on PeptideGuide
+                <ArrowRight className="h-3 w-3" />
+              </Link>
             </div>
           </div>
         </motion.div>

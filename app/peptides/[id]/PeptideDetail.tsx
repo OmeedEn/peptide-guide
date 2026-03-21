@@ -4,15 +4,36 @@ import Link from 'next/link'
 import { motion } from 'framer-motion'
 import {
   ArrowLeft, CheckCircle2, AlertTriangle, AlertCircle, Info,
-  Syringe, Clock, Scale, BookOpen, Layers,
+  Syringe, Clock, Scale, BookOpen, Layers, ShoppingBag, Star,
+  ExternalLink, Shield, FileCheck, FlaskConical, AlertOctagon,
 } from 'lucide-react'
 import { peptideMap, peptides } from '@/data/peptides'
 import { categoryMap } from '@/data/categories'
 import { stacks } from '@/data/stacks'
+import { getProductsByPeptide } from '@/data/products'
+import { supplierMap } from '@/data/suppliers'
 import CategoryIcon from '@/components/CategoryIcon'
 import RiskBadge from '@/components/RiskBadge'
 import EvidenceBar from '@/components/EvidenceBar'
 import { useCompare } from '@/components/CompareContext'
+
+const formColors: Record<string, { bg: string; text: string }> = {
+  lyophilized: { bg: 'bg-violet-500/10 border-violet-500/20', text: 'text-violet-400' },
+  'pre-mixed': { bg: 'bg-sky-500/10 border-sky-500/20', text: 'text-sky-400' },
+  nasal_spray: { bg: 'bg-cyan-500/10 border-cyan-500/20', text: 'text-cyan-400' },
+  cream: { bg: 'bg-pink-500/10 border-pink-500/20', text: 'text-pink-400' },
+  capsule: { bg: 'bg-amber-500/10 border-amber-500/20', text: 'text-amber-400' },
+  tablet: { bg: 'bg-orange-500/10 border-orange-500/20', text: 'text-orange-400' },
+}
+
+const formLabels: Record<string, string> = {
+  lyophilized: 'Lyophilized',
+  'pre-mixed': 'Pre-Mixed',
+  nasal_spray: 'Nasal Spray',
+  cream: 'Cream',
+  capsule: 'Capsule',
+  tablet: 'Tablet',
+}
 
 function SeverityIcon({ severity }: { severity: 'mild' | 'moderate' | 'serious' }) {
   if (severity === 'serious') return <AlertTriangle className="h-4 w-4 text-rose-400 shrink-0" />
@@ -236,6 +257,135 @@ export default function PeptideDetail({ id }: { id: string }) {
               </div>
             </div>
           )}
+
+          {/* Where to Buy */}
+          {(() => {
+            const products = getProductsByPeptide(peptide.id)
+            if (products.length === 0) return null
+
+            // Sort: verified suppliers first, then by cheapest first variant price
+            const sorted = [...products].sort((a, b) => {
+              const supA = supplierMap[a.supplierId]
+              const supB = supplierMap[b.supplierId]
+              if (supA?.verified !== supB?.verified) return supA?.verified ? -1 : 1
+              const priceA = Math.min(...a.variants.map(v => v.price))
+              const priceB = Math.min(...b.variants.map(v => v.price))
+              return priceA - priceB
+            })
+
+            return (
+              <div className="glass-card p-6 sm:p-8 mt-6">
+                <div className="mb-6">
+                  <h2 className="font-display text-xl font-bold text-white mb-1 flex items-center gap-2">
+                    <ShoppingBag className="h-5 w-5 text-neon-teal" />
+                    Where to Buy
+                  </h2>
+                  <p className="text-sm text-slate-400">Available from verified suppliers</p>
+                </div>
+
+                <div className="space-y-4">
+                  {sorted.map((product) => {
+                    const supplier = supplierMap[product.supplierId]
+                    if (!supplier) return null
+                    const fc = formColors[product.form] || formColors.lyophilized
+
+                    return (
+                      <div key={product.id} className="p-4 sm:p-5 rounded-xl bg-white/[0.02] border border-white/5 hover:border-white/10 transition-colors">
+                        {/* Supplier row */}
+                        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-3">
+                          <div className="flex items-center gap-2 flex-wrap">
+                            <span className="text-sm font-semibold text-white">{supplier.name}</span>
+                            {supplier.verified && (
+                              <span className="flex items-center gap-0.5 px-1.5 py-0.5 rounded text-[9px] font-bold uppercase bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                                <Shield className="h-2.5 w-2.5" /> Verified
+                              </span>
+                            )}
+                            {/* Star rating */}
+                            <span className="flex items-center gap-0.5">
+                              {Array.from({ length: 5 }).map((_, i) => (
+                                <Star
+                                  key={i}
+                                  className={`h-3 w-3 ${
+                                    i < Math.floor(supplier.rating)
+                                      ? 'text-amber-400 fill-amber-400'
+                                      : i < supplier.rating
+                                      ? 'text-amber-400 fill-amber-400/50'
+                                      : 'text-slate-600'
+                                  }`}
+                                />
+                              ))}
+                              <span className="text-[10px] text-slate-500 ml-1">{supplier.rating}</span>
+                            </span>
+                          </div>
+                          <Link
+                            href={`/suppliers/${supplier.id}`}
+                            className="flex items-center gap-1 text-xs text-neon-teal hover:text-neon-cyan transition-colors shrink-0"
+                          >
+                            View Supplier <ExternalLink className="h-3 w-3" />
+                          </Link>
+                        </div>
+
+                        {/* Product info */}
+                        <div className="flex flex-col sm:flex-row sm:items-center gap-2 mb-3">
+                          <h3 className="text-sm font-medium text-slate-200">{product.name}</h3>
+                          <div className="flex items-center gap-2 flex-wrap">
+                            <span className={`px-2 py-0.5 rounded text-[10px] font-medium border ${fc.bg} ${fc.text}`}>
+                              {formLabels[product.form] || product.form}
+                            </span>
+                            <span className="text-[10px] text-slate-500">
+                              <FlaskConical className="h-3 w-3 inline mr-0.5" />
+                              Purity: {product.purity}
+                            </span>
+                          </div>
+                        </div>
+
+                        {/* Variant prices */}
+                        <div className="flex flex-col sm:flex-row gap-2 mb-3">
+                          {product.variants.map((v) => (
+                            <div key={v.id} className="flex items-center gap-2 px-3 py-2 rounded-lg bg-white/[0.03] border border-white/5">
+                              <span className="text-xs text-slate-400">{v.size}</span>
+                              <span className="text-xs text-slate-600">&mdash;</span>
+                              <span className="text-sm font-bold text-neon-teal">${v.price.toFixed(2)}</span>
+                              {v.originalPrice && (
+                                <span className="text-xs text-slate-500 line-through">${v.originalPrice.toFixed(2)}</span>
+                              )}
+                            </div>
+                          ))}
+                        </div>
+
+                        {/* Badges row */}
+                        <div className="flex flex-wrap items-center gap-2">
+                          {product.coaAvailable && (
+                            <span className="flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-medium bg-sky-500/10 text-sky-400 border border-sky-500/20">
+                              <FileCheck className="h-3 w-3" /> COA Available
+                            </span>
+                          )}
+                          {product.thirdPartyTested && (
+                            <span className="flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                              <Shield className="h-3 w-3" /> Third-Party Tested
+                            </span>
+                          )}
+                          {product.requiresPrescription && (
+                            <span className="flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-medium bg-amber-500/10 text-amber-400 border border-amber-500/20">
+                              <AlertOctagon className="h-3 w-3" /> Requires Prescription
+                            </span>
+                          )}
+                          <span className={`flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-medium ml-auto ${
+                            product.inStock
+                              ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20'
+                              : 'bg-rose-500/10 text-rose-400 border border-rose-500/20'
+                          }`}>
+                            <span className={`w-1.5 h-1.5 rounded-full ${product.inStock ? 'bg-emerald-400' : 'bg-rose-400'}`} />
+                            {product.inStock ? 'In Stock' : 'Out of Stock'}
+                          </span>
+                        </div>
+                      </div>
+                    )
+                  })}
+                </div>
+              </div>
+            )
+          })()}
         </motion.div>
       </div>
     </div>

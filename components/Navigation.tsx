@@ -9,6 +9,7 @@ const links = [
   { href: '/', label: 'Home' },
   { href: '/find', label: 'Find Yours' },
   { href: '/peptides', label: 'Database' },
+  { href: '/suppliers', label: 'Shop' },
   { href: '/stacks', label: 'Stacks' },
   { href: '/compare', label: 'Compare' },
 ]
