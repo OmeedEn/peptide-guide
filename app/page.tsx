@@ -11,6 +11,7 @@ import { peptides } from '@/data/peptides'
 import { stacks } from '@/data/stacks'
 import CategoryIcon from '@/components/CategoryIcon'
 import RiskBadge from '@/components/RiskBadge'
+import SocialProof from '@/components/SocialProof'
 
 const fadeUp = {
   initial: { opacity: 0, y: 30 },
@@ -263,6 +264,11 @@ export default function HomePage() {
             ))}
           </div>
         </div>
+      </section>
+
+      {/* Social Proof */}
+      <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <SocialProof />
       </section>
 
       {/* Pricing CTA */}

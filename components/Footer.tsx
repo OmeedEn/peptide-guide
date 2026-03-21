@@ -55,8 +55,16 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-8 sm:mt-10 pt-4 sm:pt-6 border-t border-white/5 text-center">
+        <div className="mt-8 sm:mt-10 pt-4 sm:pt-6 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-2">
           <p className="text-[10px] sm:text-xs text-slate-600">&copy; {new Date().getFullYear()} PeptideGuide. For educational purposes only.</p>
+          <div className="flex items-center gap-4">
+            <Link href="/terms" className="text-[10px] sm:text-xs text-slate-600 hover:text-slate-400 transition-colors">
+              Terms of Service
+            </Link>
+            <Link href="/privacy" className="text-[10px] sm:text-xs text-slate-600 hover:text-slate-400 transition-colors">
+              Privacy Policy
+            </Link>
+          </div>
         </div>
       </div>
     </footer>

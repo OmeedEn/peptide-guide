@@ -13,10 +13,12 @@ import { categories } from '@/data/categories'
 import { scorePeptides, type QuizAnswers, type ScoredPeptide } from '@/lib/quiz-logic'
 import CategoryIcon from '@/components/CategoryIcon'
 import RiskBadge from '@/components/RiskBadge'
+import EmailCapture from '@/components/EmailCapture'
+import SocialProof from '@/components/SocialProof'
 
 const steps = ['Primary Goal', 'Secondary Goals', 'Experience', 'Administration', 'Risk Tolerance']
 
-const FREE_RESULTS = 3
+const FREE_RESULTS = 2
 
 export default function FindPage() {
   const [step, setStep] = useState(0)
@@ -118,6 +120,9 @@ export default function FindPage() {
               })}
             </div>
 
+            {/* Email capture */}
+            <EmailCapture />
+
             {/* Locked results - blurred teaser */}
             {lockedResults.length > 0 && (
               <div className="relative mt-4">
@@ -170,7 +175,12 @@ export default function FindPage() {
                     <p className="text-sm text-slate-400 mb-5 leading-relaxed">
                       Unlock your full personalized report with all matches, custom stack recommendations, dosing protocols, and a doctor discussion guide.
                     </p>
-                    <button className="w-full flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-gradient-to-r from-neon-teal to-neon-cyan text-base-950 font-semibold text-sm hover:shadow-lg hover:shadow-neon-teal/20 transition-all mb-3">
+                    <button
+                      onClick={() => {
+                        localStorage.setItem('peptide_quiz_answers', JSON.stringify(answers))
+                      }}
+                      className="w-full flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-gradient-to-r from-neon-teal to-neon-cyan text-base-950 font-semibold text-sm hover:shadow-lg hover:shadow-neon-teal/20 transition-all mb-3"
+                    >
                       <FileText className="h-4 w-4" />
                       Get Full Report — $3
                     </button>
@@ -179,6 +189,9 @@ export default function FindPage() {
                 </motion.div>
               </div>
             )}
+
+            {/* Social proof */}
+            <SocialProof />
 
             {/* What's included in the report */}
             <motion.div
@@ -208,7 +221,12 @@ export default function FindPage() {
               </div>
 
               <div className="text-center mt-6">
-                <button className="inline-flex items-center gap-2 px-6 sm:px-8 py-3.5 rounded-xl bg-gradient-to-r from-neon-teal to-neon-cyan text-base-950 font-semibold text-sm hover:shadow-lg hover:shadow-neon-teal/20 transition-all">
+                <button
+                  onClick={() => {
+                    localStorage.setItem('peptide_quiz_answers', JSON.stringify(answers))
+                  }}
+                  className="inline-flex items-center gap-2 px-6 sm:px-8 py-3.5 rounded-xl bg-gradient-to-r from-neon-teal to-neon-cyan text-base-950 font-semibold text-sm hover:shadow-lg hover:shadow-neon-teal/20 transition-all"
+                >
                   <Download className="h-4 w-4" />
                   Get Your Report — $3
                 </button>
