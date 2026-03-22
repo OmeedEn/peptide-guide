@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { FlaskConical, Menu, X, ShoppingBag } from 'lucide-react'
 import { useCart } from './CartContext'
+import ThemeToggle from './ThemeToggle'
 
 const links = [
   { href: '/', label: 'Home' },
@@ -60,8 +61,9 @@ export default function Navigation() {
               })}
             </div>
 
-            {/* Cart + Mobile toggle */}
-            <div className="flex items-center gap-1">
+            {/* Theme + Cart + Mobile toggle */}
+            <div className="flex items-center gap-0.5">
+              <ThemeToggle />
               <button
                 onClick={() => setIsOpen(true)}
                 className="relative p-2 text-slate-400 hover:text-white transition-colors"
