@@ -3,7 +3,8 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { FlaskConical, Menu, X } from 'lucide-react'
+import { FlaskConical, Menu, X, ShoppingBag } from 'lucide-react'
+import { useCart } from './CartContext'
 
 const links = [
   { href: '/', label: 'Home' },
@@ -17,6 +18,7 @@ const links = [
 export default function Navigation() {
   const pathname = usePathname()
   const [mobileOpen, setMobileOpen] = useState(false)
+  const { itemCount, setIsOpen } = useCart()
 
   const isActiveLink = (href: string) => {
     if (href === '/') return pathname === '/'
@@ -58,13 +60,27 @@ export default function Navigation() {
               })}
             </div>
 
-            {/* Mobile toggle */}
-            <button
-              onClick={() => setMobileOpen(!mobileOpen)}
-              className="md:hidden p-2 -mr-2 text-slate-400 hover:text-white"
-            >
-              {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-            </button>
+            {/* Cart + Mobile toggle */}
+            <div className="flex items-center gap-1">
+              <button
+                onClick={() => setIsOpen(true)}
+                className="relative p-2 text-slate-400 hover:text-white transition-colors"
+              >
+                <ShoppingBag className="h-5 w-5" />
+                {itemCount > 0 && (
+                  <span className="absolute -top-0.5 -right-0.5 w-4.5 h-4.5 min-w-[18px] rounded-full bg-neon-teal text-base-950 text-[9px] font-bold flex items-center justify-center">
+                    {itemCount}
+                  </span>
+                )}
+              </button>
+
+              <button
+                onClick={() => setMobileOpen(!mobileOpen)}
+                className="md:hidden p-2 -mr-2 text-slate-400 hover:text-white"
+              >
+                {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+              </button>
+            </div>
           </div>
         </div>
 

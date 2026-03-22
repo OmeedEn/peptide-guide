@@ -1,13 +1,15 @@
 'use client'
 
+import { useState } from 'react'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import {
   CheckCircle2, ArrowLeft, MapPin, Calendar, Truck,
   RotateCcw, ShieldCheck, FileText, AlertTriangle,
-  Package, Star, ExternalLink,
+  Package, Star, ExternalLink, ShoppingBag, Check,
 } from 'lucide-react'
+import { useCart } from '@/components/CartContext'
 import { suppliers, supplierMap } from '@/data/suppliers'
 import { products, getProductsBySupplier } from '@/data/products'
 import { peptideMap } from '@/data/peptides'
@@ -29,6 +31,71 @@ const formLabels: Record<string, { label: string; color: string }> = {
   cream: { label: 'Cream', color: 'bg-pink-500/15 text-pink-400 border-pink-500/30' },
   capsule: { label: 'Capsule', color: 'bg-amber-500/15 text-amber-400 border-amber-500/30' },
   tablet: { label: 'Tablet', color: 'bg-orange-500/15 text-orange-400 border-orange-500/30' },
+}
+
+function AddToCartButton({ product, supplier }: { product: any; supplier: any }) {
+  const { addItem } = useCart()
+  const [selectedVariant, setSelectedVariant] = useState(product.variants[0]?.id || '')
+  const [added, setAdded] = useState(false)
+
+  const handleAdd = () => {
+    const variant = product.variants.find((v: any) => v.id === selectedVariant)
+    if (!variant || !product.inStock) return
+    addItem({
+      productId: product.id,
+      variantId: variant.id,
+      productName: product.name,
+      variantSize: variant.size,
+      supplierId: supplier.id,
+      supplierName: supplier.name,
+      price: variant.price,
+      peptideId: product.peptideId,
+      form: product.form,
+    })
+    setAdded(true)
+    setTimeout(() => setAdded(false), 2000)
+  }
+
+  return (
+    <div className="space-y-2">
+      {product.variants.length > 1 && (
+        <div className="flex gap-1.5">
+          {product.variants.map((v: any) => (
+            <button
+              key={v.id}
+              onClick={() => setSelectedVariant(v.id)}
+              className={`flex-1 px-2 py-1.5 rounded-lg text-[10px] font-medium border transition-all ${
+                selectedVariant === v.id
+                  ? 'border-neon-teal/40 bg-neon-teal/10 text-neon-teal'
+                  : 'border-white/10 bg-white/5 text-slate-400'
+              }`}
+            >
+              {v.size}
+            </button>
+          ))}
+        </div>
+      )}
+      <button
+        onClick={handleAdd}
+        disabled={!product.inStock}
+        className={`w-full flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-lg text-xs font-medium transition-all ${
+          added
+            ? 'bg-emerald-500/15 border border-emerald-500/30 text-emerald-400'
+            : product.inStock
+            ? 'bg-neon-teal/10 border border-neon-teal/20 text-neon-teal hover:bg-neon-teal/20'
+            : 'bg-white/5 border border-white/10 text-slate-600 cursor-not-allowed'
+        }`}
+      >
+        {added ? (
+          <><Check className="h-3.5 w-3.5" /> Added!</>
+        ) : product.inStock ? (
+          <><ShoppingBag className="h-3.5 w-3.5" /> Add to Cart</>
+        ) : (
+          'Out of Stock'
+        )}
+      </button>
+    </div>
+  )
 }
 
 export default function SupplierDetail({ supplierId }: { supplierId: string }) {
@@ -239,11 +306,8 @@ export default function SupplierDetail({ supplierId }: { supplierId: string }) {
                         )}
                       </div>
 
-                      {/* Add to cart placeholder */}
-                      <button className="w-full flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-lg bg-neon-teal/10 border border-neon-teal/20 text-neon-teal text-xs font-medium hover:bg-neon-teal/20 transition-all">
-                        <Package className="h-3.5 w-3.5" />
-                        Add to Cart
-                      </button>
+                      {/* Add to cart */}
+                      <AddToCartButton product={product} supplier={supplier} />
                     </div>
                   </motion.div>
                 )

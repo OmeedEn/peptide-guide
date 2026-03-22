@@ -1,11 +1,12 @@
 'use client'
 
+import { useState } from 'react'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import {
   ArrowLeft, CheckCircle2, AlertTriangle, AlertCircle, Info,
   Syringe, Clock, Scale, BookOpen, Layers, ShoppingBag, Star,
-  ExternalLink, Shield, FileCheck, FlaskConical, AlertOctagon,
+  ExternalLink, Shield, FileCheck, FlaskConical, AlertOctagon, Check,
 } from 'lucide-react'
 import { peptideMap, peptides } from '@/data/peptides'
 import { categoryMap } from '@/data/categories'
@@ -16,6 +17,7 @@ import CategoryIcon from '@/components/CategoryIcon'
 import RiskBadge from '@/components/RiskBadge'
 import EvidenceBar from '@/components/EvidenceBar'
 import { useCompare } from '@/components/CompareContext'
+import { useCart } from '@/components/CartContext'
 
 const formColors: Record<string, { bg: string; text: string }> = {
   lyophilized: { bg: 'bg-violet-500/10 border-violet-500/20', text: 'text-violet-400' },
@@ -33,6 +35,54 @@ const formLabels: Record<string, string> = {
   cream: 'Cream',
   capsule: 'Capsule',
   tablet: 'Tablet',
+}
+
+function VariantCartButton({ variant, product, supplier, disabled }: { variant: any; product: any; supplier: any; disabled: boolean }) {
+  const { addItem } = useCart()
+  const [added, setAdded] = useState(false)
+
+  const handleAdd = () => {
+    if (disabled) return
+    addItem({
+      productId: product.id,
+      variantId: variant.id,
+      productName: product.name,
+      variantSize: variant.size,
+      supplierId: supplier.id,
+      supplierName: supplier.name,
+      price: variant.price,
+      peptideId: product.peptideId,
+      form: product.form,
+    })
+    setAdded(true)
+    setTimeout(() => setAdded(false), 2000)
+  }
+
+  return (
+    <button
+      onClick={handleAdd}
+      disabled={disabled}
+      className={`flex items-center gap-2 px-3 py-2 rounded-lg border transition-all ${
+        added
+          ? 'bg-emerald-500/10 border-emerald-500/20'
+          : disabled
+          ? 'bg-white/[0.02] border-white/5 cursor-not-allowed'
+          : 'bg-white/[0.03] border-white/5 hover:border-neon-teal/20 hover:bg-neon-teal/5'
+      }`}
+    >
+      <span className="text-xs text-slate-400">{variant.size}</span>
+      <span className="text-xs text-slate-600">&mdash;</span>
+      <span className="text-sm font-bold text-neon-teal">${variant.price.toFixed(2)}</span>
+      {variant.originalPrice && (
+        <span className="text-xs text-slate-500 line-through">${variant.originalPrice.toFixed(2)}</span>
+      )}
+      {added ? (
+        <Check className="h-3 w-3 text-emerald-400 ml-auto" />
+      ) : !disabled ? (
+        <ShoppingBag className="h-3 w-3 text-slate-600 ml-auto" />
+      ) : null}
+    </button>
+  )
 }
 
 function SeverityIcon({ severity }: { severity: 'mild' | 'moderate' | 'serious' }) {
@@ -339,17 +389,16 @@ export default function PeptideDetail({ id }: { id: string }) {
                           </div>
                         </div>
 
-                        {/* Variant prices */}
+                        {/* Variant prices with add to cart */}
                         <div className="flex flex-col sm:flex-row gap-2 mb-3">
-                          {product.variants.map((v) => (
-                            <div key={v.id} className="flex items-center gap-2 px-3 py-2 rounded-lg bg-white/[0.03] border border-white/5">
-                              <span className="text-xs text-slate-400">{v.size}</span>
-                              <span className="text-xs text-slate-600">&mdash;</span>
-                              <span className="text-sm font-bold text-neon-teal">${v.price.toFixed(2)}</span>
-                              {v.originalPrice && (
-                                <span className="text-xs text-slate-500 line-through">${v.originalPrice.toFixed(2)}</span>
-                              )}
-                            </div>
+                          {product.variants.map((v: any) => (
+                            <VariantCartButton
+                              key={v.id}
+                              variant={v}
+                              product={product}
+                              supplier={supplier}
+                              disabled={!product.inStock}
+                            />
                           ))}
                         </div>
 
