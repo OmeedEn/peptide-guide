@@ -1,12 +1,13 @@
 'use client'
 
 import { motion, AnimatePresence } from 'framer-motion'
-import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import { X, Minus, Plus, Trash2, ShoppingBag, ArrowRight } from 'lucide-react'
 import { useCart } from './CartContext'
 
 export default function CartDrawer() {
   const { items, isOpen, setIsOpen, removeItem, updateQuantity, clearCart, itemCount, total } = useCart()
+  const router = useRouter()
 
   return (
     <AnimatePresence>
@@ -127,13 +128,16 @@ export default function CartDrawer() {
                   <span className="font-display text-xl font-bold text-white">${total.toFixed(2)}</span>
                 </div>
 
-                <button className="w-full flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-gradient-to-r from-neon-teal to-neon-cyan text-base-950 font-semibold text-sm hover:shadow-lg hover:shadow-neon-teal/20 transition-all mb-2">
+                <button
+                  onClick={() => { setIsOpen(false); router.push('/checkout') }}
+                  className="w-full flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-gradient-to-r from-neon-teal to-neon-cyan text-base-950 font-semibold text-sm hover:shadow-lg hover:shadow-neon-teal/20 transition-all mb-2"
+                >
                   Checkout
                   <ArrowRight className="h-4 w-4" />
                 </button>
 
                 <p className="text-[10px] text-slate-600 text-center">
-                  You&apos;ll be redirected to the supplier&apos;s website to complete your purchase
+                  Secure checkout powered by Stripe
                 </p>
               </div>
             )}
