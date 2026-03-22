@@ -196,6 +196,7 @@ button, a { min-height: 44px; min-width: 44px; }
 [data-theme="light"] .text-slate-300 { color: #334155; }
 [data-theme="light"] .text-slate-400 { color: #475569; }
 [data-theme="light"] .text-slate-500 { color: #64748b; }
+[data-theme="light"] .text-slate-200 { color: #1e293b; }
 [data-theme="light"] .text-slate-600 { color: #94a3b8; }
 
 [data-theme="light"] .text-neon-teal { color: #059669; }
@@ -203,6 +204,14 @@ button, a { min-height: 44px; min-width: 44px; }
 [data-theme="light"] .hover\:text-neon-teal:hover { color: #059669; }
 [data-theme="light"] .hover\:text-neon-cyan:hover { color: #0369a1; }
 [data-theme="light"] .hover\:text-white:hover { color: #0f172a; }
+
+/* Group hover states for cards */
+[data-theme="light"] .group:hover .group-hover\:text-neon-teal { color: #059669; }
+[data-theme="light"] .group:hover .group-hover\:text-neon-cyan { color: #0369a1; }
+[data-theme="light"] .group:hover .group-hover\:text-white { color: #0f172a; }
+
+/* Active states for touch */
+[data-theme="light"] .active\:bg-white\/5:active { background-color: rgba(0,0,0,0.05); }
 
 [data-theme="light"] .border-white\/5,
 [data-theme="light"] .border-white\/10 { border-color: rgba(0,0,0,0.08); }
@@ -227,6 +236,18 @@ button, a { min-height: 44px; min-width: 44px; }
 [data-theme="light"] .text-base-950 { color: #ffffff; }
 
 [data-theme="light"] .ring-neon-teal\/20 { --tw-ring-color: rgba(5,150,105,0.2); }
+
+/* Drawer and overlay backgrounds */
+[data-theme="light"] .bg-black\/60 { background-color: rgba(0,0,0,0.2); }
+
+/* Blur overlay on light */
+[data-theme="light"] .backdrop-blur-xl { backdrop-filter: blur(16px); }
+[data-theme="light"] .backdrop-blur-sm { backdrop-filter: blur(6px); }
+
+/* Fix gradient fade for paywall */
+[data-theme="light"] .from-transparent.via-base-950\/60.to-base-950 {
+  background: linear-gradient(to bottom, transparent, rgba(248,250,252,0.6), #f8fafc);
+}
 
 /* Light mode shadows instead of glows */
 [data-theme="light"] .hover\:shadow-neon-teal\/20:hover {
