@@ -21,25 +21,11 @@ const fadeUp = {
   animate: { opacity: 1, y: 0 },
 }
 
-const experienceLabels: Record<string, string> = {
-  beginner: 'Beginner',
-  intermediate: 'Intermediate',
-  advanced: 'Advanced',
-}
-
-const adminLabels: Record<string, string> = {
-  injection: 'Injection',
-  nasal: 'Nasal Spray',
-  oral: 'Oral / Pill',
-  topical: 'Topical',
-  no_preference: 'No Preference',
-}
-
-const riskToleranceLabels: Record<string, string> = {
-  conservative: 'Conservative',
-  moderate: 'Moderate',
-  open: 'Open',
-}
+// Helpers to display new quiz answer fields
+function getAgeLabel(a: any) { return a?.ageRange || 'Not specified' }
+function getGenderLabel(a: any) { return a?.gender === 'other' ? 'Not specified' : a?.gender || 'Not specified' }
+function getFocusLabel(a: any) { return a?.specificFocus?.replace(/_/g, ' ') || 'General' }
+function getPrioritiesLabel(a: any) { return a?.priorities?.length ? a.priorities.map((p: string) => p.replace(/_/g, ' ')).join(', ') : 'None selected' }
 
 const severityColors: Record<string, string> = {
   mild: 'bg-blue-500/15 text-blue-400 border-blue-500/30',
@@ -147,23 +133,23 @@ export default function ReportPage() {
             <div className="glass-card p-3 sm:p-4">
               <div className="flex items-center gap-1.5 mb-1.5">
                 <User className="h-3.5 w-3.5 text-neon-teal" />
-                <span className="text-[10px] sm:text-xs text-slate-500 font-medium">Experience</span>
+                <span className="text-[10px] sm:text-xs text-slate-500 font-medium">Profile</span>
               </div>
-              <p className="text-xs sm:text-sm font-semibold text-white">{experienceLabels[report.answers.experience]}</p>
+              <p className="text-xs sm:text-sm font-semibold text-white capitalize">{getGenderLabel(report.answers)}, {getAgeLabel(report.answers)}</p>
             </div>
             <div className="glass-card p-3 sm:p-4">
               <div className="flex items-center gap-1.5 mb-1.5">
                 <Syringe className="h-3.5 w-3.5 text-neon-teal" />
-                <span className="text-[10px] sm:text-xs text-slate-500 font-medium">Preferred Method</span>
+                <span className="text-[10px] sm:text-xs text-slate-500 font-medium">Specific Focus</span>
               </div>
-              <p className="text-xs sm:text-sm font-semibold text-white">{adminLabels[report.answers.administration]}</p>
+              <p className="text-xs sm:text-sm font-semibold text-white capitalize">{getFocusLabel(report.answers)}</p>
             </div>
             <div className="glass-card p-3 sm:p-4">
               <div className="flex items-center gap-1.5 mb-1.5">
                 <Gauge className="h-3.5 w-3.5 text-neon-teal" />
-                <span className="text-[10px] sm:text-xs text-slate-500 font-medium">Risk Tolerance</span>
+                <span className="text-[10px] sm:text-xs text-slate-500 font-medium">Priorities</span>
               </div>
-              <p className="text-xs sm:text-sm font-semibold text-white">{riskToleranceLabels[report.answers.riskTolerance]}</p>
+              <p className="text-xs sm:text-sm font-semibold text-white capitalize">{getPrioritiesLabel(report.answers)}</p>
             </div>
           </div>
         </motion.div>
@@ -316,7 +302,7 @@ export default function ReportPage() {
                     <Info className="h-3.5 w-3.5 text-neon-teal mt-0.5 shrink-0" />
                     <div>
                       <p className="text-xs text-neon-teal font-medium mb-0.5">
-                        {report.answers.experience === 'beginner' ? 'Beginner Note' : report.answers.experience === 'intermediate' ? 'Protocol Note' : 'Advanced Note'}
+                        Protocol Note
                       </p>
                       <p className="text-xs text-slate-400 leading-relaxed">{entry.experienceNote}</p>
                     </div>
@@ -340,7 +326,7 @@ export default function ReportPage() {
             <h2 className="font-display text-xl sm:text-2xl font-bold text-white">Risk Assessment</h2>
           </div>
 
-          {report.answers.riskTolerance === 'conservative' && (
+          {(report.answers as any).riskTolerance || (report.answers.priorities?.includes('low_side_effects') ? 'conservative' : 'moderate') === 'conservative' && (
             <div className="glass-card p-4 sm:p-5 border-amber-500/20 bg-amber-500/5 mb-4 sm:mb-5">
               <div className="flex items-start gap-2.5">
                 <AlertTriangle className="h-5 w-5 text-amber-400 shrink-0 mt-0.5" />
@@ -372,7 +358,7 @@ export default function ReportPage() {
 
                   <div className="space-y-2.5">
                     {/* Serious first if conservative */}
-                    {(report.answers.riskTolerance === 'conservative'
+                    {((report.answers as any).riskTolerance || (report.answers.priorities?.includes('low_side_effects') ? 'conservative' : 'moderate') === 'conservative'
                       ? ['serious', 'moderate', 'mild'] as const
                       : ['mild', 'moderate', 'serious'] as const
                     ).map((severity) => {
@@ -385,7 +371,7 @@ export default function ReportPage() {
                               color: severity === 'mild' ? '#60a5fa' : severity === 'moderate' ? '#fbbf24' : '#fb7185',
                             }}
                           >
-                            {severity} {severity === 'serious' && report.answers.riskTolerance === 'conservative' ? '-- IMPORTANT' : ''}
+                            {severity} {severity === 'serious' && (report.answers as any).riskTolerance || (report.answers.priorities?.includes('low_side_effects') ? 'conservative' : 'moderate') === 'conservative' ? '-- IMPORTANT' : ''}
                           </p>
                           <div className="flex flex-wrap gap-1.5">
                             {items.map((se, idx) => (

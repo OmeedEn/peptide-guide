@@ -5,52 +5,63 @@ import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
 import {
   ArrowRight, ArrowLeft, CheckCircle2, Sparkles,
-  Syringe, Wind, Pill, Droplets, CircleDot,
-  ShieldCheck, ShieldAlert, ShieldOff, Lock,
-  FileText, Zap, Calendar, Stethoscope, Download,
-  ChevronDown, ChevronUp, List,
+  ShieldCheck, ShieldAlert, CircleSlash, DollarSign,
+  Syringe, FlaskConical, Pill,
+  FileText, Zap, Calendar, Stethoscope, Download, Lock,
+  ChevronDown, ChevronUp, List, User,
 } from 'lucide-react'
 import { categories } from '@/data/categories'
-import { scorePeptides, type QuizAnswers, type ScoredPeptide } from '@/lib/quiz-logic'
+import {
+  scorePeptides, defaultAnswers, goalDeepDive, situationOptions, priorityOptions,
+  type QuizAnswers, type ScoredPeptide,
+} from '@/lib/quiz-logic'
 import CategoryIcon from '@/components/CategoryIcon'
 import RiskBadge from '@/components/RiskBadge'
 import EmailCapture from '@/components/EmailCapture'
 import SocialProof from '@/components/SocialProof'
 
-const steps = ['Primary Goal', 'Secondary Goals', 'Experience', 'Administration', 'Risk Tolerance']
-
 const FREE_RESULTS = 2
+
+const situationIcons: Record<string, React.ReactNode> = {
+  Syringe: <Syringe className="h-4 w-4" />,
+  FlaskConical: <FlaskConical className="h-4 w-4" />,
+  Pill: <Pill className="h-4 w-4" />,
+  ShieldAlert: <ShieldAlert className="h-4 w-4" />,
+  CircleSlash: <CircleSlash className="h-4 w-4" />,
+  DollarSign: <DollarSign className="h-4 w-4" />,
+}
 
 export default function FindPage() {
   const [step, setStep] = useState(0)
-  const [answers, setAnswers] = useState<QuizAnswers>({
-    primaryGoal: '',
-    secondaryGoals: [],
-    experience: 'beginner',
-    administration: 'no_preference',
-    riskTolerance: 'moderate',
-  })
+  const [answers, setAnswers] = useState<QuizAnswers>({ ...defaultAnswers })
   const [results, setResults] = useState<ScoredPeptide[] | null>(null)
   const [showAllOthers, setShowAllOthers] = useState(false)
 
+  const totalSteps = 5
+
   const canNext = () => {
     if (step === 0) return !!answers.primaryGoal
+    if (step === 1) return !!answers.ageRange
+    if (step === 2) return !!answers.specificFocus
     return true
   }
 
   const next = () => {
-    if (step < 4) setStep(step + 1)
+    if (step < totalSteps - 1) setStep(step + 1)
     else setResults(scorePeptides(answers))
   }
 
   const prev = () => {
-    if (results) setResults(null)
+    if (results) { setResults(null); setShowAllOthers(false) }
     else if (step > 0) setStep(step - 1)
   }
 
   const maxScore = results?.[0]?.score ?? 1
+  const deepDive = goalDeepDive[answers.primaryGoal]
 
-  // Results view
+  const stepLabels = ['Your Goal', 'About You', deepDive?.question?.split('?')[0] || 'Details', 'Your Situation', 'Priorities']
+
+  // ===== RESULTS VIEW =====
   if (results) {
     const topResults = results.slice(0, FREE_RESULTS)
     const otherResults = results.slice(FREE_RESULTS)
@@ -63,17 +74,16 @@ export default function FindPage() {
           </button>
 
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
-            {/* Header */}
             <div className="text-center mb-8 sm:mb-10">
               <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-neon-teal/10 border border-neon-teal/20 mb-3 sm:mb-4">
                 <Sparkles className="h-3.5 w-3.5 text-neon-teal" />
                 <span className="text-xs font-medium text-neon-teal">{results.length} matches found</span>
               </div>
               <h1 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-2 sm:mb-3">Your Top Recommendations</h1>
-              <p className="text-sm sm:text-base text-slate-400">Based on your goals, experience, and preferences</p>
+              <p className="text-sm sm:text-base text-slate-400">Personalized for your goals, age, and preferences</p>
             </div>
 
-            {/* ===== TOP RECOMMENDATIONS ===== */}
+            {/* TOP RECOMMENDATIONS */}
             <div className="mb-4">
               <div className="flex items-center gap-2 mb-4">
                 <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-neon-teal/20 to-neon-cyan/20 border border-neon-teal/20 flex items-center justify-center">
@@ -81,7 +91,7 @@ export default function FindPage() {
                 </div>
                 <div>
                   <h2 className="text-sm sm:text-base font-bold text-white">Best For You</h2>
-                  <p className="text-[10px] sm:text-xs text-slate-500">Our top picks based on your quiz</p>
+                  <p className="text-[10px] sm:text-xs text-slate-500">Based on your specific answers</p>
                 </div>
               </div>
 
@@ -89,12 +99,7 @@ export default function FindPage() {
                 {topResults.map((result, i) => {
                   const pct = Math.round((result.score / maxScore) * 100)
                   return (
-                    <motion.div
-                      key={result.peptide.id}
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: i * 0.08 }}
-                    >
+                    <motion.div key={result.peptide.id} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: i * 0.08 }}>
                       <Link href={`/peptides/${result.peptide.id}`} className="glass-card p-4 sm:p-5 block group border-neon-teal/10">
                         <div className="flex items-start gap-3 sm:gap-4">
                           <div className="shrink-0 w-12 h-12 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl bg-gradient-to-br from-neon-teal/20 to-neon-cyan/20 border border-neon-teal/20 flex flex-col items-center justify-center">
@@ -102,14 +107,8 @@ export default function FindPage() {
                           </div>
                           <div className="flex-1 min-w-0">
                             <div className="flex items-center gap-1.5 sm:gap-2 mb-0.5 flex-wrap">
-                              <h3 className="font-display text-base sm:text-lg font-bold text-white group-hover:text-neon-teal transition-colors">
-                                {result.peptide.name}
-                              </h3>
-                              {i === 0 && (
-                                <span className="px-1.5 sm:px-2 py-0.5 rounded-full text-[9px] sm:text-[10px] font-bold bg-neon-teal/15 text-neon-teal border border-neon-teal/30">
-                                  BEST MATCH
-                                </span>
-                              )}
+                              <h3 className="font-display text-base sm:text-lg font-bold text-white group-hover:text-neon-teal transition-colors">{result.peptide.name}</h3>
+                              {i === 0 && <span className="px-1.5 sm:px-2 py-0.5 rounded-full text-[9px] sm:text-[10px] font-bold bg-neon-teal/15 text-neon-teal border border-neon-teal/30">BEST MATCH</span>}
                               {result.peptide.fdaApproved && (
                                 <span className="flex items-center gap-0.5 px-1.5 py-0.5 rounded text-[8px] sm:text-[9px] font-bold uppercase bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 shrink-0">
                                   <CheckCircle2 className="h-2.5 w-2.5" /> FDA
@@ -119,10 +118,8 @@ export default function FindPage() {
                             <p className="text-xs sm:text-sm text-slate-400 mb-1.5 line-clamp-2">{result.peptide.description}</p>
                             <div className="flex items-center gap-2 flex-wrap">
                               <RiskBadge level={result.peptide.riskLevel} />
-                              {result.matchReasons.slice(0, 2).map((r, ri) => (
-                                <span key={ri} className="px-1.5 py-0.5 rounded text-[9px] sm:text-[10px] bg-white/5 text-slate-500 border border-white/5 hidden sm:inline-block">
-                                  {r}
-                                </span>
+                              {result.matchReasons.slice(0, 3).map((r, ri) => (
+                                <span key={ri} className="px-1.5 py-0.5 rounded text-[9px] sm:text-[10px] bg-neon-teal/5 text-neon-teal/80 border border-neon-teal/10 hidden sm:inline-block">{r}</span>
                               ))}
                             </div>
                           </div>
@@ -135,104 +132,56 @@ export default function FindPage() {
               </div>
             </div>
 
-            {/* ===== GET FULL REPORT CTA ===== */}
-            <motion.div
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 }}
-              className="glass-card p-5 sm:p-6 border-neon-teal/10 mb-6 sm:mb-8"
-            >
+            {/* REPORT CTA */}
+            <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }} className="glass-card p-5 sm:p-6 border-neon-teal/10 mb-6 sm:mb-8">
               <div className="flex flex-col sm:flex-row sm:items-center gap-4">
                 <div className="flex-1">
                   <div className="flex items-center gap-2 mb-1">
                     <FileText className="h-4 w-4 text-neon-teal" />
                     <h3 className="text-sm sm:text-base font-bold text-white">Want the full picture?</h3>
                   </div>
-                  <p className="text-xs sm:text-sm text-slate-400">Get all {results.length} matches ranked, custom stacks, dosing protocols, risk assessment, and a doctor discussion guide.</p>
+                  <p className="text-xs sm:text-sm text-slate-400">All {results.length} matches ranked, custom stacks, dosing protocols, risk assessment, and doctor guide.</p>
                 </div>
-                <button
-                  onClick={() => localStorage.setItem('peptide_quiz_answers', JSON.stringify(answers))}
-                  className="shrink-0 flex items-center justify-center gap-2 px-5 sm:px-6 py-3 rounded-xl bg-gradient-to-r from-neon-teal to-neon-cyan text-base-950 font-semibold text-sm hover:shadow-lg hover:shadow-neon-teal/20 transition-all"
-                >
-                  <Lock className="h-3.5 w-3.5" />
-                  Full Report — $3
+                <button onClick={() => localStorage.setItem('peptide_quiz_answers', JSON.stringify(answers))} className="shrink-0 flex items-center justify-center gap-2 px-5 sm:px-6 py-3 rounded-xl bg-gradient-to-r from-neon-teal to-neon-cyan text-base-950 font-semibold text-sm hover:shadow-lg hover:shadow-neon-teal/20 transition-all">
+                  <Lock className="h-3.5 w-3.5" /> Full Report — $3
                 </button>
               </div>
             </motion.div>
 
-            {/* Email capture */}
             <EmailCapture />
 
-            {/* ===== EXPLORE OTHER MATCHES ===== */}
+            {/* EXPLORE OTHERS */}
             {otherResults.length > 0 && (
-              <motion.div
-                initial={{ opacity: 0, y: 15 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4 }}
-                className="mt-6 sm:mt-8"
-              >
-                <button
-                  onClick={() => setShowAllOthers(!showAllOthers)}
-                  className="w-full flex items-center justify-between p-4 sm:p-5 glass-card group"
-                >
+              <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }} className="mt-6 sm:mt-8">
+                <button onClick={() => setShowAllOthers(!showAllOthers)} className="w-full flex items-center justify-between p-4 sm:p-5 glass-card group">
                   <div className="flex items-center gap-3">
                     <div className="w-8 h-8 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center">
                       <List className="h-4 w-4 text-slate-400" />
                     </div>
                     <div className="text-left">
-                      <h3 className="text-sm sm:text-base font-bold text-white group-hover:text-neon-teal transition-colors">
-                        Explore All Other Matches ({otherResults.length})
-                      </h3>
+                      <h3 className="text-sm sm:text-base font-bold text-white group-hover:text-neon-teal transition-colors">Explore All Other Matches ({otherResults.length})</h3>
                       <p className="text-[10px] sm:text-xs text-slate-500">Browse peptides that also fit your profile</p>
                     </div>
                   </div>
-                  {showAllOthers ? (
-                    <ChevronUp className="h-5 w-5 text-slate-400 shrink-0" />
-                  ) : (
-                    <ChevronDown className="h-5 w-5 text-slate-400 shrink-0" />
-                  )}
+                  {showAllOthers ? <ChevronUp className="h-5 w-5 text-slate-400 shrink-0" /> : <ChevronDown className="h-5 w-5 text-slate-400 shrink-0" />}
                 </button>
-
                 {showAllOthers && (
-                  <motion.div
-                    initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: 1, height: 'auto' }}
-                    className="mt-3 space-y-2 sm:space-y-3"
-                  >
+                  <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="mt-3 space-y-2 sm:space-y-3">
                     {otherResults.map((result, i) => {
                       const pct = Math.round((result.score / maxScore) * 100)
                       return (
-                        <Link
-                          key={result.peptide.id}
-                          href={`/peptides/${result.peptide.id}`}
-                          className="glass-card p-3.5 sm:p-4 flex items-center gap-3 group block"
-                        >
-                          {/* Rank number */}
+                        <Link key={result.peptide.id} href={`/peptides/${result.peptide.id}`} className="glass-card p-3.5 sm:p-4 flex items-center gap-3 group block">
                           <div className="shrink-0 w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center">
                             <span className="text-xs sm:text-sm font-bold text-slate-500">#{i + FREE_RESULTS + 1}</span>
                           </div>
-
-                          {/* Match % bar */}
-                          <div className="shrink-0 w-10 sm:w-12">
-                            <span className="text-xs sm:text-sm font-bold text-slate-400">{pct}%</span>
-                          </div>
-
-                          {/* Info */}
+                          <div className="shrink-0 w-10 sm:w-12"><span className="text-xs sm:text-sm font-bold text-slate-400">{pct}%</span></div>
                           <div className="flex-1 min-w-0">
                             <div className="flex items-center gap-1.5 flex-wrap">
-                              <h4 className="text-sm font-semibold text-white group-hover:text-neon-teal transition-colors truncate">
-                                {result.peptide.name}
-                              </h4>
-                              {result.peptide.fdaApproved && (
-                                <span className="flex items-center gap-0.5 px-1 py-0.5 rounded text-[8px] font-bold uppercase bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 shrink-0">
-                                  FDA
-                                </span>
-                              )}
+                              <h4 className="text-sm font-semibold text-white group-hover:text-neon-teal transition-colors truncate">{result.peptide.name}</h4>
+                              {result.peptide.fdaApproved && <span className="px-1 py-0.5 rounded text-[8px] font-bold uppercase bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 shrink-0">FDA</span>}
                             </div>
                             <p className="text-[10px] sm:text-xs text-slate-500 truncate">{result.peptide.primaryUse}</p>
                           </div>
-
-                          {/* Risk + Arrow */}
                           <div className="flex items-center gap-2 shrink-0">
                             <RiskBadge level={result.peptide.riskLevel} />
                             <ArrowRight className="h-3.5 w-3.5 text-slate-600 group-hover:text-neon-teal transition-colors hidden sm:block" />
@@ -245,98 +194,41 @@ export default function FindPage() {
               </motion.div>
             )}
 
-            {/* Social proof */}
-            <div className="mt-8">
-              <SocialProof />
-            </div>
-
-            {/* What's in the report */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6 }}
-              className="mt-10 sm:mt-14"
-            >
-              <h2 className="font-display text-xl sm:text-2xl font-bold text-white mb-2 text-center">What&apos;s in the full report?</h2>
-              <p className="text-sm text-slate-400 text-center mb-6">A personalized guide built from your quiz answers</p>
-
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                {[
-                  { icon: <Sparkles className="h-5 w-5" />, title: 'All Matches Ranked', desc: 'Complete list with match scores and reasoning' },
-                  { icon: <Zap className="h-5 w-5" />, title: 'Stack Recommendations', desc: 'Custom peptide combos for your specific goals' },
-                  { icon: <Syringe className="h-5 w-5" />, title: 'Dosing Protocols', desc: 'Tailored to your experience level' },
-                  { icon: <ShieldCheck className="h-5 w-5" />, title: 'Risk Assessment', desc: 'Side effects matched to your tolerance' },
-                  { icon: <Stethoscope className="h-5 w-5" />, title: 'Doctor Guide', desc: '"What to ask your doctor" talking points' },
-                  { icon: <Calendar className="h-5 w-5" />, title: 'Cycle Calendar', desc: 'Weekly protocol template to follow' },
-                ].map((item) => (
-                  <div key={item.title} className="glass-card p-3.5 sm:p-4">
-                    <div className="text-neon-teal/70 mb-2">{item.icon}</div>
-                    <p className="text-xs sm:text-sm font-semibold text-white mb-0.5 leading-tight">{item.title}</p>
-                    <p className="text-[10px] sm:text-xs text-slate-500 leading-snug">{item.desc}</p>
-                  </div>
-                ))}
-              </div>
-
-              <div className="text-center mt-6">
-                <button
-                  onClick={() => localStorage.setItem('peptide_quiz_answers', JSON.stringify(answers))}
-                  className="inline-flex items-center gap-2 px-6 sm:px-8 py-3.5 rounded-xl bg-gradient-to-r from-neon-teal to-neon-cyan text-base-950 font-semibold text-sm hover:shadow-lg hover:shadow-neon-teal/20 transition-all"
-                >
-                  <Download className="h-4 w-4" />
-                  Get Your Report — $3
-                </button>
-              </div>
-            </motion.div>
+            <div className="mt-8"><SocialProof /></div>
           </motion.div>
         </div>
       </div>
     )
   }
 
-  // Quiz steps
+  // ===== QUIZ STEPS =====
   return (
     <div className="mesh-bg min-h-screen flex items-start sm:items-center justify-center">
       <div className="mx-auto max-w-2xl px-4 py-6 sm:py-10 w-full">
         {/* Progress */}
         <div className="mb-6 sm:mb-8">
           <div className="flex items-center justify-between mb-2 sm:mb-3">
-            <span className="text-[11px] sm:text-xs text-slate-500">Step {step + 1} of 5</span>
-            <span className="text-[11px] sm:text-xs text-slate-500">{steps[step]}</span>
+            <span className="text-[11px] sm:text-xs text-slate-500">Step {step + 1} of {totalSteps}</span>
+            <span className="text-[11px] sm:text-xs text-slate-500">{stepLabels[step]}</span>
           </div>
           <div className="h-1 rounded-full bg-white/5 overflow-hidden">
-            <motion.div
-              className="h-full rounded-full bg-gradient-to-r from-neon-teal to-neon-cyan"
-              animate={{ width: `${((step + 1) / 5) * 100}%` }}
-              transition={{ duration: 0.3 }}
-            />
+            <motion.div className="h-full rounded-full bg-gradient-to-r from-neon-teal to-neon-cyan" animate={{ width: `${((step + 1) / totalSteps) * 100}%` }} transition={{ duration: 0.3 }} />
           </div>
         </div>
 
         <AnimatePresence mode="wait">
-          <motion.div
-            key={step}
-            initial={{ opacity: 0, x: 40 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -40 }}
-            transition={{ duration: 0.3 }}
-          >
+          <motion.div key={step} initial={{ opacity: 0, x: 40 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -40 }} transition={{ duration: 0.3 }}>
+
+            {/* STEP 0: Primary Goal */}
             {step === 0 && (
               <div>
                 <h2 className="font-display text-2xl sm:text-3xl font-bold text-white mb-1.5 sm:mb-2">What&apos;s your primary goal?</h2>
-                <p className="text-sm sm:text-base text-slate-400 mb-6 sm:mb-8">Choose what matters most to you right now</p>
+                <p className="text-sm sm:text-base text-slate-400 mb-6 sm:mb-8">Choose the one area that matters most right now</p>
                 <div className="grid grid-cols-2 gap-2.5 sm:gap-3">
                   {categories.map((cat) => (
-                    <button
-                      key={cat.id}
-                      onClick={() => setAnswers({ ...answers, primaryGoal: cat.id })}
-                      className={`glass-card p-3 sm:p-4 text-left transition-all ${
-                        answers.primaryGoal === cat.id ? 'border-neon-teal/40 bg-neon-teal/10 ring-1 ring-neon-teal/20' : ''
-                      }`}
-                    >
-                      <div
-                        className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg flex items-center justify-center mb-1.5 sm:mb-2"
-                        style={{ backgroundColor: `${cat.color}15` }}
-                      >
+                    <button key={cat.id} onClick={() => setAnswers({ ...answers, primaryGoal: cat.id, specificFocus: '' })}
+                      className={`glass-card p-3 sm:p-4 text-left transition-all ${answers.primaryGoal === cat.id ? 'border-neon-teal/40 bg-neon-teal/10 ring-1 ring-neon-teal/20' : ''}`}>
+                      <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg flex items-center justify-center mb-1.5 sm:mb-2" style={{ backgroundColor: `${cat.color}15` }}>
                         <CategoryIcon name={cat.icon} className="h-3.5 w-3.5 sm:h-4 sm:w-4" style={{ color: cat.color }} />
                       </div>
                       <p className="text-xs sm:text-sm font-medium text-white leading-tight">{cat.name}</p>
@@ -346,33 +238,79 @@ export default function FindPage() {
               </div>
             )}
 
+            {/* STEP 1: About You */}
             {step === 1 && (
               <div>
-                <h2 className="font-display text-2xl sm:text-3xl font-bold text-white mb-1.5 sm:mb-2">Any secondary goals?</h2>
-                <p className="text-sm sm:text-base text-slate-400 mb-6 sm:mb-8">Select all that apply (optional)</p>
-                <div className="grid grid-cols-2 gap-2.5 sm:gap-3">
-                  {categories.filter((c) => c.id !== answers.primaryGoal).map((cat) => {
-                    const selected = answers.secondaryGoals.includes(cat.id)
+                <h2 className="font-display text-2xl sm:text-3xl font-bold text-white mb-1.5 sm:mb-2">Tell us about yourself</h2>
+                <p className="text-sm sm:text-base text-slate-400 mb-6 sm:mb-8">This helps us tailor recommendations to your biology</p>
+
+                <div className="mb-6">
+                  <p className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3">Age Range</p>
+                  <div className="grid grid-cols-3 sm:grid-cols-5 gap-2">
+                    {(['18-25', '26-35', '36-45', '46-55', '56+'] as const).map((age) => (
+                      <button key={age} onClick={() => setAnswers({ ...answers, ageRange: age })}
+                        className={`glass-card p-3 text-center transition-all ${answers.ageRange === age ? 'border-neon-teal/40 bg-neon-teal/10 ring-1 ring-neon-teal/20' : ''}`}>
+                        <p className="text-sm font-medium text-white">{age}</p>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                <div>
+                  <p className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3">Gender <span className="text-slate-600 normal-case font-normal">(affects hormone-related recommendations)</span></p>
+                  <div className="grid grid-cols-3 gap-2">
+                    {([
+                      { v: 'male' as const, l: 'Male' },
+                      { v: 'female' as const, l: 'Female' },
+                      { v: 'other' as const, l: 'Prefer not to say' },
+                    ]).map((g) => (
+                      <button key={g.v} onClick={() => setAnswers({ ...answers, gender: g.v })}
+                        className={`glass-card p-3 text-center transition-all ${answers.gender === g.v ? 'border-neon-teal/40 bg-neon-teal/10 ring-1 ring-neon-teal/20' : ''}`}>
+                        <p className="text-xs sm:text-sm font-medium text-white">{g.l}</p>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* STEP 2: Adaptive Deep-Dive */}
+            {step === 2 && deepDive && (
+              <div>
+                <h2 className="font-display text-2xl sm:text-3xl font-bold text-white mb-1.5 sm:mb-2">{deepDive.question}</h2>
+                <p className="text-sm sm:text-base text-slate-400 mb-6 sm:mb-8">This narrows down the best peptides for your specific need</p>
+                <div className="space-y-2.5 sm:space-y-3">
+                  {deepDive.options.map((opt) => (
+                    <button key={opt.id} onClick={() => setAnswers({ ...answers, specificFocus: opt.id })}
+                      className={`glass-card p-4 sm:p-5 w-full text-left transition-all ${answers.specificFocus === opt.id ? 'border-neon-teal/40 bg-neon-teal/10 ring-1 ring-neon-teal/20' : ''}`}>
+                      <p className="font-medium text-white text-sm sm:text-base mb-0.5">{opt.label}</p>
+                      <p className="text-xs sm:text-sm text-slate-400 leading-snug">{opt.desc}</p>
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* STEP 3: Your Situation */}
+            {step === 3 && (
+              <div>
+                <h2 className="font-display text-2xl sm:text-3xl font-bold text-white mb-1.5 sm:mb-2">Does any of this apply?</h2>
+                <p className="text-sm sm:text-base text-slate-400 mb-6 sm:mb-8">Select all that apply — or skip if none do</p>
+                <div className="space-y-2.5 sm:space-y-3">
+                  {situationOptions.map((opt) => {
+                    const selected = answers.situationFlags.includes(opt.id)
                     return (
-                      <button
-                        key={cat.id}
-                        onClick={() =>
-                          setAnswers({
-                            ...answers,
-                            secondaryGoals: selected
-                              ? answers.secondaryGoals.filter((g) => g !== cat.id)
-                              : [...answers.secondaryGoals, cat.id],
-                          })
-                        }
-                        className={`glass-card p-3 sm:p-4 text-left transition-all ${
-                          selected ? 'border-neon-teal/40 bg-neon-teal/10 ring-1 ring-neon-teal/20' : ''
-                        }`}
-                      >
-                        <div className="flex items-center gap-2">
-                          <CategoryIcon name={cat.icon} className="h-3.5 w-3.5 sm:h-4 sm:w-4" style={{ color: cat.color }} />
-                          <p className="text-xs sm:text-sm font-medium text-white flex-1 leading-tight">{cat.name}</p>
-                          {selected && <CheckCircle2 className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-neon-teal shrink-0" />}
-                        </div>
+                      <button key={opt.id}
+                        onClick={() => setAnswers({
+                          ...answers,
+                          situationFlags: selected
+                            ? answers.situationFlags.filter(f => f !== opt.id)
+                            : [...answers.situationFlags, opt.id],
+                        })}
+                        className={`glass-card p-4 w-full text-left flex items-center gap-3 transition-all ${selected ? 'border-neon-teal/40 bg-neon-teal/10 ring-1 ring-neon-teal/20' : ''}`}>
+                        <div className="text-slate-400 shrink-0">{situationIcons[opt.icon]}</div>
+                        <p className="text-sm font-medium text-white flex-1">{opt.label}</p>
+                        {selected && <CheckCircle2 className="h-4 w-4 text-neon-teal shrink-0" />}
                       </button>
                     )
                   })}
@@ -380,103 +318,48 @@ export default function FindPage() {
               </div>
             )}
 
-            {step === 2 && (
-              <div>
-                <h2 className="font-display text-2xl sm:text-3xl font-bold text-white mb-1.5 sm:mb-2">Your experience level?</h2>
-                <p className="text-sm sm:text-base text-slate-400 mb-6 sm:mb-8">Helps us recommend the right starting point</p>
-                <div className="space-y-2.5 sm:space-y-3">
-                  {[
-                    { v: 'beginner' as const, l: 'Beginner', d: 'New to peptides. Prefer well-studied, easy-to-use options.', icon: <ShieldCheck className="h-5 w-5 text-emerald-400" /> },
-                    { v: 'intermediate' as const, l: 'Intermediate', d: 'Some experience. Comfortable with injections and cycling.', icon: <ShieldAlert className="h-5 w-5 text-amber-400" /> },
-                    { v: 'advanced' as const, l: 'Advanced', d: 'Extensive experience. Open to complex protocols.', icon: <ShieldOff className="h-5 w-5 text-neon-cyan" /> },
-                  ].map((opt) => (
-                    <button
-                      key={opt.v}
-                      onClick={() => setAnswers({ ...answers, experience: opt.v })}
-                      className={`glass-card p-4 sm:p-5 w-full text-left flex items-center gap-3 sm:gap-4 transition-all ${
-                        answers.experience === opt.v ? 'border-neon-teal/40 bg-neon-teal/10 ring-1 ring-neon-teal/20' : ''
-                      }`}
-                    >
-                      <div className="shrink-0">{opt.icon}</div>
-                      <div>
-                        <p className="font-medium text-white text-sm sm:text-base">{opt.l}</p>
-                        <p className="text-xs sm:text-sm text-slate-400 leading-snug">{opt.d}</p>
-                      </div>
-                    </button>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {step === 3 && (
-              <div>
-                <h2 className="font-display text-2xl sm:text-3xl font-bold text-white mb-1.5 sm:mb-2">Preferred method?</h2>
-                <p className="text-sm sm:text-base text-slate-400 mb-6 sm:mb-8">How would you prefer to take your peptide?</p>
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5 sm:gap-3">
-                  {[
-                    { v: 'injection' as const, l: 'Injection', icon: <Syringe className="h-5 w-5" /> },
-                    { v: 'nasal' as const, l: 'Nasal Spray', icon: <Wind className="h-5 w-5" /> },
-                    { v: 'oral' as const, l: 'Oral / Pill', icon: <Pill className="h-5 w-5" /> },
-                    { v: 'topical' as const, l: 'Topical', icon: <Droplets className="h-5 w-5" /> },
-                    { v: 'no_preference' as const, l: 'No Preference', icon: <CircleDot className="h-5 w-5" /> },
-                  ].map((opt) => (
-                    <button
-                      key={opt.v}
-                      onClick={() => setAnswers({ ...answers, administration: opt.v })}
-                      className={`glass-card p-4 sm:p-5 text-center transition-all ${
-                        answers.administration === opt.v ? 'border-neon-teal/40 bg-neon-teal/10 ring-1 ring-neon-teal/20' : ''
-                      }`}
-                    >
-                      <div className="text-slate-400 mb-2 flex justify-center">{opt.icon}</div>
-                      <p className="text-xs sm:text-sm font-medium text-white">{opt.l}</p>
-                    </button>
-                  ))}
-                </div>
-              </div>
-            )}
-
+            {/* STEP 4: Priorities */}
             {step === 4 && (
               <div>
-                <h2 className="font-display text-2xl sm:text-3xl font-bold text-white mb-1.5 sm:mb-2">Risk tolerance?</h2>
-                <p className="text-sm sm:text-base text-slate-400 mb-6 sm:mb-8">How do you feel about experimental peptides?</p>
+                <h2 className="font-display text-2xl sm:text-3xl font-bold text-white mb-1.5 sm:mb-2">What matters most to you?</h2>
+                <p className="text-sm sm:text-base text-slate-400 mb-6 sm:mb-8">Pick up to 2 priorities</p>
                 <div className="space-y-2.5 sm:space-y-3">
-                  {[
-                    { v: 'conservative' as const, l: 'Conservative', d: 'FDA-approved or well-studied only.' },
-                    { v: 'moderate' as const, l: 'Moderate', d: 'Open to well-tolerated peptides with moderate evidence.' },
-                    { v: 'open' as const, l: 'Open', d: 'Willing to try cutting-edge peptides with emerging research.' },
-                  ].map((opt) => (
-                    <button
-                      key={opt.v}
-                      onClick={() => setAnswers({ ...answers, riskTolerance: opt.v })}
-                      className={`glass-card p-4 sm:p-5 w-full text-left transition-all ${
-                        answers.riskTolerance === opt.v ? 'border-neon-teal/40 bg-neon-teal/10 ring-1 ring-neon-teal/20' : ''
-                      }`}
-                    >
-                      <p className="font-medium text-white text-sm sm:text-base mb-0.5 sm:mb-1">{opt.l}</p>
-                      <p className="text-xs sm:text-sm text-slate-400 leading-snug">{opt.d}</p>
-                    </button>
-                  ))}
+                  {priorityOptions.map((opt) => {
+                    const selected = answers.priorities.includes(opt.id)
+                    const atMax = answers.priorities.length >= 2 && !selected
+                    return (
+                      <button key={opt.id}
+                        onClick={() => {
+                          if (atMax) return
+                          setAnswers({
+                            ...answers,
+                            priorities: selected
+                              ? answers.priorities.filter(p => p !== opt.id)
+                              : [...answers.priorities, opt.id],
+                          })
+                        }}
+                        className={`glass-card p-4 sm:p-5 w-full text-left transition-all ${
+                          selected ? 'border-neon-teal/40 bg-neon-teal/10 ring-1 ring-neon-teal/20' : atMax ? 'opacity-40 cursor-not-allowed' : ''
+                        }`}>
+                        <p className="font-medium text-white text-sm sm:text-base mb-0.5">{opt.label}</p>
+                        <p className="text-xs sm:text-sm text-slate-400 leading-snug">{opt.desc}</p>
+                        {selected && <CheckCircle2 className="h-4 w-4 text-neon-teal absolute top-4 right-4" />}
+                      </button>
+                    )
+                  })}
                 </div>
               </div>
             )}
           </motion.div>
         </AnimatePresence>
 
+        {/* Nav buttons */}
         <div className="flex items-center justify-between mt-6 sm:mt-8 sticky bottom-0 py-4 sm:py-0 sm:static bg-base-950/90 sm:bg-transparent backdrop-blur-md sm:backdrop-blur-none -mx-4 px-4 sm:mx-0 sm:px-0 border-t border-white/5 sm:border-none">
-          <button
-            onClick={prev}
-            disabled={step === 0}
-            className="flex items-center gap-1.5 px-4 py-2.5 rounded-lg text-sm text-slate-400 hover:text-white disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
-          >
+          <button onClick={prev} disabled={step === 0} className="flex items-center gap-1.5 px-4 py-2.5 rounded-lg text-sm text-slate-400 hover:text-white disabled:opacity-30 disabled:cursor-not-allowed transition-colors">
             <ArrowLeft className="h-4 w-4" /> Back
           </button>
-          <button
-            onClick={next}
-            disabled={!canNext()}
-            className="flex items-center gap-1.5 px-5 sm:px-6 py-2.5 rounded-xl bg-gradient-to-r from-neon-teal to-neon-cyan text-base-950 font-semibold text-sm disabled:opacity-30 disabled:cursor-not-allowed hover:shadow-lg hover:shadow-neon-teal/20 transition-all"
-          >
-            {step === 4 ? 'See Results' : 'Continue'}
-            <ArrowRight className="h-4 w-4" />
+          <button onClick={next} disabled={!canNext()} className="flex items-center gap-1.5 px-5 sm:px-6 py-2.5 rounded-xl bg-gradient-to-r from-neon-teal to-neon-cyan text-base-950 font-semibold text-sm disabled:opacity-30 disabled:cursor-not-allowed hover:shadow-lg hover:shadow-neon-teal/20 transition-all">
+            {step === totalSteps - 1 ? 'See Results' : 'Continue'} <ArrowRight className="h-4 w-4" />
           </button>
         </div>
       </div>

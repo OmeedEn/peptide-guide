@@ -47,7 +47,7 @@ const PEPTIDE_COLORS: Record<string, string> = {
 
 function buildDosingProtocol(
   topPeptides: ScoredPeptide[],
-  experience: QuizAnswers['experience']
+  experience: string
 ): DosingEntry[] {
   return topPeptides.slice(0, 3).map((sp) => {
     const p = sp.peptide
@@ -94,7 +94,7 @@ function buildDosingProtocol(
 
 function buildRiskAssessment(
   topPeptides: ScoredPeptide[],
-  riskTolerance: QuizAnswers['riskTolerance']
+  riskTolerance: string
 ): RiskEntry[] {
   return topPeptides.slice(0, 5).map((sp) => {
     const p = sp.peptide
@@ -152,7 +152,7 @@ function buildDoctorGuide(
   points.push('Request baseline blood work before starting (hormone panel, metabolic panel, liver/kidney function)')
 
   // Experience-based
-  if (answers.experience === 'beginner') {
+  if ((answers as any).experience === 'beginner' || answers.situationFlags?.length === 0) {
     points.push('Ask about starting with the lowest effective dose and a conservative cycle length')
   }
 
@@ -222,8 +222,12 @@ export function generateReport(answers: QuizAnswers): PeptideReport {
     stack.peptideIds.some((pid) => topIds.includes(pid))
   )
 
-  const dosingProtocol = buildDosingProtocol(allMatches, answers.experience)
-  const riskAssessment = buildRiskAssessment(allMatches, answers.riskTolerance)
+  // Derive experience/risk from new quiz format
+  const experience = (answers as any).experience || (answers.situationFlags?.includes('used_peptides') ? 'intermediate' : 'beginner')
+  const riskTolerance = (answers as any).riskTolerance || (answers.priorities?.includes('low_side_effects') ? 'conservative' : answers.priorities?.includes('strong_evidence') ? 'conservative' : 'moderate')
+
+  const dosingProtocol = buildDosingProtocol(allMatches, experience)
+  const riskAssessment = buildRiskAssessment(allMatches, riskTolerance)
   const doctorGuide = buildDoctorGuide(allMatches, answers)
   const cycleCalendar = buildCycleCalendar(allMatches)
 
