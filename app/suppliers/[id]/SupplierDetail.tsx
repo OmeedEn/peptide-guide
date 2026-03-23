@@ -13,6 +13,7 @@ import { useCart } from '@/components/CartContext'
 import { suppliers, supplierMap } from '@/data/suppliers'
 import { products, getProductsBySupplier } from '@/data/products'
 import { peptideMap } from '@/data/peptides'
+import SupplierIcon from '@/components/SupplierIcon'
 import StarRating from '@/components/StarRating'
 
 const fadeUp = {
@@ -134,8 +135,8 @@ export default function SupplierDetail({ supplierId }: { supplierId: string }) {
         >
           <div className="flex flex-col sm:flex-row gap-4 sm:gap-6">
             {/* Logo */}
-            <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-4xl sm:text-5xl shrink-0">
-              {supplier.logo}
+            <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0">
+              <SupplierIcon name={supplier.logo} className="h-8 w-8 sm:h-10 sm:w-10 text-neon-teal" />
             </div>
 
             <div className="flex-1">

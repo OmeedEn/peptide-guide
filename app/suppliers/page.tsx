@@ -8,6 +8,7 @@ import {
   Filter, Star, ShieldCheck, Store,
 } from 'lucide-react'
 import { suppliers } from '@/data/suppliers'
+import SupplierIcon from '@/components/SupplierIcon'
 import { products } from '@/data/products'
 import StarRating from '@/components/StarRating'
 
@@ -184,8 +185,8 @@ export default function SuppliersPage() {
 
                     {/* Top row: logo + name */}
                     <div className="flex items-start gap-3 mb-3">
-                      <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-2xl shrink-0">
-                        {supplier.logo}
+                      <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0">
+                        <SupplierIcon name={supplier.logo} className="h-6 w-6 text-neon-teal" />
                       </div>
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center gap-1.5">

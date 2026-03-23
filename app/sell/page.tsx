@@ -8,6 +8,7 @@ import {
   Sparkles,
 } from 'lucide-react'
 import { suppliers } from '@/data/suppliers'
+import SupplierIcon from '@/components/SupplierIcon'
 
 const fadeUp = {
   initial: { opacity: 0, y: 30 },
@@ -365,10 +366,10 @@ export default function SellPage() {
               {suppliers.filter((s) => s.featured).map((s) => (
                 <div
                   key={s.id}
-                  className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-lg"
+                  className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center"
                   title={s.name}
                 >
-                  {s.logo}
+                  <SupplierIcon name={s.logo} className="h-5 w-5 text-neon-teal" />
                 </div>
               ))}
             </div>

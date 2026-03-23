@@ -13,6 +13,7 @@ import { stacks } from '@/data/stacks'
 import { suppliers } from '@/data/suppliers'
 import CategoryIcon from '@/components/CategoryIcon'
 import RiskBadge from '@/components/RiskBadge'
+import SupplierIcon from '@/components/SupplierIcon'
 import SocialProof from '@/components/SocialProof'
 
 const fadeUp = {
@@ -41,11 +42,6 @@ export default function HomePage() {
             transition={{ duration: 0.8 }}
             className="text-center max-w-3xl mx-auto"
           >
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-neon-teal/10 border border-neon-teal/20 mb-5 sm:mb-6">
-              <Beaker className="h-3.5 w-3.5 text-neon-teal" />
-              <span className="text-[11px] sm:text-xs font-medium text-neon-teal">18 peptides researched &amp; analyzed</span>
-            </div>
-
             <h1 className="font-display text-[2.5rem] leading-[1.1] sm:text-6xl lg:text-7xl font-bold tracking-tight text-white mb-4 sm:mb-6">
               Find Your<br />
               <span className="gradient-text">Perfect Peptide</span>
@@ -204,8 +200,8 @@ export default function HomePage() {
               <motion.div key={supplier.id} variants={fadeUp}>
                 <Link href={`/suppliers/${supplier.id}`} className="glass-card p-5 sm:p-6 block group h-full">
                   <div className="flex items-center gap-3 mb-3">
-                    <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-neon-teal/20 to-neon-cyan/20 border border-neon-teal/20 flex items-center justify-center text-lg shrink-0">
-                      {supplier.logo}
+                    <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-neon-teal/20 to-neon-cyan/20 border border-neon-teal/20 flex items-center justify-center shrink-0">
+                      <SupplierIcon name={supplier.logo} className="h-5 w-5 text-neon-teal" />
                     </div>
                     <div className="min-w-0">
                       <div className="flex items-center gap-1.5 flex-wrap">
