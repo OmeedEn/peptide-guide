@@ -1,3 +1,6 @@
+import { extendedProducts } from './products-extended'
+import { productsBatch2 } from './products-batch2'
+
 export interface ProductVariant {
   id: string
   size: string
@@ -20,7 +23,7 @@ export interface Product {
   purity: string
 }
 
-export const products: Product[] = [
+const baseProducts: Product[] = [
   // ── BPC-157 (4 suppliers) ──────────────────────────────────────────
   {
     id: 'pl-bpc157',
@@ -650,6 +653,8 @@ export const products: Product[] = [
     purity: '99%+',
   },
 ]
+
+export const products: Product[] = [...baseProducts, ...extendedProducts, ...productsBatch2]
 
 // ── Helper Functions ────────────────────────────────────────────────
 

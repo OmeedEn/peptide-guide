@@ -1,3 +1,6 @@
+import { extendedPeptides } from './peptides-extended'
+import { peptidesBatch2 } from './peptides-batch2'
+
 export interface Peptide {
   id: string
   name: string
@@ -19,7 +22,7 @@ export interface Peptide {
   citations: { title: string; authors: string; journal: string; year: number; pmid?: string; type: string }[]
 }
 
-export const peptides: Peptide[] = [
+const basePeptides: Peptide[] = [
   {
     id: 'bpc-157',
     name: 'BPC-157',
@@ -615,4 +618,5 @@ export const peptides: Peptide[] = [
   },
 ]
 
+export const peptides: Peptide[] = [...basePeptides, ...extendedPeptides as Peptide[], ...peptidesBatch2 as Peptide[]]
 export const peptideMap = Object.fromEntries(peptides.map(p => [p.id, p]))
