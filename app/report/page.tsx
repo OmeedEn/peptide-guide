@@ -1,13 +1,14 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, Suspense } from 'react'
+import { useSearchParams } from 'next/navigation'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import {
   Sparkles, FileText, Printer, Download, ArrowRight,
   CheckCircle2, AlertTriangle, Info, Stethoscope,
   Calendar, Syringe, Shield, Zap, Clock, ChevronRight,
-  FlaskConical, User, Target, Gauge,
+  FlaskConical, User, Target, Gauge, Lock, Star,
 } from 'lucide-react'
 import { type QuizAnswers } from '@/lib/quiz-logic'
 import { generateReport, type PeptideReport } from '@/lib/report-generator'
@@ -39,11 +40,22 @@ const severityBg: Record<string, string> = {
   serious: 'bg-rose-500/5 border-rose-500/10',
 }
 
-export default function ReportPage() {
+function ReportPageContent() {
   const [report, setReport] = useState<PeptideReport | null>(null)
   const [noAnswers, setNoAnswers] = useState(false)
+  const [paymentRequired, setPaymentRequired] = useState(false)
+  const searchParams = useSearchParams()
 
   useEffect(() => {
+    const sessionId = searchParams.get('session_id')
+
+    // If arriving from Stripe checkout success, mark as paid
+    if (sessionId) {
+      localStorage.setItem('peptide_report_paid', sessionId)
+    }
+
+    const hasPaid = localStorage.getItem('peptide_report_paid')
+
     try {
       const stored = localStorage.getItem('peptide_quiz_answers')
       if (!stored) {
@@ -55,11 +67,18 @@ export default function ReportPage() {
         setNoAnswers(true)
         return
       }
+
+      // Check payment status
+      if (!hasPaid) {
+        setPaymentRequired(true)
+        return
+      }
+
       setReport(generateReport(answers))
     } catch {
       setNoAnswers(true)
     }
-  }, [])
+  }, [searchParams])
 
   if (noAnswers) {
     return (
@@ -78,6 +97,64 @@ export default function ReportPage() {
           >
             Take the Quiz <ArrowRight className="h-4 w-4" />
           </Link>
+        </motion.div>
+      </div>
+    )
+  }
+
+  if (paymentRequired) {
+    return (
+      <div className="molecular-bg min-h-screen flex items-center justify-center">
+        <motion.div {...fadeUp} className="glass-card p-8 sm:p-12 max-w-lg mx-4 text-center">
+          <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-neon-teal/20 to-neon-cyan/20 border border-neon-teal/20 flex items-center justify-center mx-auto mb-5">
+            <Lock className="h-6 w-6 text-neon-teal" />
+          </div>
+          <h1 className="font-display text-2xl font-bold text-white mb-3">Report Locked</h1>
+          <p className="text-sm text-slate-400 mb-6 leading-relaxed">
+            Your personalized report is ready — unlock it for a one-time payment of $3.
+          </p>
+
+          <div className="grid grid-cols-2 gap-2 mb-6 text-left">
+            {[
+              'All matches ranked',
+              'Custom stacks',
+              'Dosing protocols',
+              'Risk assessment',
+              'Doctor guide',
+              'Cycle calendar',
+            ].map((feature) => (
+              <div key={feature} className="flex items-center gap-2">
+                <CheckCircle2 className="h-3.5 w-3.5 text-neon-teal shrink-0" />
+                <span className="text-xs text-slate-300">{feature}</span>
+              </div>
+            ))}
+          </div>
+
+          <Link
+            href="/find"
+            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl bg-gradient-to-r from-neon-teal to-neon-cyan text-base-950 font-bold text-sm hover:shadow-lg hover:shadow-neon-teal/25 transition-all"
+          >
+            <Lock className="h-4 w-4" />
+            Unlock Report — $3
+          </Link>
+
+          <div className="flex items-center justify-center gap-4 mt-4">
+            <span className="flex items-center gap-1 text-[10px] text-slate-500">
+              <Shield className="h-3 w-3" /> One-time payment
+            </span>
+            <span className="flex items-center gap-1 text-[10px] text-slate-500">
+              <Zap className="h-3 w-3" /> Instant access
+            </span>
+          </div>
+
+          <div className="mt-6 pt-4 border-t border-white/5">
+            <div className="flex items-center justify-center gap-0.5 mb-1">
+              {[...Array(5)].map((_, i) => (
+                <Star key={i} className="h-3 w-3 fill-amber-400 text-amber-400" />
+              ))}
+            </div>
+            <p className="text-[11px] text-slate-500 italic">&ldquo;The dosing protocol alone was worth way more than $3.&rdquo; — Mike R.</p>
+          </div>
         </motion.div>
       </div>
     )
@@ -514,5 +591,20 @@ export default function ReportPage() {
 
       </div>
     </div>
+  )
+}
+
+export default function ReportPage() {
+  return (
+    <Suspense fallback={
+      <div className="molecular-bg min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <div className="w-10 h-10 border-2 border-neon-teal/30 border-t-neon-teal rounded-full animate-spin mx-auto mb-4" />
+          <p className="text-sm text-slate-400">Loading your report...</p>
+        </div>
+      </div>
+    }>
+      <ReportPageContent />
+    </Suspense>
   )
 }

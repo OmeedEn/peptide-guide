@@ -8,7 +8,8 @@ import {
   ShieldCheck, ShieldAlert, CircleSlash, DollarSign,
   Syringe, FlaskConical, Pill,
   FileText, Zap, Calendar, Stethoscope, Download, Lock,
-  ChevronDown, ChevronUp, List, User,
+  ChevronDown, ChevronUp, List, User, Star, Shield,
+  BarChart3, Clock,
 } from 'lucide-react'
 import { categories } from '@/data/categories'
 import {
@@ -18,7 +19,6 @@ import {
 import CategoryIcon from '@/components/CategoryIcon'
 import RiskBadge from '@/components/RiskBadge'
 import EmailCapture from '@/components/EmailCapture'
-import SocialProof from '@/components/SocialProof'
 
 const FREE_RESULTS = 2
 
@@ -36,6 +36,7 @@ export default function FindPage() {
   const [answers, setAnswers] = useState<QuizAnswers>({ ...defaultAnswers })
   const [results, setResults] = useState<ScoredPeptide[] | null>(null)
   const [showAllOthers, setShowAllOthers] = useState(false)
+  const [checkoutLoading, setCheckoutLoading] = useState(false)
 
   const totalSteps = 5
 
@@ -64,7 +65,27 @@ export default function FindPage() {
   // ===== RESULTS VIEW =====
   if (results) {
     const topResults = results.slice(0, FREE_RESULTS)
-    const otherResults = results.slice(FREE_RESULTS)
+    const blurredPreview = results.slice(FREE_RESULTS, FREE_RESULTS + 4)
+
+    const handleUnlockReport = async () => {
+      setCheckoutLoading(true)
+      localStorage.setItem('peptide_quiz_answers', JSON.stringify(answers))
+      try {
+        const res = await fetch('/api/checkout', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ quizAnswers: answers }),
+        })
+        const data = await res.json()
+        if (data.url) {
+          window.location.href = data.url
+        } else {
+          setCheckoutLoading(false)
+        }
+      } catch {
+        setCheckoutLoading(false)
+      }
+    }
 
     return (
       <div className="molecular-bg min-h-screen">
@@ -83,7 +104,7 @@ export default function FindPage() {
               <p className="text-sm sm:text-base text-slate-400">Personalized for your goals, age, and preferences</p>
             </div>
 
-            {/* TOP RECOMMENDATIONS */}
+            {/* TOP FREE RECOMMENDATIONS */}
             <div className="mb-4">
               <div className="flex items-center gap-2 mb-4">
                 <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-neon-teal/20 to-neon-cyan/20 border border-neon-teal/20 flex items-center justify-center">
@@ -93,6 +114,7 @@ export default function FindPage() {
                   <h2 className="text-sm sm:text-base font-bold text-white">Best For You</h2>
                   <p className="text-[10px] sm:text-xs text-slate-500">Based on your specific answers</p>
                 </div>
+                <span className="ml-auto px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">FREE</span>
               </div>
 
               <div className="space-y-3 sm:space-y-4">
@@ -132,26 +154,135 @@ export default function FindPage() {
               </div>
             </div>
 
-            {/* REPORT CTA */}
-            <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }} className="glass-card p-5 sm:p-6 border-neon-teal/10 mb-6 sm:mb-8">
-              <div className="flex flex-col sm:flex-row sm:items-center gap-4">
-                <div className="flex-1">
-                  <div className="flex items-center gap-2 mb-1">
-                    <FileText className="h-4 w-4 text-neon-teal" />
-                    <h3 className="text-sm sm:text-base font-bold text-white">Want the full picture?</h3>
+            {/* BLURRED PREVIEW - Shows what they're missing */}
+            <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="relative mb-6 sm:mb-8">
+              <div className="flex items-center gap-2 mb-3">
+                <Lock className="h-3.5 w-3.5 text-slate-500" />
+                <p className="text-xs text-slate-500 font-medium">+ {results.length - FREE_RESULTS} more matches in your full report</p>
+              </div>
+
+              {/* Blurred peptide cards */}
+              <div className="space-y-2 select-none pointer-events-none" aria-hidden="true">
+                {blurredPreview.map((result, i) => {
+                  const pct = Math.round((result.score / maxScore) * 100)
+                  return (
+                    <div key={result.peptide.id} className="glass-card p-3.5 sm:p-4 flex items-center gap-3" style={{ filter: `blur(${4 + i}px)`, opacity: 1 - i * 0.15 }}>
+                      <div className="shrink-0 w-9 h-9 rounded-lg bg-gradient-to-br from-neon-teal/20 to-neon-cyan/20 border border-neon-teal/20 flex items-center justify-center">
+                        <span className="text-sm font-bold text-neon-teal">{pct}%</span>
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <h4 className="text-sm font-semibold text-white">{result.peptide.name}</h4>
+                        <p className="text-[10px] text-slate-500 truncate">{result.peptide.primaryUse}</p>
+                      </div>
+                      <RiskBadge level={result.peptide.riskLevel} />
+                    </div>
+                  )
+                })}
+              </div>
+
+              {/* Locked report sections preview */}
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 mt-3 select-none pointer-events-none" aria-hidden="true">
+                {[
+                  { icon: <Zap className="h-3.5 w-3.5" />, label: 'Custom Stacks' },
+                  { icon: <Syringe className="h-3.5 w-3.5" />, label: 'Dosing Protocol' },
+                  { icon: <Stethoscope className="h-3.5 w-3.5" />, label: 'Doctor Guide' },
+                  { icon: <Calendar className="h-3.5 w-3.5" />, label: 'Cycle Calendar' },
+                ].map((section) => (
+                  <div key={section.label} className="glass-card p-3 text-center opacity-50" style={{ filter: 'blur(1px)' }}>
+                    <div className="text-slate-500 flex justify-center mb-1">{section.icon}</div>
+                    <p className="text-[10px] sm:text-xs text-slate-500 font-medium">{section.label}</p>
                   </div>
-                  <p className="text-xs sm:text-sm text-slate-400">All {results.length} matches ranked, custom stacks, dosing protocols, risk assessment, and doctor guide.</p>
+                ))}
+              </div>
+            </motion.div>
+
+            {/* MAIN REPORT CTA - Enhanced */}
+            <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }} className="glass-card p-5 sm:p-7 border-neon-teal/20 bg-gradient-to-br from-neon-teal/[0.03] to-neon-cyan/[0.03] mb-6 sm:mb-8">
+              <div className="text-center">
+                <h3 className="font-display text-lg sm:text-xl font-bold text-white mb-2">Unlock Your Full Personalized Report</h3>
+                <p className="text-xs sm:text-sm text-slate-400 mb-5 max-w-md mx-auto">
+                  All {results.length} matches ranked, custom stacks, dosing protocols, risk assessment, and a doctor discussion guide — personalized to your answers.
+                </p>
+
+                {/* Feature list */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-5 max-w-md mx-auto text-left">
+                  {[
+                    'Complete peptide rankings',
+                    'Synergistic stack combos',
+                    'Exact dosing protocols',
+                    'Side effect risk assessment',
+                    'Doctor talking points',
+                    '4-week cycle calendar',
+                  ].map((feature) => (
+                    <div key={feature} className="flex items-center gap-2">
+                      <CheckCircle2 className="h-3.5 w-3.5 text-neon-teal shrink-0" />
+                      <span className="text-xs sm:text-sm text-slate-300">{feature}</span>
+                    </div>
+                  ))}
                 </div>
-                <button onClick={() => localStorage.setItem('peptide_quiz_answers', JSON.stringify(answers))} className="shrink-0 flex items-center justify-center gap-2 px-5 sm:px-6 py-3 rounded-xl bg-gradient-to-r from-neon-teal to-neon-cyan text-base-950 font-semibold text-sm hover:shadow-lg hover:shadow-neon-teal/20 transition-all">
-                  <Lock className="h-3.5 w-3.5" /> Full Report — $3
+
+                {/* Price and CTA */}
+                <button
+                  onClick={handleUnlockReport}
+                  disabled={checkoutLoading}
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl bg-gradient-to-r from-neon-teal to-neon-cyan text-base-950 font-bold text-sm sm:text-base hover:shadow-lg hover:shadow-neon-teal/25 transition-all disabled:opacity-70 disabled:cursor-not-allowed min-h-[48px]"
+                >
+                  {checkoutLoading ? (
+                    <div className="w-5 h-5 border-2 border-base-950/30 border-t-base-950 rounded-full animate-spin" />
+                  ) : (
+                    <>
+                      <Lock className="h-4 w-4" />
+                      Unlock Full Report — $3
+                    </>
+                  )}
                 </button>
+
+                {/* Trust signals */}
+                <div className="flex items-center justify-center gap-4 sm:gap-6 mt-4">
+                  <span className="flex items-center gap-1 text-[10px] sm:text-xs text-slate-500">
+                    <Shield className="h-3 w-3" /> One-time payment
+                  </span>
+                  <span className="flex items-center gap-1 text-[10px] sm:text-xs text-slate-500">
+                    <Zap className="h-3 w-3" /> Instant access
+                  </span>
+                  <span className="flex items-center gap-1 text-[10px] sm:text-xs text-slate-500">
+                    <Clock className="h-3 w-3" /> Print-ready
+                  </span>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* SOCIAL PROOF - Inline at decision point */}
+            <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.35 }} className="mb-6 sm:mb-8">
+              <div className="flex items-center justify-center gap-2 mb-4">
+                <BarChart3 className="h-3.5 w-3.5 text-slate-500" />
+                <p className="text-xs sm:text-sm text-slate-500 font-medium">
+                  <span className="text-slate-400">2,847+</span> reports generated
+                </p>
+              </div>
+              <div className="flex gap-3 overflow-x-auto pb-2 snap-x snap-mandatory scrollbar-hide -mx-4 px-4 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-3 sm:overflow-visible sm:pb-0">
+                {[
+                  { quote: 'The dosing protocol alone was worth way more than $3. Finally have a clear plan.', name: 'Mike R.' },
+                  { quote: 'Showed the doctor guide to my physician — it led to a great conversation about BPC-157.', name: 'Sarah K.' },
+                  { quote: 'Saved me hours of research. The stack recommendation was exactly what I needed.', name: 'James T.' },
+                ].map((t) => (
+                  <div key={t.name} className="glass-card p-4 min-w-[260px] sm:min-w-0 snap-start shrink-0 sm:shrink">
+                    <div className="flex items-center gap-0.5 mb-2">
+                      {[...Array(5)].map((_, i) => (
+                        <Star key={i} className="h-3 w-3 fill-amber-400 text-amber-400" />
+                      ))}
+                    </div>
+                    <p className="text-xs text-slate-400 leading-relaxed mb-2">&ldquo;{t.quote}&rdquo;</p>
+                    <p className="text-[11px] text-slate-600 font-medium">&mdash; {t.name}</p>
+                  </div>
+                ))}
               </div>
             </motion.div>
 
             <EmailCapture />
 
-            {/* EXPLORE OTHERS */}
-            {otherResults.length > 0 && (
+            {/* EXPLORE OTHERS - Collapsed */}
+            {results.slice(FREE_RESULTS).length > 0 && (
               <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }} className="mt-6 sm:mt-8">
                 <button onClick={() => setShowAllOthers(!showAllOthers)} className="w-full flex items-center justify-between p-4 sm:p-5 glass-card group">
                   <div className="flex items-center gap-3">
@@ -159,15 +290,15 @@ export default function FindPage() {
                       <List className="h-4 w-4 text-slate-400" />
                     </div>
                     <div className="text-left">
-                      <h3 className="text-sm sm:text-base font-bold text-white group-hover:text-neon-teal transition-colors">Explore All Other Matches ({otherResults.length})</h3>
-                      <p className="text-[10px] sm:text-xs text-slate-500">Browse peptides that also fit your profile</p>
+                      <h3 className="text-sm sm:text-base font-bold text-white group-hover:text-neon-teal transition-colors">Browse All Matches ({results.slice(FREE_RESULTS).length})</h3>
+                      <p className="text-[10px] sm:text-xs text-slate-500">Basic info only — unlock the report for full details</p>
                     </div>
                   </div>
                   {showAllOthers ? <ChevronUp className="h-5 w-5 text-slate-400 shrink-0" /> : <ChevronDown className="h-5 w-5 text-slate-400 shrink-0" />}
                 </button>
                 {showAllOthers && (
                   <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="mt-3 space-y-2 sm:space-y-3">
-                    {otherResults.map((result, i) => {
+                    {results.slice(FREE_RESULTS).map((result, i) => {
                       const pct = Math.round((result.score / maxScore) * 100)
                       return (
                         <Link key={result.peptide.id} href={`/peptides/${result.peptide.id}`} className="glass-card p-3.5 sm:p-4 flex items-center gap-3 group block">
@@ -193,9 +324,25 @@ export default function FindPage() {
                 )}
               </motion.div>
             )}
-
-            <div className="mt-8"><SocialProof /></div>
           </motion.div>
+        </div>
+
+        {/* STICKY MOBILE CTA */}
+        <div className="fixed bottom-0 left-0 right-0 p-3 bg-base-950/95 backdrop-blur-md border-t border-white/5 sm:hidden z-50">
+          <button
+            onClick={handleUnlockReport}
+            disabled={checkoutLoading}
+            className="w-full flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl bg-gradient-to-r from-neon-teal to-neon-cyan text-base-950 font-bold text-sm hover:shadow-lg hover:shadow-neon-teal/25 transition-all disabled:opacity-70 min-h-[48px]"
+          >
+            {checkoutLoading ? (
+              <div className="w-5 h-5 border-2 border-base-950/30 border-t-base-950 rounded-full animate-spin" />
+            ) : (
+              <>
+                <Lock className="h-4 w-4" />
+                Unlock Full Report — $3
+              </>
+            )}
+          </button>
         </div>
       </div>
     )
