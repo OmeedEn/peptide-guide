@@ -232,7 +232,7 @@ export default function FindPage() {
                   ) : (
                     <>
                       <Lock className="h-4 w-4" />
-                      Unlock Full Report — $3
+                      Unlock Full Report — $6.99
                     </>
                   )}
                 </button>
@@ -262,7 +262,7 @@ export default function FindPage() {
               </div>
               <div className="flex gap-3 overflow-x-auto pb-2 snap-x snap-mandatory scrollbar-hide -mx-4 px-4 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-3 sm:overflow-visible sm:pb-0">
                 {[
-                  { quote: 'The dosing protocol alone was worth way more than $3. Finally have a clear plan.', name: 'Mike R.' },
+                  { quote: 'The dosing protocol alone was worth way more than $6.99. Finally have a clear plan.', name: 'Mike R.' },
                   { quote: 'Showed the doctor guide to my physician — it led to a great conversation about BPC-157.', name: 'Sarah K.' },
                   { quote: 'Saved me hours of research. The stack recommendation was exactly what I needed.', name: 'James T.' },
                 ].map((t) => (
@@ -339,7 +339,7 @@ export default function FindPage() {
             ) : (
               <>
                 <Lock className="h-4 w-4" />
-                Unlock Full Report — $3
+                Unlock Full Report — $6.99
               </>
             )}
           </button>

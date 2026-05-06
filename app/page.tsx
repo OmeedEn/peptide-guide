@@ -287,7 +287,7 @@ export default function HomePage() {
                 icon: <FileText className="h-6 w-6 text-neon-teal" />,
                 title: 'Unlock Full Report',
                 desc: 'Get all matches, custom stacks, dosing protocols, risk assessment, and a doctor discussion guide.',
-                badge: '$3',
+                badge: '$6.99',
                 badgeColor: 'bg-neon-teal/15 text-neon-teal border-neon-teal/30',
               },
             ].map((item, i) => (
@@ -365,7 +365,7 @@ export default function HomePage() {
 
               <div className="relative">
                 <div className="flex items-baseline justify-center gap-1 mb-1">
-                  <span className="font-display text-4xl sm:text-5xl font-bold text-white">$3</span>
+                  <span className="font-display text-4xl sm:text-5xl font-bold text-white">$6.99</span>
                   <span className="text-sm text-slate-500">one-time</span>
                 </div>
                 <p className="text-center text-xs text-slate-500 mb-6">No subscription. No recurring charges.</p>

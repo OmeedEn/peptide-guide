@@ -111,7 +111,7 @@ function ReportPageContent() {
           </div>
           <h1 className="font-display text-2xl font-bold text-white mb-3">Report Locked</h1>
           <p className="text-sm text-slate-400 mb-6 leading-relaxed">
-            Your personalized report is ready — unlock it for a one-time payment of $3.
+            Your personalized report is ready — unlock it for a one-time payment of $6.99.
           </p>
 
           <div className="grid grid-cols-2 gap-2 mb-6 text-left">
@@ -135,7 +135,7 @@ function ReportPageContent() {
             className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl bg-gradient-to-r from-neon-teal to-neon-cyan text-base-950 font-bold text-sm hover:shadow-lg hover:shadow-neon-teal/25 transition-all"
           >
             <Lock className="h-4 w-4" />
-            Unlock Report — $3
+            Unlock Report — $6.99
           </Link>
 
           <div className="flex items-center justify-center gap-4 mt-4">
@@ -153,7 +153,7 @@ function ReportPageContent() {
                 <Star key={i} className="h-3 w-3 fill-amber-400 text-amber-400" />
               ))}
             </div>
-            <p className="text-[11px] text-slate-500 italic">&ldquo;The dosing protocol alone was worth way more than $3.&rdquo; — Mike R.</p>
+            <p className="text-[11px] text-slate-500 italic">&ldquo;The dosing protocol alone was worth way more than $6.99.&rdquo; — Mike R.</p>
           </div>
         </motion.div>
       </div>

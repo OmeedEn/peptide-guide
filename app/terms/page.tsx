@@ -59,11 +59,11 @@ export default function TermsPage() {
               </h2>
               <p>
                 PeptideGuide offers a personalized peptide recommendation report for a one-time
-                fee of $3.00 USD. Payment is processed securely through Stripe. By completing
+                fee of $6.99 USD. Payment is processed securely through Stripe. By completing
                 a purchase, you agree to the following:
               </p>
               <ul className="list-disc list-inside mt-3 space-y-1.5 text-slate-400">
-                <li>The $3.00 fee is a one-time charge with no recurring billing.</li>
+                <li>The $6.99 fee is a one-time charge with no recurring billing.</li>
                 <li>
                   Because the report is a <strong className="text-slate-300">digital good delivered
                   immediately</strong> upon purchase, all sales are final and no refunds will be issued.
