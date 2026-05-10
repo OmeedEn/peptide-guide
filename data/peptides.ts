@@ -56,7 +56,6 @@ const basePeptides: Peptide[] = [
     citations: [
       { title: 'BPC 157: A Review of its Regenerative and Protective Properties', authors: 'Gwyer D et al.', journal: 'Current Pharmaceutical Design', year: 2025, pmid: '39895597', type: 'review' },
       { title: 'Stable gastric pentadecapeptide BPC 157 in trials for inflammatory bowel disease', authors: 'Seiwerth S et al.', journal: 'Annals of Medicine', year: 2021, pmid: '34779685', type: 'review' },
-      { title: 'Safety and pharmacokinetics of BPC-157 in healthy volunteers', authors: 'Jakobsen JC et al.', journal: 'Clinical trial (NCT05765045)', year: 2025, type: 'clinical_trial' },
     ],
   },
   {
@@ -166,8 +165,8 @@ const basePeptides: Peptide[] = [
     aliases: ['Ozempic', 'Wegovy', 'Rybelsus'],
     categories: ['fat_loss'],
     primaryUse: 'Weight loss and metabolic health',
-    trendingRank: 1,
-    description: 'An FDA-approved GLP-1 receptor agonist for type 2 diabetes and weight management. The most commercially successful peptide drug. ~12% of US adults have used GLP-1 RAs.',
+    trendingRank: 5,
+    description: 'An FDA-approved GLP-1 receptor agonist for type 2 diabetes and weight management. The most commercially successful peptide drug. As of late 2025, ~12% of US adults are currently using a GLP-1 RA (KFF polling).',
     benefits: [
       'Significant sustained weight loss (13-15% body weight)',
       'Improved blood sugar control',
@@ -200,7 +199,7 @@ const basePeptides: Peptide[] = [
     aliases: ['Mounjaro', 'Zepbound'],
     categories: ['fat_loss'],
     primaryUse: 'Weight loss and metabolic health',
-    trendingRank: 2,
+    trendingRank: 18,
     description: 'A dual GIP/GLP-1 receptor agonist showing superior weight loss vs semaglutide in head-to-head trials. Up to 20%+ body weight loss.',
     benefits: [
       'Superior weight loss vs semaglutide (up to 20%+)',
@@ -282,10 +281,10 @@ const basePeptides: Peptide[] = [
     ],
     riskLevel: 'low',
     dosing: { typical: '250-1000 mcg/day', method: 'Intranasal spray or subcutaneous injection', cycle: '5-14 day cycles', notes: 'Morning administration recommended. Published protocols often use 750-1000 mcg/day. Effects build over 4-12 weeks.' },
-    legalStatus: { fda: 'Not FDA-approved in USA', availability: 'Removed from Category 2 Sept 2024; registered in Russia', wadaBanned: false },
+    legalStatus: { fda: 'Not FDA-approved in USA', availability: 'Removed from Category 2 Sept 2024; registered in Russia', wadaBanned: true },
     fdaApproved: false,
     evidenceLevel: 'low_moderate',
-    evidenceNotes: 'Decades of research in Russia with multiple published studies. No Western RCTs. Registered as anxiolytic in Russia. Effectively banned for athletes under WADA S0 (non-approved substances) despite not being explicitly listed.',
+    evidenceNotes: 'Decades of research in Russia with multiple published studies. No Western RCTs. Registered as anxiolytic in Russia. Prohibited for athletes under WADA S0 (Non-Approved Substances) as a non-approved pharmacological substance.',
     administrationMethods: ['nasal', 'injection'],
     citations: [
       { title: 'Selank peptide anxiolytic: review of pharmacological and clinical data', authors: 'Zozulya AA et al.', journal: 'Zhurnal Nevrologii i Psikhiatrii', year: 2008, pmid: '18833097', type: 'review' },
@@ -481,7 +480,7 @@ const basePeptides: Peptide[] = [
     fdaApproved: false,
     evidenceLevel: 'low_moderate',
     evidenceNotes: '6 human clinical trials (oral), 900+ participants. Largest Phase IIb FAILED statistical significance. Development terminated. "Muscle preservation" claim has no published evidence. Popular despite weak evidence.',
-    administrationMethods: ['injection'],
+    administrationMethods: ['injection', 'oral'],
     citations: [
       { title: 'AOD-9604 Phase IIb obesity trial', authors: 'Heffernan M et al.', journal: 'Metabolix (terminated program)', year: 2007, type: 'clinical_trial' },
     ],
@@ -577,7 +576,7 @@ const basePeptides: Peptide[] = [
     ],
     riskLevel: 'high',
     dosing: { typical: '250-500 mcg initially, maintenance 500 mcg/week', method: 'Subcutaneous injection', cycle: 'Loading then maintenance', notes: 'NON-SELECTIVE melanocortin agonist. Primary safety concern.' },
-    legalStatus: { fda: 'NOT FDA-approved; illegal to purchase in US and UK', availability: 'Sold illegally online despite bans', wadaBanned: true },
+    legalStatus: { fda: 'NOT FDA-approved; illegal to sell for human use in US and UK', availability: 'Sold illegally online despite regulatory warnings', wadaBanned: true },
     fdaApproved: false,
     evidenceLevel: 'moderate',
     evidenceNotes: 'Development abandoned due to safety concerns. Health agencies globally advise against use. 2025 case report linked nasal spray use to oral mucosal malignant melanoma. Non-selective melanocortin agonist with unpredictable systemic effects.',

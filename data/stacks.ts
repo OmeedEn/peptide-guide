@@ -45,7 +45,7 @@ export const stacks: Stack[] = [
     name: 'Body Recomp',
     peptideIds: ['cjc-1295', 'ipamorelin', 'aod-9604'],
     purpose: 'Simultaneous muscle gain and fat loss',
-    description: 'GH stimulation from CJC-1295/Ipamorelin drives muscle growth while AOD-9604 adds targeted fat metabolism without affecting blood sugar.',
+    description: 'GH stimulation from CJC-1295/Ipamorelin drives muscle growth. AOD-9604 targets fat metabolism without affecting blood sugar, though its largest clinical trial failed to reach statistical significance — evidence is limited.',
     icon: 'Flame',
   },
   {
