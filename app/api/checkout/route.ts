@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { getStripe } from '@/lib/stripe'
-import { PRODUCT_NAME } from '@/lib/constants'
+import { PRODUCT_NAME, PRICE_AMOUNT, PRICE_CURRENCY } from '@/lib/constants'
 import Stripe from 'stripe'
 
 interface CartItem {
@@ -61,9 +61,9 @@ export async function POST(request: NextRequest) {
         line_items: [
           {
             price_data: {
-              currency: 'usd',
+              currency: PRICE_CURRENCY,
               product_data: { name: PRODUCT_NAME },
-              unit_amount: 300,
+              unit_amount: PRICE_AMOUNT,
             },
             quantity: 1,
           },

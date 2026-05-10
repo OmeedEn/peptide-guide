@@ -8,7 +8,7 @@ import {
   Sparkles, FileText, Printer, Download, ArrowRight,
   CheckCircle2, AlertTriangle, Info, Stethoscope,
   Calendar, Syringe, Shield, Zap, Clock, ChevronRight,
-  FlaskConical, User, Target, Gauge, Lock, Star,
+  FlaskConical, User, Target, Gauge, Lock,
 } from 'lucide-react'
 import { type QuizAnswers } from '@/lib/quiz-logic'
 import { generateReport, type PeptideReport } from '@/lib/report-generator'
@@ -148,12 +148,7 @@ function ReportPageContent() {
           </div>
 
           <div className="mt-6 pt-4 border-t border-white/5">
-            <div className="flex items-center justify-center gap-0.5 mb-1">
-              {[...Array(5)].map((_, i) => (
-                <Star key={i} className="h-3 w-3 fill-amber-400 text-amber-400" />
-              ))}
-            </div>
-            <p className="text-[11px] text-slate-500 italic">&ldquo;The dosing protocol alone was worth way more than $6.99.&rdquo; — Mike R.</p>
+            <p className="text-[11px] text-slate-500">Includes dosing protocols, stack recommendations, risk assessment, doctor guide, and cycle calendar.</p>
           </div>
         </motion.div>
       </div>

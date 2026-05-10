@@ -277,16 +277,16 @@ export default function HomePage() {
               {
                 step: '02',
                 icon: <Sparkles className="h-6 w-6 text-neon-teal" />,
-                title: 'See Your Top 3 Matches',
-                desc: 'Instantly get your top 3 peptide recommendations ranked by compatibility with your profile.',
+                title: 'See All Your Matches',
+                desc: 'Instantly get all peptide recommendations ranked by compatibility with your profile.',
                 badge: 'Free',
                 badgeColor: 'bg-emerald-500/15 text-emerald-400 border-emerald-500/30',
               },
               {
                 step: '03',
                 icon: <FileText className="h-6 w-6 text-neon-teal" />,
-                title: 'Unlock Full Report',
-                desc: 'Get all matches, custom stacks, dosing protocols, risk assessment, and a doctor discussion guide.',
+                title: 'Get Your Protocol',
+                desc: 'Unlock dosing protocols, custom stacks, risk assessment, cycle calendar, and a doctor discussion guide.',
                 badge: '$6.99',
                 badgeColor: 'bg-neon-teal/15 text-neon-teal border-neon-teal/30',
               },
@@ -324,9 +324,9 @@ export default function HomePage() {
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-10 text-center">
             {[
               { n: '75+', l: 'Peptides Profiled' },
-              { n: '200+', l: 'Studies Referenced' },
+              { n: '110+', l: 'Studies Cited' },
               { n: '10', l: 'Health Categories' },
-              { n: '4', l: 'FDA-Approved' },
+              { n: '24', l: 'FDA-Approved' },
             ].map((s) => (
               <div key={s.l}>
                 <p className="font-display text-xl sm:text-2xl font-bold gradient-text">{s.n}</p>
@@ -372,12 +372,12 @@ export default function HomePage() {
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 mb-6">
                   {[
-                    'All peptide matches ranked by score',
                     'Personalized stack recommendations',
-                    'Dosing protocols for your level',
+                    'Exact dosing protocols for your level',
                     'Side effect risk assessment',
                     '"What to ask your doctor" guide',
-                    'Weekly cycle calendar template',
+                    '4-week cycle calendar',
+                    'Print-ready report',
                   ].map((item) => (
                     <div key={item} className="flex items-start gap-2 p-2.5 rounded-lg bg-white/[0.02]">
                       <CheckCircle2 className="h-4 w-4 text-neon-teal shrink-0 mt-0.5" />

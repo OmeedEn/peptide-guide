@@ -8,8 +8,8 @@ import {
   ShieldCheck, ShieldAlert, CircleSlash, DollarSign,
   Syringe, FlaskConical, Pill,
   FileText, Zap, Calendar, Stethoscope, Download, Lock,
-  ChevronDown, ChevronUp, List, User, Star, Shield,
-  BarChart3, Clock,
+  User, Shield,
+  Clock,
 } from 'lucide-react'
 import { categories } from '@/data/categories'
 import {
@@ -20,7 +20,7 @@ import CategoryIcon from '@/components/CategoryIcon'
 import RiskBadge from '@/components/RiskBadge'
 import EmailCapture from '@/components/EmailCapture'
 
-const FREE_RESULTS = 2
+const FREE_RESULTS = Infinity // Show all match rankings for free
 
 const situationIcons: Record<string, React.ReactNode> = {
   Syringe: <Syringe className="h-4 w-4" />,
@@ -35,7 +35,6 @@ export default function FindPage() {
   const [step, setStep] = useState(0)
   const [answers, setAnswers] = useState<QuizAnswers>({ ...defaultAnswers })
   const [results, setResults] = useState<ScoredPeptide[] | null>(null)
-  const [showAllOthers, setShowAllOthers] = useState(false)
   const [checkoutLoading, setCheckoutLoading] = useState(false)
 
   const totalSteps = 5
@@ -53,8 +52,9 @@ export default function FindPage() {
   }
 
   const prev = () => {
-    if (results) { setResults(null); setShowAllOthers(false) }
+    if (results) { setResults(null) }
     else if (step > 0) setStep(step - 1)
+
   }
 
   const maxScore = results?.[0]?.score ?? 1
@@ -64,8 +64,7 @@ export default function FindPage() {
 
   // ===== RESULTS VIEW =====
   if (results) {
-    const topResults = results.slice(0, FREE_RESULTS)
-    const blurredPreview = results.slice(FREE_RESULTS, FREE_RESULTS + 4)
+    const topResults = results
 
     const handleUnlockReport = async () => {
       setCheckoutLoading(true)
@@ -114,7 +113,7 @@ export default function FindPage() {
                   <h2 className="text-sm sm:text-base font-bold text-white">Best For You</h2>
                   <p className="text-[10px] sm:text-xs text-slate-500">Based on your specific answers</p>
                 </div>
-                <span className="ml-auto px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">FREE</span>
+                <span className="ml-auto px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">{results.length} matches</span>
               </div>
 
               <div className="space-y-3 sm:space-y-4">
@@ -154,176 +153,97 @@ export default function FindPage() {
               </div>
             </div>
 
-            {/* BLURRED PREVIEW - Shows what they're missing */}
-            <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="relative mb-6 sm:mb-8">
-              <div className="flex items-center gap-2 mb-3">
+            {/* LOCKED PROTOCOL SECTIONS */}
+            <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="mb-6 sm:mb-8">
+              <div className="flex items-center gap-2 mb-4">
                 <Lock className="h-3.5 w-3.5 text-slate-500" />
-                <p className="text-xs text-slate-500 font-medium">+ {results.length - FREE_RESULTS} more matches in your full report</p>
+                <p className="text-sm text-slate-400 font-medium">Unlock your personalized protocol</p>
               </div>
 
-              {/* Blurred peptide cards */}
-              <div className="space-y-2 select-none pointer-events-none" aria-hidden="true">
-                {blurredPreview.map((result, i) => {
-                  const pct = Math.round((result.score / maxScore) * 100)
-                  return (
-                    <div key={result.peptide.id} className="glass-card p-3.5 sm:p-4 flex items-center gap-3" style={{ filter: `blur(${4 + i}px)`, opacity: 1 - i * 0.15 }}>
-                      <div className="shrink-0 w-9 h-9 rounded-lg bg-gradient-to-br from-neon-teal/20 to-neon-cyan/20 border border-neon-teal/20 flex items-center justify-center">
-                        <span className="text-sm font-bold text-neon-teal">{pct}%</span>
-                      </div>
-                      <div className="flex-1 min-w-0">
-                        <h4 className="text-sm font-semibold text-white">{result.peptide.name}</h4>
-                        <p className="text-[10px] text-slate-500 truncate">{result.peptide.primaryUse}</p>
-                      </div>
-                      <RiskBadge level={result.peptide.riskLevel} />
-                    </div>
-                  )
-                })}
-              </div>
-
-              {/* Locked report sections preview */}
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 mt-3 select-none pointer-events-none" aria-hidden="true">
+              {/* Locked section previews */}
+              <div className="grid grid-cols-2 gap-2.5 sm:gap-3 mb-5">
                 {[
-                  { icon: <Zap className="h-3.5 w-3.5" />, label: 'Custom Stacks' },
-                  { icon: <Syringe className="h-3.5 w-3.5" />, label: 'Dosing Protocol' },
-                  { icon: <Stethoscope className="h-3.5 w-3.5" />, label: 'Doctor Guide' },
-                  { icon: <Calendar className="h-3.5 w-3.5" />, label: 'Cycle Calendar' },
+                  { icon: <Zap className="h-5 w-5" />, label: 'Custom Stacks', desc: 'Synergistic combos tailored to your goals' },
+                  { icon: <Syringe className="h-5 w-5" />, label: 'Dosing Protocol', desc: 'Exact doses, timing, and cycle length' },
+                  { icon: <Stethoscope className="h-5 w-5" />, label: 'Doctor Guide', desc: 'Talking points for your physician' },
+                  { icon: <Calendar className="h-5 w-5" />, label: 'Cycle Calendar', desc: '4-week visual schedule' },
                 ].map((section) => (
-                  <div key={section.label} className="glass-card p-3 text-center opacity-50" style={{ filter: 'blur(1px)' }}>
-                    <div className="text-slate-500 flex justify-center mb-1">{section.icon}</div>
-                    <p className="text-[10px] sm:text-xs text-slate-500 font-medium">{section.label}</p>
+                  <div key={section.label} className="glass-card p-4 sm:p-5 relative overflow-hidden">
+                    <div className="absolute top-2.5 right-2.5">
+                      <Lock className="h-3 w-3 text-slate-600" />
+                    </div>
+                    <div className="text-slate-500 mb-2">{section.icon}</div>
+                    <p className="text-xs sm:text-sm font-semibold text-white mb-0.5">{section.label}</p>
+                    <p className="text-[10px] sm:text-xs text-slate-500 leading-snug">{section.desc}</p>
                   </div>
                 ))}
               </div>
+
+              {/* CTA */}
+              <div className="glass-card p-5 sm:p-7 border-neon-teal/20 bg-gradient-to-br from-neon-teal/[0.03] to-neon-cyan/[0.03]">
+                <div className="text-center">
+                  <h3 className="font-display text-lg sm:text-xl font-bold text-white mb-2">Get Your Full Protocol</h3>
+                  <p className="text-xs sm:text-sm text-slate-400 mb-5 max-w-md mx-auto">
+                    Dosing protocols, stack recommendations, risk assessment, and a doctor discussion guide — personalized to your answers.
+                  </p>
+
+                  <button
+                    onClick={handleUnlockReport}
+                    disabled={checkoutLoading}
+                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl bg-gradient-to-r from-neon-teal to-neon-cyan text-base-950 font-bold text-sm sm:text-base hover:shadow-lg hover:shadow-neon-teal/25 transition-all disabled:opacity-70 disabled:cursor-not-allowed min-h-[48px]"
+                  >
+                    {checkoutLoading ? (
+                      <div className="w-5 h-5 border-2 border-base-950/30 border-t-base-950 rounded-full animate-spin" />
+                    ) : (
+                      <>
+                        <Lock className="h-4 w-4" />
+                        Unlock Full Report — $6.99
+                      </>
+                    )}
+                  </button>
+
+                  <div className="flex items-center justify-center gap-4 sm:gap-6 mt-4">
+                    <span className="flex items-center gap-1 text-[10px] sm:text-xs text-slate-500">
+                      <Shield className="h-3 w-3" /> One-time payment
+                    </span>
+                    <span className="flex items-center gap-1 text-[10px] sm:text-xs text-slate-500">
+                      <Zap className="h-3 w-3" /> Instant access
+                    </span>
+                    <span className="flex items-center gap-1 text-[10px] sm:text-xs text-slate-500">
+                      <Clock className="h-3 w-3" /> Print-ready
+                    </span>
+                  </div>
+                </div>
+              </div>
             </motion.div>
 
-            {/* MAIN REPORT CTA - Enhanced */}
-            <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }} className="glass-card p-5 sm:p-7 border-neon-teal/20 bg-gradient-to-br from-neon-teal/[0.03] to-neon-cyan/[0.03] mb-6 sm:mb-8">
-              <div className="text-center">
-                <h3 className="font-display text-lg sm:text-xl font-bold text-white mb-2">Unlock Your Full Personalized Report</h3>
-                <p className="text-xs sm:text-sm text-slate-400 mb-5 max-w-md mx-auto">
-                  All {results.length} matches ranked, custom stacks, dosing protocols, risk assessment, and a doctor discussion guide — personalized to your answers.
-                </p>
-
-                {/* Feature list */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-5 max-w-md mx-auto text-left">
+            {/* WHAT'S INCLUDED */}
+            <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.35 }} className="mb-6 sm:mb-8">
+              <div className="glass-card p-4 sm:p-5">
+                <div className="flex items-center gap-2 mb-3">
+                  <FileText className="h-4 w-4 text-neon-teal" />
+                  <p className="text-sm font-semibold text-white">What&apos;s in the full report?</p>
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                   {[
-                    'Complete peptide rankings',
-                    'Synergistic stack combos',
-                    'Exact dosing protocols',
-                    'Side effect risk assessment',
-                    'Doctor talking points',
-                    '4-week cycle calendar',
-                  ].map((feature) => (
-                    <div key={feature} className="flex items-center gap-2">
-                      <CheckCircle2 className="h-3.5 w-3.5 text-neon-teal shrink-0" />
-                      <span className="text-xs sm:text-sm text-slate-300">{feature}</span>
+                    'Personalized stack combinations for your goals',
+                    'Exact dosing, timing, and cycle protocols',
+                    'Side effect risk assessment by severity',
+                    'Talking points to bring to your doctor',
+                    '4-week visual cycle calendar',
+                    'Print-ready format',
+                  ].map((item) => (
+                    <div key={item} className="flex items-start gap-2">
+                      <CheckCircle2 className="h-3.5 w-3.5 text-neon-teal shrink-0 mt-0.5" />
+                      <span className="text-xs sm:text-sm text-slate-400">{item}</span>
                     </div>
                   ))}
                 </div>
-
-                {/* Price and CTA */}
-                <button
-                  onClick={handleUnlockReport}
-                  disabled={checkoutLoading}
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl bg-gradient-to-r from-neon-teal to-neon-cyan text-base-950 font-bold text-sm sm:text-base hover:shadow-lg hover:shadow-neon-teal/25 transition-all disabled:opacity-70 disabled:cursor-not-allowed min-h-[48px]"
-                >
-                  {checkoutLoading ? (
-                    <div className="w-5 h-5 border-2 border-base-950/30 border-t-base-950 rounded-full animate-spin" />
-                  ) : (
-                    <>
-                      <Lock className="h-4 w-4" />
-                      Unlock Full Report — $6.99
-                    </>
-                  )}
-                </button>
-
-                {/* Trust signals */}
-                <div className="flex items-center justify-center gap-4 sm:gap-6 mt-4">
-                  <span className="flex items-center gap-1 text-[10px] sm:text-xs text-slate-500">
-                    <Shield className="h-3 w-3" /> One-time payment
-                  </span>
-                  <span className="flex items-center gap-1 text-[10px] sm:text-xs text-slate-500">
-                    <Zap className="h-3 w-3" /> Instant access
-                  </span>
-                  <span className="flex items-center gap-1 text-[10px] sm:text-xs text-slate-500">
-                    <Clock className="h-3 w-3" /> Print-ready
-                  </span>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* SOCIAL PROOF - Inline at decision point */}
-            <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.35 }} className="mb-6 sm:mb-8">
-              <div className="flex items-center justify-center gap-2 mb-4">
-                <BarChart3 className="h-3.5 w-3.5 text-slate-500" />
-                <p className="text-xs sm:text-sm text-slate-500 font-medium">
-                  <span className="text-slate-400">2,847+</span> reports generated
-                </p>
-              </div>
-              <div className="flex gap-3 overflow-x-auto pb-2 snap-x snap-mandatory scrollbar-hide -mx-4 px-4 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-3 sm:overflow-visible sm:pb-0">
-                {[
-                  { quote: 'The dosing protocol alone was worth way more than $6.99. Finally have a clear plan.', name: 'Mike R.' },
-                  { quote: 'Showed the doctor guide to my physician — it led to a great conversation about BPC-157.', name: 'Sarah K.' },
-                  { quote: 'Saved me hours of research. The stack recommendation was exactly what I needed.', name: 'James T.' },
-                ].map((t) => (
-                  <div key={t.name} className="glass-card p-4 min-w-[260px] sm:min-w-0 snap-start shrink-0 sm:shrink">
-                    <div className="flex items-center gap-0.5 mb-2">
-                      {[...Array(5)].map((_, i) => (
-                        <Star key={i} className="h-3 w-3 fill-amber-400 text-amber-400" />
-                      ))}
-                    </div>
-                    <p className="text-xs text-slate-400 leading-relaxed mb-2">&ldquo;{t.quote}&rdquo;</p>
-                    <p className="text-[11px] text-slate-600 font-medium">&mdash; {t.name}</p>
-                  </div>
-                ))}
               </div>
             </motion.div>
 
             <EmailCapture />
 
-            {/* EXPLORE OTHERS - Collapsed */}
-            {results.slice(FREE_RESULTS).length > 0 && (
-              <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }} className="mt-6 sm:mt-8">
-                <button onClick={() => setShowAllOthers(!showAllOthers)} className="w-full flex items-center justify-between p-4 sm:p-5 glass-card group">
-                  <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center">
-                      <List className="h-4 w-4 text-slate-400" />
-                    </div>
-                    <div className="text-left">
-                      <h3 className="text-sm sm:text-base font-bold text-white group-hover:text-neon-teal transition-colors">Browse All Matches ({results.slice(FREE_RESULTS).length})</h3>
-                      <p className="text-[10px] sm:text-xs text-slate-500">Basic info only — unlock the report for full details</p>
-                    </div>
-                  </div>
-                  {showAllOthers ? <ChevronUp className="h-5 w-5 text-slate-400 shrink-0" /> : <ChevronDown className="h-5 w-5 text-slate-400 shrink-0" />}
-                </button>
-                {showAllOthers && (
-                  <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="mt-3 space-y-2 sm:space-y-3">
-                    {results.slice(FREE_RESULTS).map((result, i) => {
-                      const pct = Math.round((result.score / maxScore) * 100)
-                      return (
-                        <Link key={result.peptide.id} href={`/peptides/${result.peptide.id}`} className="glass-card p-3.5 sm:p-4 flex items-center gap-3 group block">
-                          <div className="shrink-0 w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center">
-                            <span className="text-xs sm:text-sm font-bold text-slate-500">#{i + FREE_RESULTS + 1}</span>
-                          </div>
-                          <div className="shrink-0 w-10 sm:w-12"><span className="text-xs sm:text-sm font-bold text-slate-400">{pct}%</span></div>
-                          <div className="flex-1 min-w-0">
-                            <div className="flex items-center gap-1.5 flex-wrap">
-                              <h4 className="text-sm font-semibold text-white group-hover:text-neon-teal transition-colors truncate">{result.peptide.name}</h4>
-                              {result.peptide.fdaApproved && <span className="px-1 py-0.5 rounded text-[8px] font-bold uppercase bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 shrink-0">FDA</span>}
-                            </div>
-                            <p className="text-[10px] sm:text-xs text-slate-500 truncate">{result.peptide.primaryUse}</p>
-                          </div>
-                          <div className="flex items-center gap-2 shrink-0">
-                            <RiskBadge level={result.peptide.riskLevel} />
-                            <ArrowRight className="h-3.5 w-3.5 text-slate-600 group-hover:text-neon-teal transition-colors hidden sm:block" />
-                          </div>
-                        </Link>
-                      )
-                    })}
-                  </motion.div>
-                )}
-              </motion.div>
-            )}
           </motion.div>
         </div>
 
