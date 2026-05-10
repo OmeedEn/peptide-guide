@@ -61,7 +61,7 @@ export const stacks: Stack[] = [
     name: 'Deep Sleep & Recovery',
     peptideIds: ['dsip', 'selank', 'mk-677'],
     purpose: 'Optimized sleep architecture and overnight recovery',
-    description: 'DSIP normalizes sleep stages and enhances delta wave activity, Selank reduces anxiety-driven insomnia via GABA modulation, and MK-677 boosts nocturnal GH pulses for tissue repair during sleep.',
+    description: 'DSIP may promote delta-wave sleep (though clinical evidence is limited), Selank reduces anxiety-driven insomnia via GABA modulation, and MK-677 boosts nocturnal GH pulses — the strongest component — for tissue repair during sleep.',
     icon: 'Moon',
   },
   {
@@ -87,5 +87,29 @@ export const stacks: Stack[] = [
     purpose: 'HPG axis stimulation and reproductive hormone optimization',
     description: 'Gonadorelin directly stimulates pituitary LH and FSH release to maintain gonadal function, while Kisspeptin acts upstream on hypothalamic GnRH neurons — a dual-level approach to restoring natural reproductive hormone signaling.',
     icon: 'HeartPulse',
+  },
+  {
+    id: 'glp1-weight-loss',
+    name: 'GLP-1 Weight Loss Protocol',
+    peptideIds: ['semaglutide', 'tirzepatide'],
+    purpose: 'FDA-approved weight management with maximum evidence',
+    description: 'Semaglutide and Tirzepatide are the two most effective FDA-approved weight loss peptides, targeting GLP-1 (and GIP for tirzepatide) receptors for appetite suppression and metabolic improvement. These are alternatives, not combined — your doctor will choose one based on your profile.',
+    icon: 'Flame',
+  },
+  {
+    id: 'gut-healing',
+    name: 'Gut Healing Protocol',
+    peptideIds: ['bpc-157', 'kpv'],
+    purpose: 'Intestinal repair and gut inflammation reduction',
+    description: 'BPC-157 promotes gut mucosal healing and angiogenesis from within the GI tract, while KPV suppresses intestinal inflammation by inhibiting NF-kB signaling — complementary repair and anti-inflammatory mechanisms for gut restoration.',
+    icon: 'Heart',
+  },
+  {
+    id: 'hair-growth',
+    name: 'Hair Growth Stack',
+    peptideIds: ['copper-tripeptide-1', 'acetyl-tetrapeptide-3'],
+    purpose: 'Follicle strengthening and hair density improvement',
+    description: 'Copper Tripeptide-1 (GHK) stimulates collagen and promotes scalp tissue remodeling, while Acetyl Tetrapeptide-3 (Capixyl component) reduces DHT-driven follicular miniaturization — a non-hormonal, topical approach to hair loss.',
+    icon: 'Sparkles',
   },
 ]

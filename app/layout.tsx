@@ -8,21 +8,21 @@ import AnalyticsProvider from '@/components/AnalyticsProvider'
 export const metadata: Metadata = {
   metadataBase: new URL('https://peptideguide.com'),
   title: 'PeptideGuide — Find Your Perfect Peptide',
-  description: 'Discover which peptides are right for your health goals. Research-backed data on 70+ peptides with interactive recommendations and AI assistant.',
+  description: 'Discover which peptides are right for your health goals. Research-backed data on 75+ peptides with interactive recommendations and AI assistant.',
   icons: {
     icon: '/favicon.svg',
     apple: '/favicon.svg',
   },
   openGraph: {
     title: 'PeptideGuide — Find Your Perfect Peptide',
-    description: 'Discover which peptides are right for your health goals. Research-backed data on 70+ peptides with interactive recommendations and AI assistant.',
+    description: 'Discover which peptides are right for your health goals. Research-backed data on 75+ peptides with interactive recommendations and AI assistant.',
     type: 'website',
     siteName: 'PeptideGuide',
   },
   twitter: {
     card: 'summary_large_image',
     title: 'PeptideGuide — Find Your Perfect Peptide',
-    description: 'Discover which peptides are right for your health goals. Research-backed data on 70+ peptides with interactive recommendations and AI assistant.',
+    description: 'Discover which peptides are right for your health goals. Research-backed data on 75+ peptides with interactive recommendations and AI assistant.',
   },
 }
 

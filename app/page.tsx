@@ -323,7 +323,7 @@ export default function HomePage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-10 text-center">
             {[
-              { n: '70+', l: 'Peptides Profiled' },
+              { n: '75+', l: 'Peptides Profiled' },
               { n: '200+', l: 'Studies Referenced' },
               { n: '10', l: 'Health Categories' },
               { n: '4', l: 'FDA-Approved' },
