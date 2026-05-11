@@ -5,11 +5,10 @@ import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
 import {
   ArrowRight, ArrowLeft, CheckCircle2, Sparkles,
-  ShieldCheck, ShieldAlert, CircleSlash, DollarSign,
+  ShieldAlert, CircleSlash, DollarSign,
   Syringe, FlaskConical, Pill,
-  FileText, Zap, Calendar, Stethoscope, Download, Lock,
-  User, Shield,
-  Clock,
+  FileText, Zap, Calendar, Stethoscope, Lock,
+  Shield, Clock,
 } from 'lucide-react'
 import { categories } from '@/data/categories'
 import {
@@ -17,10 +16,9 @@ import {
   type QuizAnswers, type ScoredPeptide,
 } from '@/lib/quiz-logic'
 import CategoryIcon from '@/components/CategoryIcon'
-import RiskBadge from '@/components/RiskBadge'
 import EmailCapture from '@/components/EmailCapture'
 
-const FREE_RESULTS = Infinity // Show all match rankings for free
+const FREE_RESULTS = 3
 
 const situationIcons: Record<string, React.ReactNode> = {
   Syringe: <Syringe className="h-4 w-4" />,
@@ -64,7 +62,8 @@ export default function FindPage() {
 
   // ===== RESULTS VIEW =====
   if (results) {
-    const topResults = results
+    const topResults = results.slice(0, FREE_RESULTS)
+    const lockedCount = results.length - FREE_RESULTS
 
     const handleUnlockReport = async () => {
       setCheckoutLoading(true)
@@ -103,54 +102,48 @@ export default function FindPage() {
               <p className="text-sm sm:text-base text-slate-400">Personalized for your goals, age, and preferences</p>
             </div>
 
-            {/* TOP FREE RECOMMENDATIONS */}
-            <div className="mb-4">
+            {/* TOP 3 FREE RESULTS - Name + Match % only */}
+            <div className="mb-6 sm:mb-8">
               <div className="flex items-center gap-2 mb-4">
                 <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-neon-teal/20 to-neon-cyan/20 border border-neon-teal/20 flex items-center justify-center">
                   <Sparkles className="h-4 w-4 text-neon-teal" />
                 </div>
                 <div>
-                  <h2 className="text-sm sm:text-base font-bold text-white">Best For You</h2>
+                  <h2 className="text-sm sm:text-base font-bold text-white">Your Top Matches</h2>
                   <p className="text-[10px] sm:text-xs text-slate-500">Based on your specific answers</p>
                 </div>
-                <span className="ml-auto px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">{results.length} matches</span>
               </div>
 
-              <div className="space-y-3 sm:space-y-4">
+              <div className="space-y-2.5 sm:space-y-3">
                 {topResults.map((result, i) => {
                   const pct = Math.round((result.score / maxScore) * 100)
                   return (
-                    <motion.div key={result.peptide.id} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: i * 0.08 }}>
-                      <Link href={`/peptides/${result.peptide.id}`} className="glass-card p-4 sm:p-5 block group border-neon-teal/10">
-                        <div className="flex items-start gap-3 sm:gap-4">
-                          <div className="shrink-0 w-12 h-12 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl bg-gradient-to-br from-neon-teal/20 to-neon-cyan/20 border border-neon-teal/20 flex flex-col items-center justify-center">
-                            <span className="text-base sm:text-lg font-bold text-neon-teal">{pct}%</span>
-                          </div>
-                          <div className="flex-1 min-w-0">
-                            <div className="flex items-center gap-1.5 sm:gap-2 mb-0.5 flex-wrap">
-                              <h3 className="font-display text-base sm:text-lg font-bold text-white group-hover:text-neon-teal transition-colors">{result.peptide.name}</h3>
-                              {i === 0 && <span className="px-1.5 sm:px-2 py-0.5 rounded-full text-[9px] sm:text-[10px] font-bold bg-neon-teal/15 text-neon-teal border border-neon-teal/30">BEST MATCH</span>}
-                              {result.peptide.fdaApproved && (
-                                <span className="flex items-center gap-0.5 px-1.5 py-0.5 rounded text-[8px] sm:text-[9px] font-bold uppercase bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 shrink-0">
-                                  <CheckCircle2 className="h-2.5 w-2.5" /> FDA
-                                </span>
-                              )}
-                            </div>
-                            <p className="text-xs sm:text-sm text-slate-400 mb-1.5 line-clamp-2">{result.peptide.description}</p>
-                            <div className="flex items-center gap-2 flex-wrap">
-                              <RiskBadge level={result.peptide.riskLevel} />
-                              {result.matchReasons.slice(0, 3).map((r, ri) => (
-                                <span key={ri} className="px-1.5 py-0.5 rounded text-[9px] sm:text-[10px] bg-neon-teal/5 text-neon-teal/80 border border-neon-teal/10 hidden sm:inline-block">{r}</span>
-                              ))}
-                            </div>
-                          </div>
-                          <ArrowRight className="h-4 w-4 text-slate-600 group-hover:text-neon-teal transition-colors shrink-0 mt-1 hidden sm:block" />
+                    <motion.div key={result.peptide.id} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: i * 0.1 }}>
+                      <div className="glass-card p-4 sm:p-5 flex items-center gap-3 sm:gap-4">
+                        <div className="shrink-0 w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-br from-neon-teal/20 to-neon-cyan/20 border border-neon-teal/20 flex flex-col items-center justify-center">
+                          <span className="text-sm sm:text-base font-bold text-neon-teal">{pct}%</span>
                         </div>
-                      </Link>
+                        <div className="flex-1 min-w-0">
+                          <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap">
+                            <h3 className="font-display text-base sm:text-lg font-bold text-white">{result.peptide.name}</h3>
+                            {i === 0 && <span className="px-1.5 sm:px-2 py-0.5 rounded-full text-[9px] sm:text-[10px] font-bold bg-neon-teal/15 text-neon-teal border border-neon-teal/30">BEST MATCH</span>}
+                          </div>
+                          <p className="text-xs text-slate-500 mt-0.5">{result.peptide.primaryUse}</p>
+                        </div>
+                        <span className="text-[10px] sm:text-xs text-slate-600 font-medium shrink-0">#{i + 1}</span>
+                      </div>
                     </motion.div>
                   )
                 })}
               </div>
+
+              {/* Locked remaining matches */}
+              {lockedCount > 0 && (
+                <div className="mt-3 flex items-center gap-2 px-4 py-2.5 rounded-lg bg-white/[0.02] border border-white/5">
+                  <Lock className="h-3.5 w-3.5 text-slate-600" />
+                  <p className="text-xs text-slate-500">+ {lockedCount} more matches in your full report</p>
+                </div>
+              )}
             </div>
 
             {/* LOCKED PROTOCOL SECTIONS */}
@@ -292,15 +285,19 @@ export default function FindPage() {
                 <h2 className="font-display text-2xl sm:text-3xl font-bold text-white mb-1.5 sm:mb-2">What&apos;s your primary goal?</h2>
                 <p className="text-sm sm:text-base text-slate-400 mb-6 sm:mb-8">Choose the one area that matters most right now</p>
                 <div className="grid grid-cols-2 gap-2.5 sm:gap-3">
-                  {categories.map((cat) => (
-                    <button key={cat.id} onClick={() => setAnswers({ ...answers, primaryGoal: cat.id, specificFocus: '' })}
-                      className={`glass-card p-3 sm:p-4 text-left transition-all ${answers.primaryGoal === cat.id ? 'border-neon-teal/40 bg-neon-teal/10 ring-1 ring-neon-teal/20' : ''}`}>
-                      <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg flex items-center justify-center mb-1.5 sm:mb-2" style={{ backgroundColor: `${cat.color}15` }}>
-                        <CategoryIcon name={cat.icon} className="h-3.5 w-3.5 sm:h-4 sm:w-4" style={{ color: cat.color }} />
-                      </div>
-                      <p className="text-xs sm:text-sm font-medium text-white leading-tight">{cat.name}</p>
-                    </button>
-                  ))}
+                  {categories.map((cat) => {
+                    const selected = answers.primaryGoal === cat.id
+                    return (
+                      <button key={cat.id} onClick={() => setAnswers({ ...answers, primaryGoal: cat.id, specificFocus: '' })}
+                        className={`glass-card p-3 sm:p-4 text-left transition-all duration-200 relative ${selected ? 'border-neon-teal bg-neon-teal/15 ring-2 ring-neon-teal/40 shadow-lg shadow-neon-teal/10 scale-[1.02]' : 'hover:border-white/20'}`}>
+                        {selected && <CheckCircle2 className="absolute top-2 right-2 h-4 w-4 text-neon-teal" />}
+                        <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg flex items-center justify-center mb-1.5 sm:mb-2" style={{ backgroundColor: `${cat.color}15` }}>
+                          <CategoryIcon name={cat.icon} className="h-3.5 w-3.5 sm:h-4 sm:w-4" style={{ color: cat.color }} />
+                        </div>
+                        <p className={`text-xs sm:text-sm font-medium leading-tight ${selected ? 'text-neon-teal' : 'text-white'}`}>{cat.name}</p>
+                      </button>
+                    )
+                  })}
                 </div>
               </div>
             )}
@@ -314,12 +311,15 @@ export default function FindPage() {
                 <div className="mb-6">
                   <p className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3">Age Range</p>
                   <div className="grid grid-cols-3 sm:grid-cols-5 gap-2">
-                    {(['18-25', '26-35', '36-45', '46-55', '56+'] as const).map((age) => (
-                      <button key={age} onClick={() => setAnswers({ ...answers, ageRange: age })}
-                        className={`glass-card p-3 text-center transition-all ${answers.ageRange === age ? 'border-neon-teal/40 bg-neon-teal/10 ring-1 ring-neon-teal/20' : ''}`}>
-                        <p className="text-sm font-medium text-white">{age}</p>
-                      </button>
-                    ))}
+                    {(['18-25', '26-35', '36-45', '46-55', '56+'] as const).map((age) => {
+                      const selected = answers.ageRange === age
+                      return (
+                        <button key={age} onClick={() => setAnswers({ ...answers, ageRange: age })}
+                          className={`glass-card p-3 text-center transition-all duration-200 ${selected ? 'border-neon-teal bg-neon-teal/15 ring-2 ring-neon-teal/40 shadow-lg shadow-neon-teal/10 scale-[1.03]' : 'hover:border-white/20'}`}>
+                          <p className={`text-sm font-bold ${selected ? 'text-neon-teal' : 'text-white font-medium'}`}>{age}</p>
+                        </button>
+                      )
+                    })}
                   </div>
                 </div>
 
@@ -330,12 +330,15 @@ export default function FindPage() {
                       { v: 'male' as const, l: 'Male' },
                       { v: 'female' as const, l: 'Female' },
                       { v: 'other' as const, l: 'Prefer not to say' },
-                    ]).map((g) => (
-                      <button key={g.v} onClick={() => setAnswers({ ...answers, gender: g.v })}
-                        className={`glass-card p-3 text-center transition-all ${answers.gender === g.v ? 'border-neon-teal/40 bg-neon-teal/10 ring-1 ring-neon-teal/20' : ''}`}>
-                        <p className="text-xs sm:text-sm font-medium text-white">{g.l}</p>
-                      </button>
-                    ))}
+                    ]).map((g) => {
+                      const selected = answers.gender === g.v
+                      return (
+                        <button key={g.v} onClick={() => setAnswers({ ...answers, gender: g.v })}
+                          className={`glass-card p-3 text-center transition-all duration-200 ${selected ? 'border-neon-teal bg-neon-teal/15 ring-2 ring-neon-teal/40 shadow-lg shadow-neon-teal/10 scale-[1.03]' : 'hover:border-white/20'}`}>
+                          <p className={`text-xs sm:text-sm ${selected ? 'font-bold text-neon-teal' : 'font-medium text-white'}`}>{g.l}</p>
+                        </button>
+                      )
+                    })}
                   </div>
                 </div>
               </div>
@@ -347,13 +350,17 @@ export default function FindPage() {
                 <h2 className="font-display text-2xl sm:text-3xl font-bold text-white mb-1.5 sm:mb-2">{deepDive.question}</h2>
                 <p className="text-sm sm:text-base text-slate-400 mb-6 sm:mb-8">This narrows down the best peptides for your specific need</p>
                 <div className="space-y-2.5 sm:space-y-3">
-                  {deepDive.options.map((opt) => (
-                    <button key={opt.id} onClick={() => setAnswers({ ...answers, specificFocus: opt.id })}
-                      className={`glass-card p-4 sm:p-5 w-full text-left transition-all ${answers.specificFocus === opt.id ? 'border-neon-teal/40 bg-neon-teal/10 ring-1 ring-neon-teal/20' : ''}`}>
-                      <p className="font-medium text-white text-sm sm:text-base mb-0.5">{opt.label}</p>
-                      <p className="text-xs sm:text-sm text-slate-400 leading-snug">{opt.desc}</p>
-                    </button>
-                  ))}
+                  {deepDive.options.map((opt) => {
+                    const selected = answers.specificFocus === opt.id
+                    return (
+                      <button key={opt.id} onClick={() => setAnswers({ ...answers, specificFocus: opt.id })}
+                        className={`glass-card p-4 sm:p-5 w-full text-left transition-all duration-200 relative ${selected ? 'border-neon-teal bg-neon-teal/15 ring-2 ring-neon-teal/40 shadow-lg shadow-neon-teal/10 scale-[1.01]' : 'hover:border-white/20'}`}>
+                        {selected && <CheckCircle2 className="absolute top-4 right-4 h-5 w-5 text-neon-teal" />}
+                        <p className={`font-medium text-sm sm:text-base mb-0.5 ${selected ? 'text-neon-teal font-semibold' : 'text-white'}`}>{opt.label}</p>
+                        <p className="text-xs sm:text-sm text-slate-400 leading-snug">{opt.desc}</p>
+                      </button>
+                    )
+                  })}
                 </div>
               </div>
             )}
@@ -374,11 +381,10 @@ export default function FindPage() {
                             ? answers.situationFlags.filter(f => f !== opt.id)
                             : [...answers.situationFlags, opt.id],
                         })}
-                        className={`glass-card p-4 w-full text-left flex items-center gap-3 transition-all ${selected ? 'border-neon-teal/40 bg-neon-teal/10 ring-1 ring-neon-teal/20' : ''}`}>
-                        <div className="text-slate-400 shrink-0">{situationIcons[opt.icon]}</div>
-                        <p className="text-sm font-medium text-white flex-1">{opt.label}</p>
-                        {selected && <CheckCircle2 className="h-4 w-4 text-neon-teal shrink-0" />}
-                      </button>
+                        className={`glass-card p-4 w-full text-left flex items-center gap-3 transition-all duration-200 ${selected ? 'border-neon-teal bg-neon-teal/15 ring-2 ring-neon-teal/40 shadow-lg shadow-neon-teal/10 scale-[1.01]' : 'hover:border-white/20'}`}>
+                        <div className={`shrink-0 ${selected ? 'text-neon-teal' : 'text-slate-400'}`}>{situationIcons[opt.icon]}</div>
+                        <p className={`text-sm font-medium flex-1 ${selected ? 'text-neon-teal' : 'text-white'}`}>{opt.label}</p>
+                        {selected && <CheckCircle2 className="h-5 w-5 text-neon-teal shrink-0" />}</button>
                     )
                   })}
                 </div>
@@ -405,12 +411,12 @@ export default function FindPage() {
                               : [...answers.priorities, opt.id],
                           })
                         }}
-                        className={`glass-card p-4 sm:p-5 w-full text-left transition-all ${
-                          selected ? 'border-neon-teal/40 bg-neon-teal/10 ring-1 ring-neon-teal/20' : atMax ? 'opacity-40 cursor-not-allowed' : ''
+                        className={`glass-card p-4 sm:p-5 w-full text-left transition-all duration-200 relative ${
+                          selected ? 'border-neon-teal bg-neon-teal/15 ring-2 ring-neon-teal/40 shadow-lg shadow-neon-teal/10 scale-[1.01]' : atMax ? 'opacity-40 cursor-not-allowed' : 'hover:border-white/20'
                         }`}>
-                        <p className="font-medium text-white text-sm sm:text-base mb-0.5">{opt.label}</p>
+                        {selected && <CheckCircle2 className="h-5 w-5 text-neon-teal absolute top-4 right-4" />}
+                        <p className={`font-medium text-sm sm:text-base mb-0.5 ${selected ? 'text-neon-teal font-semibold' : 'text-white'}`}>{opt.label}</p>
                         <p className="text-xs sm:text-sm text-slate-400 leading-snug">{opt.desc}</p>
-                        {selected && <CheckCircle2 className="h-4 w-4 text-neon-teal absolute top-4 right-4" />}
                       </button>
                     )
                   })}

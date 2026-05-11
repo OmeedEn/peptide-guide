@@ -499,11 +499,11 @@ function ReportPageContent() {
 
           {/* Legend */}
           <div className="flex flex-wrap items-center gap-3 mb-4">
-            {report.allMatches.slice(0, 2).map((sp, i) => (
+            {report.allMatches.slice(0, 3).map((sp, i) => (
               <div key={sp.peptide.id} className="flex items-center gap-1.5">
                 <span
                   className="w-3 h-3 rounded-sm"
-                  style={{ backgroundColor: ['#00d4aa', '#0ea5e9'][i] }}
+                  style={{ backgroundColor: ['#00d4aa', '#0ea5e9', '#8b5cf6'][i] }}
                 />
                 <span className="text-xs text-slate-400">{sp.peptide.name}</span>
               </div>
