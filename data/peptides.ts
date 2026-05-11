@@ -164,9 +164,9 @@ const basePeptides: Peptide[] = [
     fullName: 'Semaglutide (GLP-1 Receptor Agonist)',
     aliases: ['Ozempic', 'Wegovy', 'Rybelsus'],
     categories: ['fat_loss'],
-    primaryUse: 'Weight loss and metabolic health',
+    primaryUse: 'GLP-1 receptor agonist for metabolic health',
     trendingRank: 5,
-    description: 'An FDA-approved GLP-1 receptor agonist for type 2 diabetes and weight management. The most commercially successful peptide drug. As of late 2025, ~12% of US adults are currently using a GLP-1 RA (KFF polling).',
+    description: 'An FDA-approved GLP-1 receptor agonist for type 2 diabetes and chronic weight management. The most commercially successful peptide drug. As of late 2025, ~12% of US adults are currently using a GLP-1 RA (KFF polling).',
     benefits: [
       'Significant sustained weight loss (13-15% body weight)',
       'Improved blood sugar control',

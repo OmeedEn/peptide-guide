@@ -13,6 +13,7 @@ import {
 import { type QuizAnswers } from '@/lib/quiz-logic'
 import { generateReport, type PeptideReport } from '@/lib/report-generator'
 import { categoryMap } from '@/data/categories'
+import { trackPurchase } from '@/lib/tracking'
 import RiskBadge from '@/components/RiskBadge'
 import EvidenceBar from '@/components/EvidenceBar'
 import CategoryIcon from '@/components/CategoryIcon'
@@ -49,9 +50,10 @@ function ReportPageContent() {
   useEffect(() => {
     const sessionId = searchParams.get('session_id')
 
-    // If arriving from Stripe checkout success, mark as paid
+    // If arriving from Stripe checkout success, mark as paid and track conversion
     if (sessionId) {
       localStorage.setItem('peptide_report_paid', sessionId)
+      trackPurchase()
     }
 
     const hasPaid = localStorage.getItem('peptide_report_paid')

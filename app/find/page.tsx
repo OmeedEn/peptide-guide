@@ -17,6 +17,7 @@ import {
 } from '@/lib/quiz-logic'
 import CategoryIcon from '@/components/CategoryIcon'
 import EmailCapture from '@/components/EmailCapture'
+import { trackQuizStart, trackQuizComplete, trackInitiateCheckout } from '@/lib/tracking'
 
 const FREE_RESULTS = 3
 
@@ -46,7 +47,11 @@ export default function FindPage() {
 
   const next = () => {
     if (step < totalSteps - 1) setStep(step + 1)
-    else setResults(scorePeptides(answers))
+    else {
+      const scored = scorePeptides(answers)
+      setResults(scored)
+      trackQuizComplete(scored.length)
+    }
   }
 
   const prev = () => {
@@ -67,6 +72,7 @@ export default function FindPage() {
 
     const handleUnlockReport = async () => {
       setCheckoutLoading(true)
+      trackInitiateCheckout()
       localStorage.setItem('peptide_quiz_answers', JSON.stringify(answers))
       try {
         const res = await fetch('/api/checkout', {
@@ -288,7 +294,7 @@ export default function FindPage() {
                   {categories.map((cat) => {
                     const selected = answers.primaryGoal === cat.id
                     return (
-                      <button key={cat.id} onClick={() => setAnswers({ ...answers, primaryGoal: cat.id, specificFocus: '' })}
+                      <button key={cat.id} onClick={() => { trackQuizStart(); setAnswers({ ...answers, primaryGoal: cat.id, specificFocus: '' }) }}
                         className={`glass-card p-3 sm:p-4 text-left transition-all duration-200 relative ${selected ? 'border-neon-teal bg-neon-teal/15 ring-2 ring-neon-teal/40 shadow-lg shadow-neon-teal/10 scale-[1.02]' : 'hover:border-white/20'}`}>
                         {selected && <CheckCircle2 className="absolute top-2 right-2 h-4 w-4 text-neon-teal" />}
                         <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg flex items-center justify-center mb-1.5 sm:mb-2" style={{ backgroundColor: `${cat.color}15` }}>

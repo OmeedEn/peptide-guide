@@ -48,7 +48,7 @@ export default function HomePage() {
             </h1>
 
             <p className="text-base sm:text-xl text-slate-400 leading-relaxed mb-8 sm:mb-10 max-w-2xl mx-auto px-2">
-              Navigate the peptide landscape with confidence. Research-backed profiles, risk assessments, and personalized recommendations.
+              Navigate the peptide research landscape with confidence. Evidence-based profiles, risk assessments, and educational resources to discuss with your doctor.
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
@@ -70,6 +70,13 @@ export default function HomePage() {
           </motion.div>
         </div>
       </section>
+
+      {/* Educational Disclaimer Banner */}
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-center gap-2 py-2.5 px-4 rounded-lg bg-amber-500/5 border border-amber-500/15 text-center">
+          <span className="text-[10px] sm:text-xs text-amber-400/80">For educational purposes only. Not medical advice. Always consult your healthcare provider.</span>
+        </div>
+      </div>
 
       {/* Category Grid */}
       <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10 sm:py-16">
@@ -355,7 +362,7 @@ export default function HomePage() {
                 Your Personalized Peptide Report
               </h2>
               <p className="text-sm sm:text-base text-slate-400 max-w-lg mx-auto px-2">
-                Stop guessing. Get a research-backed recommendation tailored to your exact goals.
+                Get a research-backed educational report tailored to your goals — with talking points for your doctor.
               </p>
             </div>
 

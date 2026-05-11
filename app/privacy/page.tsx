@@ -88,8 +88,19 @@ export default function PrivacyPage() {
                   See <a href="https://vercel.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer" className="text-neon-teal hover:underline">vercel.com/legal/privacy-policy</a>.
                 </li>
                 <li>
-                  <strong className="text-slate-300">Analytics:</strong> We may use privacy-focused analytics
-                  to understand site usage. No personally identifiable information is shared with analytics providers.
+                  <strong className="text-slate-300">Google Analytics:</strong> For understanding site usage
+                  and traffic sources. Google Analytics uses cookies to collect anonymous usage data.
+                  See <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="text-neon-teal hover:underline">Google&apos;s privacy policy</a>.
+                </li>
+                <li>
+                  <strong className="text-slate-300">Meta (Facebook) Pixel:</strong> We use the Meta Pixel to
+                  measure the effectiveness of our advertising, understand how visitors use our site, and deliver
+                  relevant ads. The Meta Pixel collects data such as pages visited, actions taken (e.g., completing
+                  the quiz or making a purchase), browser and device information, and IP address. This data is
+                  shared with Meta Platforms, Inc. and may be used to serve you targeted advertisements on
+                  Facebook and Instagram. You can opt out of Meta&apos;s interest-based advertising through
+                  your <a href="https://www.facebook.com/settings/?tab=ads" target="_blank" rel="noopener noreferrer" className="text-neon-teal hover:underline">Facebook Ad Settings</a>.
+                  See <a href="https://www.facebook.com/privacy/policy/" target="_blank" rel="noopener noreferrer" className="text-neon-teal hover:underline">Meta&apos;s privacy policy</a>.
                 </li>
               </ul>
             </section>
@@ -99,8 +110,7 @@ export default function PrivacyPage() {
                 4. Cookies
               </h2>
               <p>
-                PeptideGuide uses minimal cookies. We do not use advertising or tracking cookies.
-                The cookies we may use include:
+                PeptideGuide uses the following types of cookies and tracking technologies:
               </p>
               <ul className="list-disc list-inside mt-3 space-y-1.5 text-slate-400">
                 <li>
@@ -108,12 +118,21 @@ export default function PrivacyPage() {
                   function (e.g., session management, payment processing).
                 </li>
                 <li>
-                  <strong className="text-slate-300">Analytics cookies:</strong> Anonymous usage data to help
-                  us understand how visitors interact with the site. These do not identify you personally.
+                  <strong className="text-slate-300">Analytics cookies:</strong> Used by Google Analytics to
+                  understand how visitors interact with the site. These collect anonymous usage data.
+                </li>
+                <li>
+                  <strong className="text-slate-300">Advertising cookies:</strong> Used by the Meta Pixel to
+                  measure ad performance and deliver relevant ads on Facebook and Instagram. These cookies
+                  may track your activity across websites. You can manage your preferences through
+                  your <a href="https://www.facebook.com/settings/?tab=ads" target="_blank" rel="noopener noreferrer" className="text-neon-teal hover:underline">Facebook Ad Settings</a> or
+                  the <a href="https://optout.aboutads.info/" target="_blank" rel="noopener noreferrer" className="text-neon-teal hover:underline">Digital Advertising Alliance opt-out</a>.
                 </li>
               </ul>
               <p className="mt-3">
                 You can configure your browser to block cookies, though this may affect site functionality.
+                For advertising cookies specifically, you can opt out using the links above without affecting
+                core site features.
               </p>
             </section>
 

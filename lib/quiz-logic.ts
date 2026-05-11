@@ -50,13 +50,13 @@ export const goalDeepDive: Record<string, { question: string; options: { id: str
     ],
   },
   fat_loss: {
-    question: 'Where are you in your weight loss journey?',
+    question: 'What\'s your metabolic health focus?',
     options: [
-      { id: 'moderate_loss', label: '10-20 lbs to lose', desc: 'Fine-tuning body composition' },
-      { id: 'significant_loss', label: '20-50 lbs to lose', desc: 'Meaningful weight reduction needed' },
-      { id: 'major_loss', label: '50+ lbs to lose', desc: 'Substantial weight management' },
-      { id: 'stubborn_fat', label: 'Stubborn Fat Areas', desc: 'Last 5-10 lbs, targeted areas' },
-      { id: 'metabolic', label: 'Metabolic Health', desc: 'Blood sugar, insulin sensitivity' },
+      { id: 'moderate_loss', label: 'Body Composition', desc: 'Optimizing body composition' },
+      { id: 'significant_loss', label: 'Weight Management', desc: 'Researching clinical weight management options' },
+      { id: 'major_loss', label: 'Clinical Options', desc: 'Exploring FDA-approved metabolic therapies' },
+      { id: 'stubborn_fat', label: 'Targeted Support', desc: 'Focused body composition research' },
+      { id: 'metabolic', label: 'Metabolic Optimization', desc: 'Blood sugar, insulin sensitivity' },
     ],
   },
   anti_aging: {
