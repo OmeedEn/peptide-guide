@@ -12,6 +12,7 @@ import {
 } from 'lucide-react'
 import { type QuizAnswers } from '@/lib/quiz-logic'
 import { generateReport, type PeptideReport } from '@/lib/report-generator'
+import { exportReportPDF } from '@/lib/export-pdf'
 import { categoryMap } from '@/data/categories'
 import { trackPurchase } from '@/lib/tracking'
 import RiskBadge from '@/components/RiskBadge'
@@ -570,11 +571,11 @@ function ReportPageContent() {
             Print Report
           </button>
           <button
-            disabled
-            className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-white/5 border border-white/10 text-slate-400 font-semibold text-sm cursor-not-allowed opacity-60"
+            onClick={() => report && exportReportPDF(report)}
+            className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-white/5 border border-white/10 text-slate-300 font-semibold text-sm hover:bg-white/10 hover:border-white/20 hover:text-white transition-all"
           >
             <Download className="h-4 w-4" />
-            Download PDF (Coming Soon)
+            Export PDF for Your Provider
           </button>
         </motion.div>
 
