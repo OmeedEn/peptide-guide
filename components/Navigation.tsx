@@ -3,8 +3,9 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { FlaskConical, Menu, X, ShoppingBag } from 'lucide-react'
+import { FlaskConical, Menu, X, ShoppingBag, User, LogIn } from 'lucide-react'
 import { useCart } from './CartContext'
+import { useAuth } from './AuthContext'
 import ThemeToggle from './ThemeToggle'
 
 const links = [
@@ -20,6 +21,7 @@ export default function Navigation() {
   const pathname = usePathname()
   const [mobileOpen, setMobileOpen] = useState(false)
   const { itemCount, setIsOpen } = useCart()
+  const { user, loading: authLoading } = useAuth()
 
   const isActiveLink = (href: string) => {
     if (href === '/') return pathname === '/'
@@ -61,8 +63,27 @@ export default function Navigation() {
               })}
             </div>
 
-            {/* Theme + Cart + Mobile toggle */}
+            {/* Auth + Theme + Cart + Mobile toggle */}
             <div className="flex items-center gap-0.5">
+              {!authLoading && (
+                user ? (
+                  <Link
+                    href="/account"
+                    className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium text-slate-400 hover:text-white border border-transparent hover:border-white/10 transition-all"
+                  >
+                    <User className="h-3.5 w-3.5" />
+                    <span className="max-w-[120px] truncate">{user.email}</span>
+                  </Link>
+                ) : (
+                  <Link
+                    href="/login"
+                    className="hidden sm:flex items-center gap-1.5 px-3.5 py-2 rounded-lg text-xs font-semibold bg-gradient-to-r from-neon-teal to-neon-cyan text-base-950 hover:shadow-lg hover:shadow-neon-teal/20 transition-all"
+                  >
+                    <LogIn className="h-3.5 w-3.5" />
+                    Sign In
+                  </Link>
+                )
+              )}
               <ThemeToggle />
               <button
                 onClick={() => setIsOpen(true)}
@@ -104,6 +125,27 @@ export default function Navigation() {
                   {link.label}
                 </Link>
               ))}
+              <div className="border-t border-white/5 mt-1 pt-1">
+                {user ? (
+                  <Link
+                    href="/account"
+                    onClick={() => setMobileOpen(false)}
+                    className="flex items-center gap-2 px-3 py-3 rounded-lg text-sm font-medium text-slate-400 hover:text-white active:bg-white/5 transition-colors"
+                  >
+                    <User className="h-4 w-4" />
+                    My Account
+                  </Link>
+                ) : (
+                  <Link
+                    href="/login"
+                    onClick={() => setMobileOpen(false)}
+                    className="flex items-center gap-2 px-3 py-3 rounded-lg text-sm font-medium text-neon-teal active:bg-neon-teal/10 transition-colors"
+                  >
+                    <LogIn className="h-4 w-4" />
+                    Sign In
+                  </Link>
+                )}
+              </div>
             </div>
           </div>
         )}
